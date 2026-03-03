@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10 - 交通與問路 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .transport-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .transport-card:hover {
+            border-color: #C1282D;
+        }
+
+        .transport-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .transport-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .transport-meaning {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .direction-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .direction-card:hover {
+            border-color: #C1282D;
+        }
+
+        .direction-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.6em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .direction-meaning {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .phrase-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .phrase-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .phrase-item {
+            padding: 15px;
+            margin: 12px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .phrase-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .phrase-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-meaning {
+            color: #6B6B6B;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-note {
+            color: #6B6B6B;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .dialogue-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .dialogue-line {
+            padding: 12px;
+            margin: 10px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .dialogue-speaker {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .dialogue-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-translation {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .practice-section {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-item {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .practice-question {
+            color: #6B6B6B;
+            margin-bottom: 10px;
+        }
+
+        .practice-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .map-diagram {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 30px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .map-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .map-content {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5em;
+            line-height: 2;
+            color: #2C2C2C;
+        }
+
+        .map-arrow {
+            color: #C1282D;
+            font-size: 2em;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .transport-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+
+            .direction-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day9.html">← Day 9</a>
+                <a href="index.html">課程列表</a>
+                <a href="day11.html">Day 11 →</a>
+            </div>
+            <div class="day-number">DAY 10</div>
+            <h1>交通與問路</h1>
+            <p class="lesson-desc">學習交通工具、問路用語、方向指示</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習在日本移動時會用到的交通用語和問路表達方式。</p>
+                <p>日本的交通系統非常發達，學會這些用語就能輕鬆搭乘電車、巴士，找到目的地！</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 各種交通工具的日文名稱</p>
+                <p>2. 車站與交通相關詞彙</p>
+                <p>3. 問路的基本句型</p>
+                <p>4. 方向與位置的表達</p>
+                <p>5. 搭乘交通工具的實用對話</p>
+            </div>
+        </div>
+
+        <!-- 交通工具 -->
+        <div class="section">
+            <h2 class="section-title">二、交通工具</h2>
+            
+            <div class="transport-grid">
+                <div class="transport-card" onclick="speakTransport('でんしゃ')">
+                    <div class="transport-jp">でんしゃ</div>
+                    <div class="transport-romaji">densha</div>
+                    <div class="transport-meaning">電車</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('ちかてつ')">
+                    <div class="transport-jp">ちかてつ</div>
+                    <div class="transport-romaji">chikatetsu</div>
+                    <div class="transport-meaning">地鐵</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('バス')">
+                    <div class="transport-jp">バス</div>
+                    <div class="transport-romaji">basu</div>
+                    <div class="transport-meaning">巴士</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('タクシー')">
+                    <div class="transport-jp">タクシー</div>
+                    <div class="transport-romaji">takushii</div>
+                    <div class="transport-meaning">計程車</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('しんかんせん')">
+                    <div class="transport-jp">しんかんせん</div>
+                    <div class="transport-romaji">shinkansen</div>
+                    <div class="transport-meaning">新幹線</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('ひこうき')">
+                    <div class="transport-jp">ひこうき</div>
+                    <div class="transport-romaji">hikouki</div>
+                    <div class="transport-meaning">飛機</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('ふね')">
+                    <div class="transport-jp">ふね</div>
+                    <div class="transport-romaji">fune</div>
+                    <div class="transport-meaning">船</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('じてんしゃ')">
+                    <div class="transport-jp">じてんしゃ</div>
+                    <div class="transport-romaji">jitensha</div>
+                    <div class="transport-meaning">腳踏車</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('くるま')">
+                    <div class="transport-jp">くるま</div>
+                    <div class="transport-romaji">kuruma</div>
+                    <div class="transport-meaning">汽車</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('あるいて')">
+                    <div class="transport-jp">あるいて</div>
+                    <div class="transport-romaji">aruite</div>
+                    <div class="transport-meaning">走路、步行</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 車站相關 -->
+        <div class="section">
+            <h2 class="section-title">三、車站與交通設施</h2>
+            
+            <div class="transport-grid">
+                <div class="transport-card" onclick="speakTransport('えき')">
+                    <div class="transport-jp">えき</div>
+                    <div class="transport-romaji">eki</div>
+                    <div class="transport-meaning">車站</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('バスてい')">
+                    <div class="transport-jp">バスてい</div>
+                    <div class="transport-romaji">basutei</div>
+                    <div class="transport-meaning">公車站</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('くうこう')">
+                    <div class="transport-jp">くうこう</div>
+                    <div class="transport-romaji">kuukou</div>
+                    <div class="transport-meaning">機場</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('かいさつ')">
+                    <div class="transport-jp">かいさつ</div>
+                    <div class="transport-romaji">kaisatsu</div>
+                    <div class="transport-meaning">剪票口</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('ホーム')">
+                    <div class="transport-jp">ホーム</div>
+                    <div class="transport-romaji">hoomu</div>
+                    <div class="transport-meaning">月台</div>
+                </div>
+                <div class="transport-card" onclick="speakTransport('きっぷ')">
+                    <div class="transport-jp">きっぷ</div>
+                    <div class="transport-romaji">kippu</div>
+                    <div class="transport-meaning">車票</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 方向 -->
+        <div class="section">
+            <h2 class="section-title">四、方向與位置</h2>
+            
+            <div class="direction-grid">
+                <div class="direction-card" onclick="speakTransport('みぎ')">
+                    <div class="direction-jp">みぎ</div>
+                    <div class="direction-meaning">右邊</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('ひだり')">
+                    <div class="direction-jp">ひだり</div>
+                    <div class="direction-meaning">左邊</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('まっすぐ')">
+                    <div class="direction-jp">まっすぐ</div>
+                    <div class="direction-meaning">直走</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('まえ')">
+                    <div class="direction-jp">まえ</div>
+                    <div class="direction-meaning">前面</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('うしろ')">
+                    <div class="direction-jp">うしろ</div>
+                    <div class="direction-meaning">後面</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('となり')">
+                    <div class="direction-jp">となり</div>
+                    <div class="direction-meaning">旁邊</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('ちかく')">
+                    <div class="direction-jp">ちかく</div>
+                    <div class="direction-meaning">附近</div>
+                </div>
+                <div class="direction-card" onclick="speakTransport('むかい')">
+                    <div class="direction-jp">むかい</div>
+                    <div class="direction-meaning">對面</div>
+                </div>
+            </div>
+
+            <div class="map-diagram">
+                <div class="map-title">方向示意</div>
+                <div class="map-content">
+                    <div>ひだり ← <span class="map-arrow">◉</span> → みぎ</div>
+                    <div style="margin-top: 20px;">まえ ↑</div>
+                    <div style="margin-top: 10px;"><span class="map-arrow">◉</span></div>
+                    <div style="margin-top: 10px;">↓ うしろ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 問路用語 -->
+        <div class="section">
+            <h2 class="section-title">五、問路基本句型</h2>
+            
+            <div class="phrase-box">
+                <div class="phrase-title">詢問位置</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">すみません</div>
+                    <div class="phrase-romaji">Sumimasen</div>
+                    <div class="phrase-meaning">不好意思（問路開場白）</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('すみません')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">〇〇はどこですか</div>
+                    <div class="phrase-romaji">〇〇 wa doko desu ka</div>
+                    <div class="phrase-meaning">〇〇在哪裡？</div>
+                    <div class="phrase-note">最基本的問路句型</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('えきはどこですか')">播放範例</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">〇〇へのいきかたをおしえてください</div>
+                    <div class="phrase-romaji">〇〇 e no ikikata wo oshiete kudasai</div>
+                    <div class="phrase-meaning">請告訴我去〇〇的方法</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('えきへのいきかたをおしえてください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">〇〇はどうやっていきますか</div>
+                    <div class="phrase-romaji">〇〇 wa dou yatte ikimasu ka</div>
+                    <div class="phrase-meaning">要怎麼去〇〇？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('えきはどうやっていきますか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ここからとおいですか</div>
+                    <div class="phrase-romaji">Koko kara tooi desu ka</div>
+                    <div class="phrase-meaning">從這裡遠嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ここからとおいですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">あるいていけますか</div>
+                    <div class="phrase-romaji">Aruite ikemasu ka</div>
+                    <div class="phrase-meaning">走路能到嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('あるいていけますか')">播放</button>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">指示方向</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">まっすぐいってください</div>
+                    <div class="phrase-romaji">Massugu itte kudasai</div>
+                    <div class="phrase-meaning">請直走</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('まっすぐいってください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">みぎにまがってください</div>
+                    <div class="phrase-romaji">Migi ni magatte kudasai</div>
+                    <div class="phrase-meaning">請右轉</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('みぎにまがってください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ひだりにまがってください</div>
+                    <div class="phrase-romaji">Hidari ni magatte kudasai</div>
+                    <div class="phrase-meaning">請左轉</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ひだりにまがってください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">つぎのかどをまがってください</div>
+                    <div class="phrase-romaji">Tsugi no kado wo magatte kudasai</div>
+                    <div class="phrase-meaning">請在下個路口轉彎</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('つぎのかどをまがってください')">播放</button>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">問路小技巧</div>
+                <p>1. 開頭先說「すみません」引起注意</p>
+                <p>2. 可以指著地圖問「ここはどこですか」（這裡是哪裡？）</p>
+                <p>3. 聽不懂時說「もういちどおねがいします」（請再說一次）</p>
+                <p>4. 日本人很樂意幫忙，不要害怕開口問路</p>
+            </div>
+        </div>
+
+        <!-- 搭車用語 -->
+        <div class="section">
+            <h2 class="section-title">六、搭乘交通工具用語</h2>
+            
+            <div class="phrase-box">
+                <div class="phrase-title">購票與搭車</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">〇〇までおねがいします</div>
+                    <div class="phrase-romaji">〇〇 made onegaishimasu</div>
+                    <div class="phrase-meaning">到〇〇，麻煩了</div>
+                    <div class="phrase-note">買票或搭計程車時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('東京までおねがいします')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">どのせんですか</div>
+                    <div class="phrase-romaji">Dono sen desu ka</div>
+                    <div class="phrase-meaning">是哪條線？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('どのせんですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">なんばんホームですか</div>
+                    <div class="phrase-romaji">Nanban hoomu desu ka</div>
+                    <div class="phrase-meaning">是幾號月台？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('なんばんホームですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">のりかえはひつようですか</div>
+                    <div class="phrase-romaji">Norikae wa hitsuyou desu ka</div>
+                    <div class="phrase-meaning">需要轉車嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('のりかえはひつようですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">つぎはどこですか</div>
+                    <div class="phrase-romaji">Tsugi wa doko desu ka</div>
+                    <div class="phrase-meaning">下一站是哪裡？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('つぎはどこですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ここでおります</div>
+                    <div class="phrase-romaji">Koko de orimasu</div>
+                    <div class="phrase-meaning">我在這裡下車</div>
+                    <div class="phrase-note">計程車或公車上使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ここでおります')">播放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 對話練習 -->
+        <div class="section">
+            <h2 class="section-title">七、實用對話練習</h2>
+            
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：在路上問路</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">旅客：</div>
+                    <div class="dialogue-text">すみません、えきはどこですか。</div>
+                    <div class="dialogue-translation">不好意思，車站在哪裡？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">路人：</div>
+                    <div class="dialogue-text">まっすぐいって、つぎのかどをみぎにまがってください。</div>
+                    <div class="dialogue-translation">直走，然後在下個路口右轉。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">旅客：</div>
+                    <div class="dialogue-text">あるいていけますか。</div>
+                    <div class="dialogue-translation">走路能到嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">路人：</div>
+                    <div class="dialogue-text">はい、5分ぐらいです。</div>
+                    <div class="dialogue-translation">可以，大約5分鐘。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">旅客：</div>
+                    <div class="dialogue-text">ありがとうございます。</div>
+                    <div class="dialogue-translation">謝謝您。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：搭計程車</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">東京えきまでおねがいします。</div>
+                    <div class="dialogue-translation">到東京車站，麻煩了。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">司機：</div>
+                    <div class="dialogue-text">はい、かしこまりました。</div>
+                    <div class="dialogue-translation">好的，我知道了。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">どのくらいかかりますか。</div>
+                    <div class="dialogue-translation">要花多久時間？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">司機：</div>
+                    <div class="dialogue-text">20分ぐらいです。</div>
+                    <div class="dialogue-translation">大約20分鐘。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+        </div>
+
+        <!-- 練習 -->
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+
+                <div class="practice-item">
+                    <div class="practice-question">1. 想問「車站在哪裡？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">えきはどこですか</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">2. 想說「請直走」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">まっすぐいってください</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">3. 想問「走路能到嗎？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">あるいていけますか</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">4. 搭計程車說「到東京車站」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">東京えきまでおねがいします</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">5. 想說「請在下個路口右轉」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">つぎのかどをみぎにまがってください</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你的學習成果。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="でんしゃ">
+                    <div class="quiz-question-text">1. 「電車」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'でんしゃ')">でんしゃ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ちかてつ')">ちかてつ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'バス')">バス</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'タクシー')">タクシー</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="えきはどこですか">
+                    <div class="quiz-question-text">2. 想問「車站在哪裡？」應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えきはなんですか')">えきはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えきはどこですか')">えきはどこですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えきはいつですか')">えきはいつですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えきはだれですか')">えきはだれですか</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="みぎ">
+                    <div class="quiz-question-text">3. 「右邊」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ひだり')">ひだり</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'みぎ')">みぎ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'まえ')">まえ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'うしろ')">うしろ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="まっすぐいってください">
+                    <div class="quiz-question-text">4. 「請直走」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'まっすぐいってください')">まっすぐいってください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'みぎにまがってください')">みぎにまがってください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'もどってください')">もどってください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'とまってください')">とまってください</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="あるいていけますか">
+                    <div class="quiz-question-text">5. 想問「走路能到嗎？」應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あるいていますか')">あるいていますか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あるいていけますか')">あるいていけますか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あるきたいですか')">あるきたいですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あるきましたか')">あるきましたか</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="東京までおねがいします">
+                    <div class="quiz-question-text">6. 搭計程車想說「到東京，麻煩了」應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, '東京ですか')">東京ですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '東京までおねがいします')">東京までおねがいします</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '東京がすきです')">東京がすきです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '東京にいます')">東京にいます</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text, delay = 0) {
+            setTimeout(() => {
+                if (!selectedVoice) return;
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = selectedVoice;
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }, delay);
+        }
+
+        function speakTransport(transport) {
+            speechSynthesis.cancel();
+            speak(transport);
+        }
+
+        function speakPhrase(phrase) {
+            speechSynthesis.cancel();
+            speak(phrase);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            speak('すみません、えきはどこですか', 0);
+            speak('まっすぐいって、つぎのかどをみぎにまがってください', 3500);
+            speak('あるいていけますか', 8000);
+            speak('はい、5分ぐらいです', 10500);
+            speak('ありがとうございます', 13000);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            speak('東京えきまでおねがいします', 0);
+            speak('はい、かしこまりました', 3500);
+            speak('どのくらいかかりますか', 6000);
+            speak('20分ぐらいです', 8500);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day10 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 10 課程！\n\n你已經完成初級篇的所有課程！\n現在你已經掌握了在日本旅遊的基本技能：\n- 問候與自我介紹\n- 數字與時間\n- 飲食與購物\n- 交通與問路\n\n明天開始進入中級篇，學習更深入的日常會話！');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

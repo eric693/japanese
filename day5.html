@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - 基礎問候語與自我介紹 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .phrase-list {
+            margin: 25px 0;
+        }
+
+        .phrase-item {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .phrase-item:hover {
+            border-color: #C1282D;
+        }
+
+        .phrase-japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.8em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .phrase-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .phrase-meaning {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .phrase-usage {
+            color: #6B6B6B;
+            font-size: 0.9em;
+            font-style: italic;
+            padding-top: 8px;
+            border-top: 1px solid #E5DCC9;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .dialogue-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .dialogue-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .dialogue-line {
+            padding: 12px;
+            margin: 10px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .dialogue-speaker {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .dialogue-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-translation {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .practice-section {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-instruction {
+            color: #6B6B6B;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .fill-blank {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .blank-question {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2C2C2C;
+        }
+
+        .blank-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .blank-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .blank-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .culture-note {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .culture-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .self-intro-template {
+            background: #F5F1E8;
+            border: 2px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .template-line {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin: 12px 0;
+            padding: 10px;
+            background: #FEFDFB;
+        }
+
+        .template-blank {
+            display: inline-block;
+            min-width: 100px;
+            border-bottom: 2px solid #C1282D;
+            padding: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .phrase-japanese {
+                font-size: 1.4em;
+            }
+
+            .dialogue-text {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day4.html">← Day 4</a>
+                <a href="index.html">課程列表</a>
+                <a href="day6.html">Day 6 →</a>
+            </div>
+            <div class="day-number">DAY 05</div>
+            <h1>基礎問候語與自我介紹</h1>
+            <p class="lesson-desc">學習日常打招呼、自我介紹等基本會話</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>恭喜完成假名的學習！從今天開始，我們將進入實用會話階段。</p>
+                <p>今天要學習的是最基本的 <strong>問候語</strong> 和 <strong>自我介紹</strong>，這些是在日本生活、旅遊時每天都會用到的表達方式。</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 日文問候語會因時間、場合、對象不同而有不同的說法</p>
+                <p>2. 自我介紹時要記得說「よろしくおねがいします」表示請多指教</p>
+                <p>3. 日本人很重視禮貌，適當的問候語非常重要</p>
+                <p>4. 多練習發音，讓問候聽起來自然流暢</p>
+            </div>
+        </div>
+
+        <!-- 基本問候語 -->
+        <div class="section">
+            <h2 class="section-title">二、基本問候語</h2>
+            <div class="intro-text">
+                <p>這些是日常生活中最常用的問候語，務必熟記。</p>
+            </div>
+
+            <div class="phrase-list">
+                <div class="phrase-item" onclick="speakPhrase('おはようございます')">
+                    <div class="phrase-japanese">おはようございます</div>
+                    <div class="phrase-romaji">Ohayou gozaimasu</div>
+                    <div class="phrase-meaning">早安（正式）</div>
+                    <div class="phrase-usage">使用時機：早上見面時使用，對長輩或不熟的人用正式版</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おはようございます')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('おはよう')">
+                    <div class="phrase-japanese">おはよう</div>
+                    <div class="phrase-romaji">Ohayou</div>
+                    <div class="phrase-meaning">早安（非正式）</div>
+                    <div class="phrase-usage">使用時機：對朋友、家人等親近的人使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おはよう')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('こんにちは')">
+                    <div class="phrase-japanese">こんにちは</div>
+                    <div class="phrase-romaji">Konnichiwa</div>
+                    <div class="phrase-meaning">你好、日安</div>
+                    <div class="phrase-usage">使用時機：白天（約上午 10 點到下午 6 點）見面時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('こんにちは')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('こんばんは')">
+                    <div class="phrase-japanese">こんばんは</div>
+                    <div class="phrase-romaji">Konbanwa</div>
+                    <div class="phrase-meaning">晚安（問候）</div>
+                    <div class="phrase-usage">使用時機：傍晚或晚上見面時使用，不是睡前說的晚安</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('こんばんは')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('おやすみなさい')">
+                    <div class="phrase-japanese">おやすみなさい</div>
+                    <div class="phrase-romaji">Oyasuminasai</div>
+                    <div class="phrase-meaning">晚安（睡前）</div>
+                    <div class="phrase-usage">使用時機：睡覺前說的晚安，或深夜告別時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おやすみなさい')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('さようなら')">
+                    <div class="phrase-japanese">さようなら</div>
+                    <div class="phrase-romaji">Sayounara</div>
+                    <div class="phrase-meaning">再見</div>
+                    <div class="phrase-usage">使用時機：正式的告別，或可能較長時間不見時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('さようなら')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('じゃあね')">
+                    <div class="phrase-japanese">じゃあね / またね</div>
+                    <div class="phrase-romaji">Jaa ne / Mata ne</div>
+                    <div class="phrase-meaning">拜拜、回頭見</div>
+                    <div class="phrase-usage">使用時機：對朋友、同輩使用的輕鬆告別語</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('じゃあね')">播放發音</button>
+                </div>
+            </div>
+
+            <div class="culture-note">
+                <div class="culture-title">文化小知識</div>
+                <p>日本人見面時常會鞠躬，問候語搭配適當的鞠躬角度：</p>
+                <p>• 輕微點頭（15度）：日常問候、同輩之間</p>
+                <p>• 普通鞠躬（30度）：一般禮貌場合</p>
+                <p>• 深度鞠躬（45度）：正式場合、表達歉意或感謝</p>
+            </div>
+        </div>
+
+        <!-- 感謝與道歉 -->
+        <div class="section">
+            <h2 class="section-title">三、感謝與道歉</h2>
+            <div class="phrase-list">
+                <div class="phrase-item" onclick="speakPhrase('ありがとうございます')">
+                    <div class="phrase-japanese">ありがとうございます</div>
+                    <div class="phrase-romaji">Arigatou gozaimasu</div>
+                    <div class="phrase-meaning">謝謝（正式）</div>
+                    <div class="phrase-usage">使用時機：對不熟的人、店員、長輩表達感謝</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ありがとうございます')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('ありがとう')">
+                    <div class="phrase-japanese">ありがとう</div>
+                    <div class="phrase-romaji">Arigatou</div>
+                    <div class="phrase-meaning">謝謝（非正式）</div>
+                    <div class="phrase-usage">使用時機：對朋友、家人表達感謝</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ありがとう')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('どういたしまして')">
+                    <div class="phrase-japanese">どういたしまして</div>
+                    <div class="phrase-romaji">Douitashimashite</div>
+                    <div class="phrase-meaning">不客氣</div>
+                    <div class="phrase-usage">使用時機：回應別人的感謝</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('どういたしまして')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('すみません')">
+                    <div class="phrase-japanese">すみません</div>
+                    <div class="phrase-romaji">Sumimasen</div>
+                    <div class="phrase-meaning">對不起、不好意思、請問</div>
+                    <div class="phrase-usage">使用時機：道歉、引起別人注意、表達感謝（較輕的場合）</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('すみません')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('ごめんなさい')">
+                    <div class="phrase-japanese">ごめんなさい</div>
+                    <div class="phrase-romaji">Gomennasai</div>
+                    <div class="phrase-meaning">對不起（較正式）</div>
+                    <div class="phrase-usage">使用時機：真誠道歉時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ごめんなさい')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('ごめん')">
+                    <div class="phrase-japanese">ごめん</div>
+                    <div class="phrase-romaji">Gomen</div>
+                    <div class="phrase-meaning">對不起（非正式）</div>
+                    <div class="phrase-usage">使用時機：對朋友、家人輕微道歉</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ごめん')">播放發音</button>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">すみません 的多重用法</div>
+                <p>「すみません」是非常萬用的詞彙：</p>
+                <p>1. 道歉：撞到人時說「すみません」</p>
+                <p>2. 引起注意：叫店員時說「すみません」</p>
+                <p>3. 輕微感謝：別人幫小忙時也可說「すみません」</p>
+            </div>
+        </div>
+
+        <!-- 自我介紹 -->
+        <div class="section">
+            <h2 class="section-title">四、自我介紹</h2>
+            <div class="intro-text">
+                <p>自我介紹是認識新朋友的第一步，以下是基本的自我介紹句型。</p>
+            </div>
+
+            <div class="phrase-list">
+                <div class="phrase-item" onclick="speakPhrase('はじめまして')">
+                    <div class="phrase-japanese">はじめまして</div>
+                    <div class="phrase-romaji">Hajimemashite</div>
+                    <div class="phrase-meaning">初次見面</div>
+                    <div class="phrase-usage">使用時機：自我介紹的開場白</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('はじめまして')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('わたしは田中です')">
+                    <div class="phrase-japanese">わたしは〇〇です</div>
+                    <div class="phrase-romaji">Watashi wa 〇〇 desu</div>
+                    <div class="phrase-meaning">我是〇〇</div>
+                    <div class="phrase-usage">使用時機：說明自己的名字。〇〇 處填入你的名字</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('わたしは田中です')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('台湾から来ました')">
+                    <div class="phrase-japanese">〇〇からきました</div>
+                    <div class="phrase-romaji">〇〇 kara kimashita</div>
+                    <div class="phrase-meaning">我從〇〇來</div>
+                    <div class="phrase-usage">使用時機：說明自己的國家或城市。台湾 (たいわん) = 台灣</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('台湾から来ました')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('よろしくおねがいします')">
+                    <div class="phrase-japanese">よろしくおねがいします</div>
+                    <div class="phrase-romaji">Yoroshiku onegaishimasu</div>
+                    <div class="phrase-meaning">請多指教</div>
+                    <div class="phrase-usage">使用時機：自我介紹的結尾，表示希望對方多多關照</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('よろしくおねがいします')">播放發音</button>
+                </div>
+
+                <div class="phrase-item" onclick="speakPhrase('どうぞよろしく')">
+                    <div class="phrase-japanese">どうぞよろしく</div>
+                    <div class="phrase-romaji">Douzo yoroshiku</div>
+                    <div class="phrase-meaning">請多指教（簡化版）</div>
+                    <div class="phrase-usage">使用時機：對朋友或同輩的輕鬆版本</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('どうぞよろしく')">播放發音</button>
+                </div>
+            </div>
+
+            <div class="self-intro-template">
+                <div class="culture-title">自我介紹範本</div>
+                <div class="template-line">
+                    はじめまして。
+                </div>
+                <div class="template-line">
+                    わたしは <span class="template-blank">你的名字</span> です。
+                </div>
+                <div class="template-line">
+                    <span class="template-blank">國家/城市</span> からきました。
+                </div>
+                <div class="template-line">
+                    よろしくおねがいします。
+                </div>
+            </div>
+        </div>
+
+        <!-- 對話練習 -->
+        <div class="section">
+            <h2 class="section-title">五、實用對話練習</h2>
+            
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：早上在公司遇到同事</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">おはようございます。</div>
+                    <div class="dialogue-translation">早安。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">おはようございます。</div>
+                    <div class="dialogue-translation">早安。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：初次見面的自我介紹</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">はじめまして。わたしは田中です。</div>
+                    <div class="dialogue-translation">初次見面。我是田中。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">はじめまして。わたしは李です。台湾からきました。</div>
+                    <div class="dialogue-translation">初次見面。我是李。我從台灣來。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A & B：</div>
+                    <div class="dialogue-text">よろしくおねがいします。</div>
+                    <div class="dialogue-translation">請多指教。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境三：在商店購物後</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">ありがとうございます。</div>
+                    <div class="dialogue-translation">謝謝您。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">ありがとうございます。</div>
+                    <div class="dialogue-translation">謝謝。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue3()">播放對話</button>
+            </div>
+        </div>
+
+        <!-- 填空練習 -->
+        <div class="section">
+            <h2 class="section-title">六、填空練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境選擇適當的問候語</div>
+                <div class="practice-instruction">點擊灰色區域查看答案</div>
+
+                <div class="fill-blank">
+                    <div class="blank-question">1. 早上 8 點遇到老師，你會說：</div>
+                    <div class="blank-answer" onclick="this.classList.add('revealed')">おはようございます</div>
+                </div>
+
+                <div class="fill-blank">
+                    <div class="blank-question">2. 下午 3 點遇到朋友，你會說：</div>
+                    <div class="blank-answer" onclick="this.classList.add('revealed')">こんにちは</div>
+                </div>
+
+                <div class="fill-blank">
+                    <div class="blank-question">3. 睡覺前對家人說：</div>
+                    <div class="blank-answer" onclick="this.classList.add('revealed')">おやすみなさい</div>
+                </div>
+
+                <div class="fill-blank">
+                    <div class="blank-question">4. 別人幫你開門，你會說：</div>
+                    <div class="blank-answer" onclick="this.classList.add('revealed')">ありがとうございます / すみません</div>
+                </div>
+
+                <div class="fill-blank">
+                    <div class="blank-question">5. 不小心踩到別人的腳，你會說：</div>
+                    <div class="blank-answer" onclick="this.classList.add('revealed')">すみません / ごめんなさい</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">七、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你對問候語的掌握程度。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="おはようございます">
+                    <div class="quiz-question-text">1. 早上見到上司時，應該說什麼？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おはよう')">おはよう</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おはようございます')">おはようございます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こんにちは')">こんにちは</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こんばんは')">こんばんは</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="すみません">
+                    <div class="quiz-question-text">2. 想要叫住路人問路時，應該說什麼？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すみません')">すみません</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごめんなさい')">ごめんなさい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとう')">ありがとう</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さようなら')">さようなら</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="はじめまして">
+                    <div class="quiz-question-text">3. 初次見面時，自我介紹的開場白是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こんにちは')">こんにちは</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'はじめまして')">はじめまして</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よろしく')">よろしく</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おはよう')">おはよう</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="よろしくおねがいします">
+                    <div class="quiz-question-text">4. 自我介紹結束時，應該說什麼？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとう')">ありがとう</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さようなら')">さようなら</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よろしくおねがいします')">よろしくおねがいします</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どういたしまして')">どういたしまして</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ありがとうございます">
+                    <div class="quiz-question-text">5. 在商店買完東西後，對店員說什麼表示感謝？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すみません')">すみません</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとうございます')">ありがとうございます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごめんなさい')">ごめんなさい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さようなら')">さようなら</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="こんばんは">
+                    <div class="quiz-question-text">6. 晚上 7 點遇到鄰居時，應該說什麼？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おはよう')">おはよう</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こんにちは')">こんにちは</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こんばんは')">こんばんは</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おやすみなさい')">おやすみなさい</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text, delay = 0) {
+            setTimeout(() => {
+                if (!selectedVoice) return;
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = selectedVoice;
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }, delay);
+        }
+
+        function speakPhrase(phrase) {
+            speechSynthesis.cancel();
+            speak(phrase);
+        }
+
+        // 對話發音
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            speak('おはようございます', 0);
+            speak('おはようございます', 2000);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            speak('はじめまして。わたしは田中です', 0);
+            speak('はじめまして。わたしは李です。台湾からきました', 3500);
+            speak('よろしくおねがいします', 7000);
+        }
+
+        function speakDialogue3() {
+            speechSynthesis.cancel();
+            speak('ありがとうございます', 0);
+            speak('ありがとうございます', 2000);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day5 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 5 課程！\n\n你已經學會了基本的問候語和自我介紹！\n建議每天練習這些用語，讓表達更加自然流暢。\n明天我們將學習數字、時間與日期的表達。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

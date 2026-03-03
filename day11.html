@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 11 - 飯店住宿與預約 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin: 25px 0; }
+        .vocab-card { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .vocab-card:hover { border-color: #C1282D; }
+        .vocab-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .vocab-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.85em; margin-bottom: 5px; }
+        .vocab-meaning { color: #6B6B6B; font-size: 0.9em; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; border-color: #2C2C2C; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; border-color: #C1282D; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day10.html">← Day 10</a>
+                <a href="index.html">課程列表</a>
+                <a href="day12.html">Day 12 →</a>
+            </div>
+            <div class="day-number">DAY 11</div>
+            <h1>飯店住宿與預約</h1>
+            <p class="lesson-desc">學習飯店相關詞彙、check-in/out流程、房間設施用語</p>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習在日本飯店住宿時會用到的各種表達方式。</p>
+                <p>從預約、入住到退房，以及房間設施的使用，掌握這些用語就能輕鬆享受住宿體驗！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 飯店相關詞彙與設施名稱</p>
+                <p>2. 預約與入住的對話</p>
+                <p>3. 房間問題的處理方式</p>
+                <p>4. 退房流程與用語</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、飯店相關詞彙</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card" onclick="speak('ホテル')">
+                    <div class="vocab-jp">ホテル</div>
+                    <div class="vocab-romaji">hoteru</div>
+                    <div class="vocab-meaning">飯店</div>
+                </div>
+                <div class="vocab-card" onclick="speak('よやく')">
+                    <div class="vocab-jp">よやく</div>
+                    <div class="vocab-romaji">yoyaku</div>
+                    <div class="vocab-meaning">預約</div>
+                </div>
+                <div class="vocab-card" onclick="speak('チェックイン')">
+                    <div class="vocab-jp">チェックイン</div>
+                    <div class="vocab-romaji">chekkuin</div>
+                    <div class="vocab-meaning">入住</div>
+                </div>
+                <div class="vocab-card" onclick="speak('チェックアウト')">
+                    <div class="vocab-jp">チェックアウト</div>
+                    <div class="vocab-romaji">chekkuauto</div>
+                    <div class="vocab-meaning">退房</div>
+                </div>
+                <div class="vocab-card" onclick="speak('へや')">
+                    <div class="vocab-jp">へや</div>
+                    <div class="vocab-romaji">heya</div>
+                    <div class="vocab-meaning">房間</div>
+                </div>
+                <div class="vocab-card" onclick="speak('カギ')">
+                    <div class="vocab-jp">カギ</div>
+                    <div class="vocab-romaji">kagi</div>
+                    <div class="vocab-meaning">鑰匙</div>
+                </div>
+                <div class="vocab-card" onclick="speak('フロント')">
+                    <div class="vocab-jp">フロント</div>
+                    <div class="vocab-romaji">furonto</div>
+                    <div class="vocab-meaning">櫃台</div>
+                </div>
+                <div class="vocab-card" onclick="speak('ロビー')">
+                    <div class="vocab-jp">ロビー</div>
+                    <div class="vocab-romaji">robii</div>
+                    <div class="vocab-meaning">大廳</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、房間類型與設施</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card" onclick="speak('シングルルーム')">
+                    <div class="vocab-jp">シングルルーム</div>
+                    <div class="vocab-romaji">shinguru</div>
+                    <div class="vocab-meaning">單人房</div>
+                </div>
+                <div class="vocab-card" onclick="speak('ダブルルーム')">
+                    <div class="vocab-jp">ダブルルーム</div>
+                    <div class="vocab-romaji">daburu</div>
+                    <div class="vocab-meaning">雙人房</div>
+                </div>
+                <div class="vocab-card" onclick="speak('ツインルーム')">
+                    <div class="vocab-jp">ツインルーム</div>
+                    <div class="vocab-romaji">tsuin</div>
+                    <div class="vocab-meaning">雙床房</div>
+                </div>
+                <div class="vocab-card" onclick="speak('バスルーム')">
+                    <div class="vocab-jp">バスルーム</div>
+                    <div class="vocab-romaji">basuruumu</div>
+                    <div class="vocab-meaning">浴室</div>
+                </div>
+                <div class="vocab-card" onclick="speak('エアコン')">
+                    <div class="vocab-jp">エアコン</div>
+                    <div class="vocab-romaji">eakon</div>
+                    <div class="vocab-meaning">冷氣</div>
+                </div>
+                <div class="vocab-card" onclick="speak('WiFi')">
+                    <div class="vocab-jp">WiFi</div>
+                    <div class="vocab-romaji">waifai</div>
+                    <div class="vocab-meaning">無線網路</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、入住用語</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">入住時的對話</div>
+                <div class="phrase-item" onclick="speak('よやくしていました')">
+                    <div class="phrase-jp">よやくしていました</div>
+                    <div class="phrase-romaji">Yoyaku shite imashita</div>
+                    <div class="phrase-meaning">我有預約</div>
+                </div>
+                <div class="phrase-item" onclick="speak('チェックインおねがいします')">
+                    <div class="phrase-jp">チェックインおねがいします</div>
+                    <div class="phrase-romaji">Chekkuin onegaishimasu</div>
+                    <div class="phrase-meaning">麻煩辦理入住</div>
+                </div>
+                <div class="phrase-item" onclick="speak('WiFiのパスワードはなんですか')">
+                    <div class="phrase-jp">WiFiのパスワードはなんですか</div>
+                    <div class="phrase-romaji">WiFi no pasuwaado wa nan desu ka</div>
+                    <div class="phrase-meaning">WiFi密碼是什麼？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('あさごはんはなんじからですか')">
+                    <div class="phrase-jp">あさごはんはなんじからですか</div>
+                    <div class="phrase-romaji">Asagohan wa nanji kara desu ka</div>
+                    <div class="phrase-meaning">早餐從幾點開始？</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、房間問題處理</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">常見問題</div>
+                <div class="phrase-item" onclick="speak('エアコンがこしょうしています')">
+                    <div class="phrase-jp">エアコンがこしょうしています</div>
+                    <div class="phrase-romaji">Eakon ga koshou shite imasu</div>
+                    <div class="phrase-meaning">冷氣壞了</div>
+                </div>
+                <div class="phrase-item" onclick="speak('おゆがでません')">
+                    <div class="phrase-jp">おゆがでません</div>
+                    <div class="phrase-romaji">Oyu ga demasen</div>
+                    <div class="phrase-meaning">沒有熱水</div>
+                </div>
+                <div class="phrase-item" onclick="speak('タオルをもういちまいください')">
+                    <div class="phrase-jp">タオルをもういちまいください</div>
+                    <div class="phrase-romaji">Taoru wo mou ichimai kudasai</div>
+                    <div class="phrase-meaning">請再給我一條毛巾</div>
+                </div>
+                <div class="phrase-item" onclick="speak('へやをかえてもらえますか')">
+                    <div class="phrase-jp">へやをかえてもらえますか</div>
+                    <div class="phrase-romaji">Heya wo kaete moraemasu ka</div>
+                    <div class="phrase-meaning">可以換房間嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('にもつをあずかってください')">
+                    <div class="vocab-jp">にもつをあずかってください</div>
+                    <div class="phrase-romaji">Nimotsu wo azukatte kudasai</div>
+                    <div class="phrase-meaning">請幫我保管行李</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、退房用語</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">退房時的對話</div>
+                <div class="phrase-item" onclick="speak('チェックアウトおねがいします')">
+                    <div class="phrase-jp">チェックアウトおねがいします</div>
+                    <div class="phrase-romaji">Chekkuauto onegaishimasu</div>
+                    <div class="phrase-meaning">麻煩辦理退房</div>
+                </div>
+                <div class="phrase-item" onclick="speak('なんごうしつですか')">
+                    <div class="phrase-jp">なんごうしつですか</div>
+                    <div class="phrase-romaji">Nangoushitsu desu ka</div>
+                    <div class="phrase-meaning">幾號房？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('りょうしゅうしょをください')">
+                    <div class="phrase-jp">りょうしゅうしょをください</div>
+                    <div class="phrase-romaji">Ryoushuusho wo kudasai</div>
+                    <div class="phrase-meaning">請給我收據</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：辦理入住</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">チェックインおねがいします。</div>
+                    <div class="dialogue-translation">麻煩辦理入住。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">櫃台：</div>
+                    <div class="dialogue-text">よやくはされていますか。</div>
+                    <div class="dialogue-translation">您有預約嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">はい、田中というなまえでよやくしました。</div>
+                    <div class="dialogue-translation">有的，我用田中的名字預約的。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="チェックイン">
+                    <div class="quiz-question-text">1. 「入住」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'チェックイン')">チェックイン</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'チェックアウト')">チェックアウト</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よやく')">よやく</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="よやくしていました">
+                    <div class="quiz-question-text">2. 「我有預約」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よやくです')">よやくです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よやくしていました')">よやくしていました</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よやくします')">よやくします</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="エアコンがこしょうしています">
+                    <div class="quiz-question-text">3. 「冷氣壞了」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'エアコンがありません')">エアコンがありません</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'エアコンがこしょうしています')">エアコンがこしょうしています</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'エアコンがいいです')">エアコンがいいです</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 3;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('チェックインおねがいします'), 0);
+            setTimeout(() => speak('よやくはされていますか'), 2500);
+            setTimeout(() => speak('はい、田中というなまえでよやくしました'), 5000);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day11 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            alert('恭喜完成 Day 11 課程！\n\n你已經學會了飯店住宿的實用用語！');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

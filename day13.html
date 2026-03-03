@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13 - 身體健康與藥局 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .body-diagram { background: #F5F1E8; border: 2px solid #D4C5A9; padding: 30px; margin: 25px 0; text-align: center; }
+        .body-title { font-weight: 600; color: #2C2C2C; margin-bottom: 20px; font-size: 1.2em; }
+        .body-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin: 20px 0; }
+        .body-part { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .body-part:hover { border-color: #C1282D; background: #F5F1E8; }
+        .body-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .body-meaning { color: #6B6B6B; font-size: 0.85em; }
+        .symptom-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin: 25px 0; }
+        .symptom-card { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .symptom-card:hover { border-color: #C1282D; transform: translateY(-2px); }
+        .symptom-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 8px; }
+        .symptom-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.8em; margin-bottom: 5px; }
+        .symptom-meaning { color: #6B6B6B; font-size: 0.85em; }
+        .medicine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin: 25px 0; }
+        .medicine-card { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .medicine-card:hover { border-color: #C1282D; box-shadow: 2px 2px 8px rgba(193, 40, 45, 0.1); }
+        .medicine-icon { font-size: 2em; margin-bottom: 10px; }
+        .medicine-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.2em; color: #2C2C2C; margin-bottom: 8px; }
+        .medicine-meaning { color: #6B6B6B; font-size: 0.85em; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; transition: all 0.2s; }
+        .phrase-item:hover { background: #E5DCC9; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-note { color: #6B6B6B; font-size: 0.85em; font-style: italic; margin-top: 5px; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .emergency-box { background: #C1282D; color: #FEFDFB; padding: 25px; margin: 25px 0; border-radius: 0; }
+        .emergency-title { font-weight: 600; margin-bottom: 15px; font-size: 1.3em; text-align: center; }
+        .emergency-number { font-family: 'IBM Plex Mono', monospace; font-size: 2em; text-align: center; margin: 15px 0; letter-spacing: 3px; }
+        .emergency-desc { text-align: center; line-height: 1.8; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .practice-section { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .practice-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.1em; }
+        .practice-item { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; margin: 15px 0; }
+        .practice-question { color: #6B6B6B; margin-bottom: 10px; }
+        .practice-answer { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #6B6B6B; padding: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .practice-answer:hover { border-color: #C1282D; color: #C1282D; }
+        .practice-answer.revealed { color: #2C2C2C; border-color: #2C2C2C; background: #F5F1E8; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .body-grid, .symptom-grid, .medicine-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day12.html">← Day 12</a>
+                <a href="index.html">課程列表</a>
+                <a href="day14.html">Day 14 →</a>
+            </div>
+            <div class="day-number">DAY 13</div>
+            <h1>身體健康與藥局</h1>
+            <p class="lesson-desc">學習身體部位、症狀描述、藥局購藥、看病就醫等健康相關用語</p>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習在日本遇到健康問題時會用到的各種表達方式。</p>
+                <p>從描述身體不適、在藥局買藥，到必要時尋求醫療協助，這些用語在緊急時刻非常重要！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 身體各部位的日文名稱（頭、手、腳等）</p>
+                <p>2. 常見症狀的描述方式（頭痛、發燒、咳嗽等）</p>
+                <p>3. 在藥局購買藥品的對話</p>
+                <p>4. 描述症狀給醫生或藥劑師</p>
+                <p>5. 緊急情況的求助用語</p>
+                <p>6. 常見藥品與醫療用品名稱</p>
+            </div>
+
+            <div class="emergency-box">
+                <div class="emergency-title">緊急電話號碼</div>
+                <div class="emergency-number">119</div>
+                <div class="emergency-desc">
+                    <p>救護車（きゅうきゅうしゃ）和消防車</p>
+                    <p style="margin-top: 10px;">警察：110</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、身體部位</h2>
+            <div class="body-diagram">
+                <div class="body-title">人體部位日文</div>
+                <div class="body-grid">
+                    <div class="body-part" onclick="speak('あたま')">
+                        <div class="body-jp">あたま</div>
+                        <div class="body-meaning">頭</div>
+                    </div>
+                    <div class="body-part" onclick="speak('かお')">
+                        <div class="body-jp">かお</div>
+                        <div class="body-meaning">臉</div>
+                    </div>
+                    <div class="body-part" onclick="speak('め')">
+                        <div class="body-jp">め</div>
+                        <div class="body-meaning">眼睛</div>
+                    </div>
+                    <div class="body-part" onclick="speak('みみ')">
+                        <div class="body-jp">みみ</div>
+                        <div class="body-meaning">耳朵</div>
+                    </div>
+                    <div class="body-part" onclick="speak('はな')">
+                        <div class="body-jp">はな</div>
+                        <div class="body-meaning">鼻子</div>
+                    </div>
+                    <div class="body-part" onclick="speak('くち')">
+                        <div class="body-jp">くち</div>
+                        <div class="body-meaning">嘴巴</div>
+                    </div>
+                    <div class="body-part" onclick="speak('は')">
+                        <div class="body-jp">は</div>
+                        <div class="body-meaning">牙齒</div>
+                    </div>
+                    <div class="body-part" onclick="speak('のど')">
+                        <div class="body-jp">のど</div>
+                        <div class="body-meaning">喉嚨</div>
+                    </div>
+                    <div class="body-part" onclick="speak('くび')">
+                        <div class="body-jp">くび</div>
+                        <div class="body-meaning">脖子</div>
+                    </div>
+                    <div class="body-part" onclick="speak('かた')">
+                        <div class="body-jp">かた</div>
+                        <div class="body-meaning">肩膀</div>
+                    </div>
+                    <div class="body-part" onclick="speak('うで')">
+                        <div class="body-jp">うで</div>
+                        <div class="body-meaning">手臂</div>
+                    </div>
+                    <div class="body-part" onclick="speak('て')">
+                        <div class="body-jp">て</div>
+                        <div class="body-meaning">手</div>
+                    </div>
+                    <div class="body-part" onclick="speak('ゆび')">
+                        <div class="body-jp">ゆび</div>
+                        <div class="body-meaning">手指</div>
+                    </div>
+                    <div class="body-part" onclick="speak('むね')">
+                        <div class="body-jp">むね</div>
+                        <div class="body-meaning">胸部</div>
+                    </div>
+                    <div class="body-part" onclick="speak('おなか')">
+                        <div class="body-jp">おなか</div>
+                        <div class="body-meaning">肚子</div>
+                    </div>
+                    <div class="body-part" onclick="speak('せなか')">
+                        <div class="body-jp">せなか</div>
+                        <div class="body-meaning">背部</div>
+                    </div>
+                    <div class="body-part" onclick="speak('こし')">
+                        <div class="body-jp">こし</div>
+                        <div class="body-meaning">腰</div>
+                    </div>
+                    <div class="body-part" onclick="speak('あし')">
+                        <div class="body-jp">あし</div>
+                        <div class="body-meaning">腳、腿</div>
+                    </div>
+                    <div class="body-part" onclick="speak('ひざ')">
+                        <div class="body-jp">ひざ</div>
+                        <div class="body-meaning">膝蓋</div>
+                    </div>
+                    <div class="body-part" onclick="speak('あしくび')">
+                        <div class="body-jp">あしくび</div>
+                        <div class="body-meaning">腳踝</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、常見症狀</h2>
+            <div class="symptom-grid">
+                <div class="symptom-card" onclick="speak('ずつう')">
+                    <div class="symptom-jp">ずつう</div>
+                    <div class="symptom-romaji">zutsuu</div>
+                    <div class="symptom-meaning">頭痛</div>
+                </div>
+                <div class="symptom-card" onclick="speak('はつねつ')">
+                    <div class="symptom-jp">はつねつ</div>
+                    <div class="symptom-romaji">hatsunetsu</div>
+                    <div class="symptom-meaning">發燒</div>
+                </div>
+                <div class="symptom-card" onclick="speak('せき')">
+                    <div class="symptom-jp">せき</div>
+                    <div class="symptom-romaji">seki</div>
+                    <div class="symptom-meaning">咳嗽</div>
+                </div>
+                <div class="symptom-card" onclick="speak('はなみず')">
+                    <div class="symptom-jp">はなみず</div>
+                    <div class="symptom-romaji">hanamizu</div>
+                    <div class="symptom-meaning">流鼻水</div>
+                </div>
+                <div class="symptom-card" onclick="speak('のどがいたい')">
+                    <div class="symptom-jp">のどがいたい</div>
+                    <div class="symptom-romaji">nodo ga itai</div>
+                    <div class="symptom-meaning">喉嚨痛</div>
+                </div>
+                <div class="symptom-card" onclick="speak('はきけ')">
+                    <div class="symptom-jp">はきけ</div>
+                    <div class="symptom-romaji">hakike</div>
+                    <div class="symptom-meaning">噁心</div>
+                </div>
+                <div class="symptom-card" onclick="speak('げり')">
+                    <div class="symptom-jp">げり</div>
+                    <div class="symptom-romaji">geri</div>
+                    <div class="symptom-meaning">腹瀉</div>
+                </div>
+                <div class="symptom-card" onclick="speak('べんぴ')">
+                    <div class="symptom-jp">べんぴ</div>
+                    <div class="symptom-romaji">benpi</div>
+                    <div class="symptom-meaning">便秘</div>
+                </div>
+                <div class="symptom-card" onclick="speak('めまい')">
+                    <div class="symptom-jp">めまい</div>
+                    <div class="symptom-romaji">memai</div>
+                    <div class="symptom-meaning">頭暈</div>
+                </div>
+                <div class="symptom-card" onclick="speak('だるい')">
+                    <div class="symptom-jp">だるい</div>
+                    <div class="symptom-romaji">darui</div>
+                    <div class="symptom-meaning">疲倦無力</div>
+                </div>
+                <div class="symptom-card" onclick="speak('かぜ')">
+                    <div class="symptom-jp">かぜ</div>
+                    <div class="symptom-romaji">kaze</div>
+                    <div class="symptom-meaning">感冒</div>
+                </div>
+                <div class="symptom-card" onclick="speak('インフルエンザ')">
+                    <div class="symptom-jp">インフルエンザ</div>
+                    <div class="symptom-romaji">infuruenza</div>
+                    <div class="symptom-meaning">流感</div>
+                </div>
+                <div class="symptom-card" onclick="speak('アレルギー')">
+                    <div class="symptom-jp">アレルギー</div>
+                    <div class="symptom-romaji">arerugii</div>
+                    <div class="symptom-meaning">過敏</div>
+                </div>
+                <div class="symptom-card" onclick="speak('けが')">
+                    <div class="symptom-jp">けが</div>
+                    <div class="symptom-romaji">kega</div>
+                    <div class="symptom-meaning">受傷</div>
+                </div>
+                <div class="symptom-card" onclick="speak('やけど')">
+                    <div class="symptom-jp">やけど</div>
+                    <div class="symptom-romaji">yakedo</div>
+                    <div class="symptom-meaning">燙傷</div>
+                </div>
+                <div class="symptom-card" onclick="speak('むしさされ')">
+                    <div class="symptom-jp">むしさされ</div>
+                    <div class="symptom-romaji">mushisasare</div>
+                    <div class="symptom-meaning">蚊蟲叮咬</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、描述症狀</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">表達身體不適</div>
+                <div class="phrase-item" onclick="speak('ぐあいがわるいです')">
+                    <div class="phrase-jp">ぐあいがわるいです</div>
+                    <div class="phrase-romaji">Guai ga warui desu</div>
+                    <div class="phrase-meaning">身體不舒服</div>
+                    <div class="phrase-note">最基本的表達方式</div>
+                </div>
+                <div class="phrase-item" onclick="speak('あたまがいたいです')">
+                    <div class="phrase-jp">あたまがいたいです</div>
+                    <div class="phrase-romaji">Atama ga itai desu</div>
+                    <div class="phrase-meaning">頭痛</div>
+                </div>
+                <div class="phrase-item" onclick="speak('おなかがいたいです')">
+                    <div class="phrase-jp">おなかがいたいです</div>
+                    <div class="phrase-romaji">Onaka ga itai desu</div>
+                    <div class="phrase-meaning">肚子痛</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ねつがあります')">
+                    <div class="phrase-jp">ねつがあります</div>
+                    <div class="phrase-romaji">Netsu ga arimasu</div>
+                    <div class="phrase-meaning">我發燒了</div>
+                </div>
+                <div class="phrase-item" onclick="speak('せきがでます')">
+                    <div class="phrase-jp">せきがでます</div>
+                    <div class="phrase-romaji">Seki ga demasu</div>
+                    <div class="phrase-meaning">我在咳嗽</div>
+                </div>
+                <div class="phrase-item" onclick="speak('きもちがわるいです')">
+                    <div class="phrase-jp">きもちがわるいです</div>
+                    <div class="phrase-romaji">Kimochi ga warui desu</div>
+                    <div class="phrase-meaning">感覺噁心</div>
+                </div>
+                <div class="phrase-item" onclick="speak('めがかゆいです')">
+                    <div class="phrase-jp">めがかゆいです</div>
+                    <div class="phrase-romaji">Me ga kayui desu</div>
+                    <div class="phrase-meaning">眼睛癢</div>
+                </div>
+                <div class="phrase-item" onclick="speak('きのうからちょうしがわるいです')">
+                    <div class="phrase-jp">きのうからちょうしがわるいです</div>
+                    <div class="phrase-romaji">Kinou kara choushi ga warui desu</div>
+                    <div class="phrase-meaning">從昨天開始就不舒服</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、藥局購藥</h2>
+            <div class="medicine-grid">
+                <div class="medicine-card" onclick="speak('かぜぐすり')">
+                    <div class="medicine-icon">💊</div>
+                    <div class="medicine-jp">かぜぐすり</div>
+                    <div class="medicine-meaning">感冒藥</div>
+                </div>
+                <div class="medicine-card" onclick="speak('いたみどめ')">
+                    <div class="medicine-icon">💊</div>
+                    <div class="medicine-jp">いたみどめ</div>
+                    <div class="medicine-meaning">止痛藥</div>
+                </div>
+                <div class="medicine-card" onclick="speak('げねつざい')">
+                    <div class="medicine-icon">🌡️</div>
+                    <div class="medicine-jp">げねつざい</div>
+                    <div class="medicine-meaning">退燒藥</div>
+                </div>
+                <div class="medicine-card" onclick="speak('いぐすり')">
+                    <div class="medicine-icon">💊</div>
+                    <div class="medicine-jp">いぐすり</div>
+                    <div class="medicine-meaning">胃藥</div>
+                </div>
+                <div class="medicine-card" onclick="speak('せきどめ')">
+                    <div class="medicine-icon">💊</div>
+                    <div class="medicine-jp">せきどめ</div>
+                    <div class="medicine-meaning">止咳藥</div>
+                </div>
+                <div class="medicine-card" onclick="speak('もくやく')">
+                    <div class="medicine-icon">👁️</div>
+                    <div class="medicine-jp">めぐすり</div>
+                    <div class="medicine-meaning">眼藥水</div>
+                </div>
+                <div class="medicine-card" onclick="speak('バンドエイド')">
+                    <div class="medicine-icon">🩹</div>
+                    <div class="medicine-jp">バンドエイド</div>
+                    <div class="medicine-meaning">OK繃</div>
+                </div>
+                <div class="medicine-card" onclick="speak('ばんそうこう')">
+                    <div class="medicine-icon">🩹</div>
+                    <div class="medicine-jp">ばんそうこう</div>
+                    <div class="medicine-meaning">繃帶</div>
+                </div>
+                <div class="medicine-card" onclick="speak('たいおんけい')">
+                    <div class="medicine-icon">🌡️</div>
+                    <div class="medicine-jp">たいおんけい</div>
+                    <div class="medicine-meaning">體溫計</div>
+                </div>
+                <div class="medicine-card" onclick="speak('マスク')">
+                    <div class="medicine-icon">😷</div>
+                    <div class="medicine-jp">マスク</div>
+                    <div class="medicine-meaning">口罩</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">在藥局的對話</div>
+                <div class="phrase-item" onclick="speak('かぜぐすりはありますか')">
+                    <div class="phrase-jp">かぜぐすりはありますか</div>
+                    <div class="phrase-romaji">Kazegusuri wa arimasu ka</div>
+                    <div class="phrase-meaning">有感冒藥嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ずつうにきくくすりをください')">
+                    <div class="phrase-jp">ずつうにきくくすりをください</div>
+                    <div class="phrase-romaji">Zutsuu ni kiku kusuri wo kudasai</div>
+                    <div class="phrase-meaning">請給我對頭痛有效的藥</div>
+                </div>
+                <div class="phrase-item" onclick="speak('のみやすいくすりがいいです')">
+                    <div class="phrase-jp">のみやすいくすりがいいです</div>
+                    <div class="phrase-romaji">Nomiyasui kusuri ga ii desu</div>
+                    <div class="phrase-meaning">我想要容易服用的藥</div>
+                </div>
+                <div class="phrase-item" onclick="speak('こどもでものめますか')">
+                    <div class="phrase-jp">こどもでものめますか</div>
+                    <div class="phrase-romaji">Kodomo demo nomemasu ka</div>
+                    <div class="phrase-meaning">小孩也可以吃嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('いちにちなんかいのみますか')">
+                    <div class="phrase-jp">いちにちなんかいのみますか</div>
+                    <div class="phrase-romaji">Ichinichi nankai nomimasu ka</div>
+                    <div class="phrase-meaning">一天吃幾次？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ふくさようはありますか')">
+                    <div class="phrase-jp">ふくさようはありますか</div>
+                    <div class="phrase-romaji">Fukusayou wa arimasu ka</div>
+                    <div class="phrase-meaning">有副作用嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('しょほうせんがひつようですか')">
+                    <div class="phrase-jp">しょほうせんがひつようですか</div>
+                    <div class="phrase-romaji">Shohousen ga hitsuyou desu ka</div>
+                    <div class="phrase-meaning">需要處方箋嗎？</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">日本藥局注意事項</div>
+                <p>1. 日本藥局稱為「やっきょく」或「ドラッグストア」</p>
+                <p>2. 許多常見藥品可以直接購買，無需處方</p>
+                <p>3. 藥劑師會詳細說明用法，記得仔細聽</p>
+                <p>4. 如果有過敏史，要事先告知</p>
+                <p>5. 便利商店也有販售基本藥品</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、尋求醫療協助</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">緊急情況</div>
+                <div class="phrase-item" onclick="speak('たすけてください')">
+                    <div class="phrase-jp">たすけてください</div>
+                    <div class="phrase-romaji">Tasukete kudasai</div>
+                    <div class="phrase-meaning">請幫助我</div>
+                    <div class="phrase-note">緊急求救</div>
+                </div>
+                <div class="phrase-item" onclick="speak('きゅうきゅうしゃをよんでください')">
+                    <div class="phrase-jp">きゅうきゅうしゃをよんでください</div>
+                    <div class="phrase-romaji">Kyuukyuusha wo yonde kudasai</div>
+                    <div class="phrase-meaning">請叫救護車</div>
+                </div>
+                <div class="phrase-item" onclick="speak('びょういんにいきたいです')">
+                    <div class="phrase-jp">びょういんにいきたいです</div>
+                    <div class="phrase-romaji">Byouin ni ikitai desu</div>
+                    <div class="phrase-meaning">我想去醫院</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ちかくにびょういんはありますか')">
+                    <div class="phrase-jp">ちかくにびょういんはありますか</div>
+                    <div class="phrase-romaji">Chikaku ni byouin wa arimasu ka</div>
+                    <div class="phrase-meaning">附近有醫院嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('えいごがはなせるいしゃはいますか')">
+                    <div class="phrase-jp">えいごがはなせるいしゃはいますか</div>
+                    <div class="phrase-romaji">Eigo ga hanaseru isha wa imasu ka</div>
+                    <div class="phrase-meaning">有會說英文的醫生嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ほけんしょうをもっています')">
+                    <div class="phrase-jp">ほけんしょうをもっています</div>
+                    <div class="phrase-romaji">Hokenshou wo motte imasu</div>
+                    <div class="phrase-meaning">我有保險證</div>
+                </div>
+                <div class="phrase-item" onclick="speak('アレルギーがあります')">
+                    <div class="phrase-jp">アレルギーがあります</div>
+                    <div class="phrase-romaji">Arerugii ga arimasu</div>
+                    <div class="phrase-meaning">我有過敏</div>
+                </div>
+                <div class="phrase-item" onclick="speak('くすりのアレルギーがあります')">
+                    <div class="phrase-jp">くすりのアレルギーがあります</div>
+                    <div class="phrase-romaji">Kusuri no arerugii ga arimasu</div>
+                    <div class="phrase-meaning">我對藥物過敏</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：在藥局買藥</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">すみません、かぜぐすりはありますか。</div>
+                    <div class="dialogue-translation">不好意思，有感冒藥嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">藥劑師：</div>
+                    <div class="dialogue-text">はい、ございます。どんなしょうじょうですか。</div>
+                    <div class="dialogue-translation">有的。是什麼症狀呢？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">ねつとせきがでます。</div>
+                    <div class="dialogue-translation">發燒和咳嗽。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">藥劑師：</div>
+                    <div class="dialogue-text">では、これがおすすめです。</div>
+                    <div class="dialogue-translation">那麼，推薦這個。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：描述症狀</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">醫生：</div>
+                    <div class="dialogue-text">どうしましたか。</div>
+                    <div class="dialogue-translation">怎麼了？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">病人：</div>
+                    <div class="dialogue-text">あたまがいたいです。</div>
+                    <div class="dialogue-translation">頭痛。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">醫生：</div>
+                    <div class="dialogue-text">いつからですか。</div>
+                    <div class="dialogue-translation">從什麼時候開始的？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">病人：</div>
+                    <div class="dialogue-text">きのうからです。</div>
+                    <div class="dialogue-translation">從昨天開始。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+                <div class="practice-item">
+                    <div class="practice-question">1. 你頭痛，想表達「頭痛」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">あたまがいたいです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">2. 想在藥局買感冒藥</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">かぜぐすりはありますか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">3. 發燒了，想說「我發燒了」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ねつがあります</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">4. 緊急情況需要救護車</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">きゅうきゅうしゃをよんでください</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">5. 想問「附近有醫院嗎？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ちかくにびょういんはありますか</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="あたまがいたいです">
+                    <div class="quiz-question-text">1. 「頭痛」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あたまがいたいです')">あたまがいたいです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おなかがいたいです')">おなかがいたいです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'のどがいたいです')">のどがいたいです</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="かぜぐすり">
+                    <div class="quiz-question-text">2. 「感冒藥」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いたみどめ')">いたみどめ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'かぜぐすり')">かぜぐすり</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いぐすり')">いぐすり</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="ねつがあります">
+                    <div class="quiz-question-text">3. 「我發燒了」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ねつです')">ねつです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ねつがあります')">ねつがあります</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ねつをください')">ねつをください</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="きゅうきゅうしゃをよんでください">
+                    <div class="quiz-question-text">4. 「請叫救護車」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'びょういんをよんでください')">びょういんをよんでください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きゅうきゅうしゃをよんでください')">きゅうきゅうしゃをよんでください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'タクシーをよんでください')">タクシーをよんでください</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 4;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('すみません、かぜぐすりはありますか'), 0);
+            setTimeout(() => speak('はい、ございます。どんなしょうじょうですか'), 3000);
+            setTimeout(() => speak('ねつとせきがでます'), 6000);
+            setTimeout(() => speak('では、これがおすすめです'), 8500);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('どうしましたか'), 0);
+            setTimeout(() => speak('あたまがいたいです'), 2000);
+            setTimeout(() => speak('いつからですか'), 4000);
+            setTimeout(() => speak('きのうからです'), 6000);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day13 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            alert('恭喜完成 Day 13 課程！\n\n你已經學會了健康相關的實用用語！\n希望你永遠用不到這些，但有備無患。');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

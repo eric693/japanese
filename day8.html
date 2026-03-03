@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8 - 飲食會話與餐廳點餐 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .food-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .food-card:hover {
+            border-color: #C1282D;
+        }
+
+        .food-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .food-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .food-meaning {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .phrase-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .phrase-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .phrase-item {
+            padding: 15px;
+            margin: 12px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .phrase-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .phrase-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-meaning {
+            color: #6B6B6B;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-note {
+            color: #6B6B6B;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .dialogue-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .dialogue-line {
+            padding: 12px;
+            margin: 10px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .dialogue-speaker {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .dialogue-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-translation {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .taste-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .taste-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .taste-card:hover {
+            border-color: #C1282D;
+        }
+
+        .taste-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.6em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .taste-meaning {
+            color: #6B6B6B;
+            font-size: 1em;
+        }
+
+        .practice-section {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-item {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .practice-question {
+            color: #6B6B6B;
+            margin-bottom: 10px;
+        }
+
+        .practice-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .menu-section {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .menu-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            text-align: center;
+            border-bottom: 2px solid #C1282D;
+            padding-bottom: 10px;
+        }
+
+        .menu-category {
+            margin: 20px 0;
+        }
+
+        .category-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 0;
+            background: #F5F1E8;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-item:hover {
+            background: #E5DCC9;
+        }
+
+        .menu-name {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2em;
+            color: #2C2C2C;
+        }
+
+        .menu-price {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 1em;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .food-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day7.html">← Day 7</a>
+                <a href="index.html">課程列表</a>
+                <a href="day9.html">Day 9 →</a>
+            </div>
+            <div class="day-number">DAY 08</div>
+            <h1>飲食會話與餐廳點餐</h1>
+            <p class="lesson-desc">學習食物名稱、餐廳用語、點餐會話</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習在日本餐廳用餐時會用到的各種表達方式。</p>
+                <p>無論是拉麵店、壽司店還是居酒屋，學會這些用語就能輕鬆點餐，享受美食！</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 常見日本料理與食物名稱</p>
+                <p>2. 飲料的日文說法</p>
+                <p>3. 餐廳點餐的實用句型</p>
+                <p>4. 描述味道的形容詞</p>
+                <p>5. 結帳與感謝用語</p>
+            </div>
+        </div>
+
+        <!-- 日本料理 -->
+        <div class="section">
+            <h2 class="section-title">二、常見日本料理</h2>
+            
+            <div class="food-grid">
+                <div class="food-card" onclick="speakFood('すし')">
+                    <div class="food-jp">すし</div>
+                    <div class="food-romaji">sushi</div>
+                    <div class="food-meaning">壽司</div>
+                </div>
+                <div class="food-card" onclick="speakFood('さしみ')">
+                    <div class="food-jp">さしみ</div>
+                    <div class="food-romaji">sashimi</div>
+                    <div class="food-meaning">生魚片</div>
+                </div>
+                <div class="food-card" onclick="speakFood('ラーメン')">
+                    <div class="food-jp">ラーメン</div>
+                    <div class="food-romaji">raamen</div>
+                    <div class="food-meaning">拉麵</div>
+                </div>
+                <div class="food-card" onclick="speakFood('うどん')">
+                    <div class="food-jp">うどん</div>
+                    <div class="food-romaji">udon</div>
+                    <div class="food-meaning">烏龍麵</div>
+                </div>
+                <div class="food-card" onclick="speakFood('そば')">
+                    <div class="food-jp">そば</div>
+                    <div class="food-romaji">soba</div>
+                    <div class="food-meaning">蕎麥麵</div>
+                </div>
+                <div class="food-card" onclick="speakFood('てんぷら')">
+                    <div class="food-jp">てんぷら</div>
+                    <div class="food-romaji">tempura</div>
+                    <div class="food-meaning">天婦羅</div>
+                </div>
+                <div class="food-card" onclick="speakFood('とんかつ')">
+                    <div class="food-jp">とんかつ</div>
+                    <div class="food-romaji">tonkatsu</div>
+                    <div class="food-meaning">豬排</div>
+                </div>
+                <div class="food-card" onclick="speakFood('やきとり')">
+                    <div class="food-jp">やきとり</div>
+                    <div class="food-romaji">yakitori</div>
+                    <div class="food-meaning">烤雞肉串</div>
+                </div>
+                <div class="food-card" onclick="speakFood('おにぎり')">
+                    <div class="food-jp">おにぎり</div>
+                    <div class="food-romaji">onigiri</div>
+                    <div class="food-meaning">飯糰</div>
+                </div>
+                <div class="food-card" onclick="speakFood('カレーライス')">
+                    <div class="food-jp">カレーライス</div>
+                    <div class="food-romaji">karee raisu</div>
+                    <div class="food-meaning">咖哩飯</div>
+                </div>
+                <div class="food-card" onclick="speakFood('やきそば')">
+                    <div class="food-jp">やきそば</div>
+                    <div class="food-romaji">yakisoba</div>
+                    <div class="food-meaning">炒麵</div>
+                </div>
+                <div class="food-card" onclick="speakFood('おこのみやき')">
+                    <div class="food-jp">おこのみやき</div>
+                    <div class="food-romaji">okonomiyaki</div>
+                    <div class="food-meaning">大阪燒</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 基本食材 -->
+        <div class="section">
+            <h2 class="section-title">三、基本食材</h2>
+            
+            <div class="food-grid">
+                <div class="food-card" onclick="speakFood('ごはん')">
+                    <div class="food-jp">ごはん</div>
+                    <div class="food-romaji">gohan</div>
+                    <div class="food-meaning">飯</div>
+                </div>
+                <div class="food-card" onclick="speakFood('パン')">
+                    <div class="food-jp">パン</div>
+                    <div class="food-romaji">pan</div>
+                    <div class="food-meaning">麵包</div>
+                </div>
+                <div class="food-card" onclick="speakFood('たまご')">
+                    <div class="food-jp">たまご</div>
+                    <div class="food-romaji">tamago</div>
+                    <div class="food-meaning">雞蛋</div>
+                </div>
+                <div class="food-card" onclick="speakFood('にく')">
+                    <div class="food-jp">にく</div>
+                    <div class="food-romaji">niku</div>
+                    <div class="food-meaning">肉</div>
+                </div>
+                <div class="food-card" onclick="speakFood('さかな')">
+                    <div class="food-jp">さかな</div>
+                    <div class="food-romaji">sakana</div>
+                    <div class="food-meaning">魚</div>
+                </div>
+                <div class="food-card" onclick="speakFood('やさい')">
+                    <div class="food-jp">やさい</div>
+                    <div class="food-romaji">yasai</div>
+                    <div class="food-meaning">蔬菜</div>
+                </div>
+                <div class="food-card" onclick="speakFood('くだもの')">
+                    <div class="food-jp">くだもの</div>
+                    <div class="food-romaji">kudamono</div>
+                    <div class="food-meaning">水果</div>
+                </div>
+                <div class="food-card" onclick="speakFood('サラダ')">
+                    <div class="food-jp">サラダ</div>
+                    <div class="food-romaji">sarada</div>
+                    <div class="food-meaning">沙拉</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 飲料 -->
+        <div class="section">
+            <h2 class="section-title">四、飲料</h2>
+            
+            <div class="food-grid">
+                <div class="food-card" onclick="speakFood('みず')">
+                    <div class="food-jp">みず</div>
+                    <div class="food-romaji">mizu</div>
+                    <div class="food-meaning">水</div>
+                </div>
+                <div class="food-card" onclick="speakFood('おちゃ')">
+                    <div class="food-jp">おちゃ</div>
+                    <div class="food-romaji">ocha</div>
+                    <div class="food-meaning">茶</div>
+                </div>
+                <div class="food-card" onclick="speakFood('コーヒー')">
+                    <div class="food-jp">コーヒー</div>
+                    <div class="food-romaji">koohii</div>
+                    <div class="food-meaning">咖啡</div>
+                </div>
+                <div class="food-card" onclick="speakFood('こうちゃ')">
+                    <div class="food-jp">こうちゃ</div>
+                    <div class="food-romaji">koucha</div>
+                    <div class="food-meaning">紅茶</div>
+                </div>
+                <div class="food-card" onclick="speakFood('ジュース')">
+                    <div class="food-jp">ジュース</div>
+                    <div class="food-romaji">juusu</div>
+                    <div class="food-meaning">果汁</div>
+                </div>
+                <div class="food-card" onclick="speakFood('ビール')">
+                    <div class="food-jp">ビール</div>
+                    <div class="food-romaji">biiru</div>
+                    <div class="food-meaning">啤酒</div>
+                </div>
+                <div class="food-card" onclick="speakFood('さけ')">
+                    <div class="food-jp">さけ</div>
+                    <div class="food-romaji">sake</div>
+                    <div class="food-meaning">日本酒</div>
+                </div>
+                <div class="food-card" onclick="speakFood('ワイン')">
+                    <div class="food-jp">ワイン</div>
+                    <div class="food-romaji">wain</div>
+                    <div class="food-meaning">葡萄酒</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 味道描述 -->
+        <div class="section">
+            <h2 class="section-title">五、味道描述</h2>
+            
+            <div class="taste-grid">
+                <div class="taste-card" onclick="speakFood('おいしい')">
+                    <div class="taste-jp">おいしい</div>
+                    <div class="taste-meaning">好吃的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('まずい')">
+                    <div class="taste-jp">まずい</div>
+                    <div class="taste-meaning">難吃的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('あまい')">
+                    <div class="taste-jp">あまい</div>
+                    <div class="taste-meaning">甜的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('からい')">
+                    <div class="taste-jp">からい</div>
+                    <div class="taste-meaning">辣的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('しょっぱい')">
+                    <div class="taste-jp">しょっぱい</div>
+                    <div class="taste-meaning">鹹的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('すっぱい')">
+                    <div class="taste-jp">すっぱい</div>
+                    <div class="taste-meaning">酸的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('にがい')">
+                    <div class="taste-jp">にがい</div>
+                    <div class="taste-meaning">苦的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('あつい')">
+                    <div class="taste-jp">あつい</div>
+                    <div class="taste-meaning">燙的</div>
+                </div>
+                <div class="taste-card" onclick="speakFood('つめたい')">
+                    <div class="taste-jp">つめたい</div>
+                    <div class="taste-meaning">冷的</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 點餐用語 -->
+        <div class="section">
+            <h2 class="section-title">六、餐廳點餐用語</h2>
+            
+            <div class="phrase-box">
+                <div class="phrase-title">進入餐廳</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">いらっしゃいませ</div>
+                    <div class="phrase-romaji">Irasshaimase</div>
+                    <div class="phrase-meaning">歡迎光臨</div>
+                    <div class="phrase-note">店員會說的話</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('いらっしゃいませ')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">何名様ですか</div>
+                    <div class="phrase-romaji">Nanmei sama desu ka</div>
+                    <div class="phrase-meaning">幾位？</div>
+                    <div class="phrase-note">店員詢問人數</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('何名様ですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ふたりです</div>
+                    <div class="phrase-romaji">Futari desu</div>
+                    <div class="phrase-meaning">兩個人</div>
+                    <div class="phrase-note">回答人數（二人）</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ふたりです')">播放</button>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">點餐</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">ごちゅうもんは</div>
+                    <div class="phrase-romaji">Gochuumon wa</div>
+                    <div class="phrase-meaning">您要點什麼？</div>
+                    <div class="phrase-note">店員詢問點餐</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ごちゅうもんは')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">これをください</div>
+                    <div class="phrase-romaji">Kore wo kudasai</div>
+                    <div class="phrase-meaning">請給我這個</div>
+                    <div class="phrase-note">點餐時使用</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('これをください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ラーメンをください</div>
+                    <div class="phrase-romaji">Raamen wo kudasai</div>
+                    <div class="phrase-meaning">請給我拉麵</div>
+                    <div class="phrase-note">點特定料理</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ラーメンをください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">メニューをください</div>
+                    <div class="phrase-romaji">Menyuu wo kudasai</div>
+                    <div class="phrase-meaning">請給我菜單</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('メニューをください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">おすすめは何ですか</div>
+                    <div class="phrase-romaji">Osusume wa nan desu ka</div>
+                    <div class="phrase-meaning">推薦什麼？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おすすめは何ですか')">播放</button>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">用餐中與結帳</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">いただきます</div>
+                    <div class="phrase-romaji">Itadakimasu</div>
+                    <div class="phrase-meaning">我開動了</div>
+                    <div class="phrase-note">開始用餐前說</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('いただきます')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ごちそうさまでした</div>
+                    <div class="phrase-romaji">Gochisousama deshita</div>
+                    <div class="phrase-meaning">我吃飽了（謝謝招待）</div>
+                    <div class="phrase-note">用餐結束後說</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ごちそうさまでした')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">おかいけいをおねがいします</div>
+                    <div class="phrase-romaji">Okaikei wo onegaishimasu</div>
+                    <div class="phrase-meaning">請結帳</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おかいけいをおねがいします')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">おいしかったです</div>
+                    <div class="phrase-romaji">Oishikatta desu</div>
+                    <div class="phrase-meaning">很好吃</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おいしかったです')">播放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 對話練習 -->
+        <div class="section">
+            <h2 class="section-title">七、餐廳對話練習</h2>
+            
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：在拉麵店點餐</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">いらっしゃいませ。何名様ですか。</div>
+                    <div class="dialogue-translation">歡迎光臨。幾位？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">ひとりです。</div>
+                    <div class="dialogue-translation">一個人。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">ごちゅうもんは。</div>
+                    <div class="dialogue-translation">您要點什麼？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">しょうゆラーメンをください。</div>
+                    <div class="dialogue-translation">請給我醬油拉麵。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">かしこまりました。</div>
+                    <div class="dialogue-translation">好的，我知道了。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：結帳</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">すみません、おかいけいをおねがいします。</div>
+                    <div class="dialogue-translation">不好意思，請結帳。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">はい、千円になります。</div>
+                    <div class="dialogue-translation">好的，一千日圓。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">おいしかったです。ごちそうさまでした。</div>
+                    <div class="dialogue-translation">很好吃。謝謝招待。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">ありがとうございました。</div>
+                    <div class="dialogue-translation">謝謝光臨。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+        </div>
+
+        <!-- 練習 -->
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+
+                <div class="practice-item">
+                    <div class="practice-question">1. 開始吃飯前要說什麼？</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いただきます</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">2. 想要點拉麵時怎麼說？</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ラーメンをください</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">3. 吃完要結帳時怎麼說？</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">おかいけいをおねがいします</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">4. 想問推薦什麼料理？</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">おすすめは何ですか</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">5. 用餐結束後說？</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ごちそうさまでした</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你的學習成果。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="いただきます">
+                    <div class="quiz-question-text">1. 開始用餐前應該說什麼？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いらっしゃいませ')">いらっしゃいませ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いただきます')">いただきます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごちそうさま')">ごちそうさま</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとう')">ありがとう</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ラーメン">
+                    <div class="quiz-question-text">2. 「拉麵」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'うどん')">うどん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'そば')">そば</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ラーメン')">ラーメン</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'やきそば')">やきそば</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="これをください">
+                    <div class="quiz-question-text">3. 點餐時想說「請給我這個」，應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これはなんですか')">これはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これをください')">これをください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これですか')">これですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これがいいです')">これがいいです</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="おいしい">
+                    <div class="quiz-question-text">4. 「好吃的」日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あまい')">あまい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'からい')">からい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おいしい')">おいしい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'まずい')">まずい</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="おかいけいをおねがいします">
+                    <div class="quiz-question-text">5. 想要結帳時應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いくらですか')">いくらですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おかいけいをおねがいします')">おかいけいをおねがいします</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとうございます')">ありがとうございます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すみません')">すみません</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ごちそうさまでした">
+                    <div class="quiz-question-text">6. 用餐結束後應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いただきます')">いただきます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごちそうさまでした')">ごちそうさまでした</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おいしかったです')">おいしかったです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さようなら')">さようなら</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text, delay = 0) {
+            setTimeout(() => {
+                if (!selectedVoice) return;
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = selectedVoice;
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }, delay);
+        }
+
+        function speakFood(food) {
+            speechSynthesis.cancel();
+            speak(food);
+        }
+
+        function speakPhrase(phrase) {
+            speechSynthesis.cancel();
+            speak(phrase);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            speak('いらっしゃいませ。何名様ですか', 0);
+            speak('ひとりです', 3000);
+            speak('ごちゅうもんは', 5000);
+            speak('しょうゆラーメンをください', 7000);
+            speak('かしこまりました', 10000);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            speak('すみません、おかいけいをおねがいします', 0);
+            speak('はい、千円になります', 4000);
+            speak('おいしかったです。ごちそうさまでした', 7000);
+            speak('ありがとうございました', 11000);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day8 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 8 課程！\n\n你已經學會了在日本餐廳點餐的用語！\n現在可以自信地在日本享受美食了。\n明天我們將學習購物與價格詢問。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7 - 家族稱呼與人物描述 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #E5DCC9;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .comparison-table th {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .comparison-table td:hover {
+            background: #F5F1E8;
+        }
+
+        .japanese-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+        }
+
+        .romaji-text {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+        }
+
+        .word-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .word-card:hover {
+            border-color: #C1282D;
+        }
+
+        .word-japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.8em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .word-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .word-meaning {
+            color: #6B6B6B;
+            font-size: 1em;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .sentence-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .sentence-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .sentence-item {
+            padding: 15px;
+            margin: 12px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .sentence-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .sentence-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .sentence-meaning {
+            color: #6B6B6B;
+            font-size: 0.95em;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .adjective-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .adjective-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .adjective-card:hover {
+            border-color: #C1282D;
+        }
+
+        .adjective-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.6em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .adjective-meaning {
+            color: #6B6B6B;
+            font-size: 1em;
+        }
+
+        .practice-section {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-item {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .practice-question {
+            color: #6B6B6B;
+            margin-bottom: 10px;
+        }
+
+        .practice-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .dialogue-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .dialogue-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .dialogue-line {
+            padding: 12px;
+            margin: 10px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .dialogue-speaker {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .dialogue-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-translation {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .comparison-table {
+                font-size: 0.9em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 5px;
+            }
+
+            .adjective-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day6.html">← Day 6</a>
+                <a href="index.html">課程列表</a>
+                <a href="day8.html">Day 8 →</a>
+            </div>
+            <div class="day-number">DAY 07</div>
+            <h1>家族稱呼與人物描述</h1>
+            <p class="lesson-desc">學習家人稱呼、人物特徵描述、基本形容詞</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習如何用日文稱呼家人，以及如何描述一個人的特徵。</p>
+                <p>日文的家族稱呼有一個重要特點：<strong>稱呼自己的家人</strong>和<strong>稱呼別人的家人</strong>用的詞彙不同。這體現了日語的謙讓文化。</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 家族成員的兩種稱呼方式（自己的家人 vs 別人的家人）</p>
+                <p>2. 描述人物外貌和性格的形容詞</p>
+                <p>3. 如何用「です」造簡單的描述句</p>
+                <p>4. 常用的疑問詞（誰、什麼、哪裡）</p>
+            </div>
+        </div>
+
+        <!-- 家族稱呼 -->
+        <div class="section">
+            <h2 class="section-title">二、家族稱呼</h2>
+            <div class="intro-text">
+                <p>日文稱呼家人時，要區分是自己的家人還是別人的家人。一般來說，稱呼別人的家人時要用更尊敬的說法。</p>
+            </div>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>中文</th>
+                    <th>自己的家人</th>
+                    <th>別人的家人</th>
+                </tr>
+                <tr>
+                    <td>父親</td>
+                    <td class="japanese-text" onclick="speakPhrase('ちち')">
+                        ちち
+                        <div class="romaji-text">chichi</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おとうさん')">
+                        おとうさん
+                        <div class="romaji-text">otousan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>母親</td>
+                    <td class="japanese-text" onclick="speakPhrase('はは')">
+                        はは
+                        <div class="romaji-text">haha</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おかあさん')">
+                        おかあさん
+                        <div class="romaji-text">okaasan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>哥哥/兄</td>
+                    <td class="japanese-text" onclick="speakPhrase('あに')">
+                        あに
+                        <div class="romaji-text">ani</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おにいさん')">
+                        おにいさん
+                        <div class="romaji-text">oniisan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>姐姐</td>
+                    <td class="japanese-text" onclick="speakPhrase('あね')">
+                        あね
+                        <div class="romaji-text">ane</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おねえさん')">
+                        おねえさん
+                        <div class="romaji-text">oneesan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>弟弟</td>
+                    <td class="japanese-text" onclick="speakPhrase('おとうと')">
+                        おとうと
+                        <div class="romaji-text">otouto</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おとうとさん')">
+                        おとうとさん
+                        <div class="romaji-text">otoutosan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>妹妹</td>
+                    <td class="japanese-text" onclick="speakPhrase('いもうと')">
+                        いもうと
+                        <div class="romaji-text">imouto</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('いもうとさん')">
+                        いもうとさん
+                        <div class="romaji-text">imoutosan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>祖父</td>
+                    <td class="japanese-text" onclick="speakPhrase('そふ')">
+                        そふ
+                        <div class="romaji-text">sofu</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おじいさん')">
+                        おじいさん
+                        <div class="romaji-text">ojiisan</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>祖母</td>
+                    <td class="japanese-text" onclick="speakPhrase('そぼ')">
+                        そぼ
+                        <div class="romaji-text">sobo</div>
+                    </td>
+                    <td class="japanese-text" onclick="speakPhrase('おばあさん')">
+                        おばあさん
+                        <div class="romaji-text">obaasan</div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="tip-box">
+                <div class="tip-title">使用場合</div>
+                <p><strong>自己的家人</strong>：向別人介紹或談論自己的家人時使用</p>
+                <p>例：「わたしのちちは医者です」（我的父親是醫生）</p>
+                <p><strong>別人的家人</strong>：詢問或談論對方的家人時使用</p>
+                <p>例：「おとうさんはお元気ですか」（令尊身體好嗎？）</p>
+            </div>
+        </div>
+
+        <!-- 其他家族詞彙 -->
+        <div class="section">
+            <h2 class="section-title">三、其他家族相關詞彙</h2>
+            
+            <div class="word-card" onclick="speakPhrase('かぞく')">
+                <div class="word-japanese">かぞく</div>
+                <div class="word-romaji">kazoku</div>
+                <div class="word-meaning">家人、家族</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('かぞく')">播放發音</button>
+            </div>
+
+            <div class="word-card" onclick="speakPhrase('りょうしん')">
+                <div class="word-japanese">りょうしん</div>
+                <div class="word-romaji">ryoushin</div>
+                <div class="word-meaning">父母、雙親</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('りょうしん')">播放發音</button>
+            </div>
+
+            <div class="word-card" onclick="speakPhrase('きょうだい')">
+                <div class="word-japanese">きょうだい</div>
+                <div class="word-romaji">kyoudai</div>
+                <div class="word-meaning">兄弟姐妹</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('きょうだい')">播放發音</button>
+            </div>
+
+            <div class="word-card" onclick="speakPhrase('こども')">
+                <div class="word-japanese">こども</div>
+                <div class="word-romaji">kodomo</div>
+                <div class="word-meaning">小孩、孩子</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('こども')">播放發音</button>
+            </div>
+
+            <div class="word-card" onclick="speakPhrase('おっと')">
+                <div class="word-japanese">おっと / しゅじん</div>
+                <div class="word-romaji">otto / shujin</div>
+                <div class="word-meaning">丈夫（自己的）</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('おっと')">播放發音</button>
+            </div>
+
+            <div class="word-card" onclick="speakPhrase('つま')">
+                <div class="word-japanese">つま / かない</div>
+                <div class="word-romaji">tsuma / kanai</div>
+                <div class="word-meaning">妻子（自己的）</div>
+                <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('つま')">播放發音</button>
+            </div>
+        </div>
+
+        <!-- 描述外貌 -->
+        <div class="section">
+            <h2 class="section-title">四、描述外貌特徵</h2>
+            <div class="intro-text">
+                <p>以下是常用來描述人物外貌的形容詞。</p>
+            </div>
+
+            <div class="adjective-grid">
+                <div class="adjective-card" onclick="speakPhrase('たかい')">
+                    <div class="adjective-jp">たかい</div>
+                    <div class="adjective-meaning">高、高的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('ひくい')">
+                    <div class="adjective-jp">ひくい</div>
+                    <div class="adjective-meaning">低、矮的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('おおきい')">
+                    <div class="adjective-jp">おおきい</div>
+                    <div class="adjective-meaning">大的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('ちいさい')">
+                    <div class="adjective-jp">ちいさい</div>
+                    <div class="adjective-meaning">小的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('ふとい')">
+                    <div class="adjective-jp">ふとい</div>
+                    <div class="adjective-meaning">胖的、粗的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('ほそい')">
+                    <div class="adjective-jp">ほそい</div>
+                    <div class="adjective-meaning">瘦的、細的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('わかい')">
+                    <div class="adjective-jp">わかい</div>
+                    <div class="adjective-meaning">年輕的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('ながい')">
+                    <div class="adjective-jp">ながい</div>
+                    <div class="adjective-meaning">長的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('みじかい')">
+                    <div class="adjective-jp">みじかい</div>
+                    <div class="adjective-meaning">短的</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 描述性格 -->
+        <div class="section">
+            <h2 class="section-title">五、描述性格特質</h2>
+            
+            <div class="adjective-grid">
+                <div class="adjective-card" onclick="speakPhrase('やさしい')">
+                    <div class="adjective-jp">やさしい</div>
+                    <div class="adjective-meaning">溫柔的、親切的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('げんき')">
+                    <div class="adjective-jp">げんき</div>
+                    <div class="adjective-meaning">有活力的、健康的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('しずか')">
+                    <div class="adjective-jp">しずか</div>
+                    <div class="adjective-meaning">安靜的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('にぎやか')">
+                    <div class="adjective-jp">にぎやか</div>
+                    <div class="adjective-meaning">熱鬧的、活潑的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('まじめ')">
+                    <div class="adjective-jp">まじめ</div>
+                    <div class="adjective-meaning">認真的</div>
+                </div>
+                <div class="adjective-card" onclick="speakPhrase('しんせつ')">
+                    <div class="adjective-jp">しんせつ</div>
+                    <div class="adjective-meaning">親切的</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">い形容詞 vs な形容詞</div>
+                <p><strong>い形容詞</strong>：以「い」結尾，例如：たかい、やさしい</p>
+                <p>使用：直接放在名詞前，例：たかい人（高的人）</p>
+                <p><strong>な形容詞</strong>：需要加「な」連接名詞，例如：げんき、しずか</p>
+                <p>使用：加「な」後接名詞，例：げんきな人（有活力的人）</p>
+            </div>
+        </div>
+
+        <!-- 例句 -->
+        <div class="section">
+            <h2 class="section-title">六、實用例句</h2>
+            
+            <div class="sentence-box">
+                <div class="sentence-title">介紹家人</div>
+                
+                <div class="sentence-item">
+                    <div class="sentence-jp">これはわたしのちちです。</div>
+                    <div class="sentence-romaji">Kore wa watashi no chichi desu.</div>
+                    <div class="sentence-meaning">這是我的父親。</div>
+                    <button class="audio-btn" onclick="speakPhrase('これはわたしのちちです')">播放</button>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-jp">わたしにはあにがいます。</div>
+                    <div class="sentence-romaji">Watashi ni wa ani ga imasu.</div>
+                    <div class="sentence-meaning">我有一個哥哥。</div>
+                    <button class="audio-btn" onclick="speakPhrase('わたしにはあにがいます')">播放</button>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-jp">かぞくはよにんです。</div>
+                    <div class="sentence-romaji">Kazoku wa yonin desu.</div>
+                    <div class="sentence-meaning">家裡有四個人。</div>
+                    <button class="audio-btn" onclick="speakPhrase('かぞくはよにんです')">播放</button>
+                </div>
+            </div>
+
+            <div class="sentence-box">
+                <div class="sentence-title">描述人物</div>
+                
+                <div class="sentence-item">
+                    <div class="sentence-jp">ちちはせがたかいです。</div>
+                    <div class="sentence-romaji">Chichi wa se ga takai desu.</div>
+                    <div class="sentence-meaning">我父親個子很高。</div>
+                    <button class="audio-btn" onclick="speakPhrase('ちちはせがたかいです')">播放</button>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-jp">あねはやさしいです。</div>
+                    <div class="sentence-romaji">Ane wa yasashii desu.</div>
+                    <div class="sentence-meaning">我姐姐很溫柔。</div>
+                    <button class="audio-btn" onclick="speakPhrase('あねはやさしいです')">播放</button>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-jp">おとうとはげんきです。</div>
+                    <div class="sentence-romaji">Otouto wa genki desu.</div>
+                    <div class="sentence-meaning">我弟弟很有活力。</div>
+                    <button class="audio-btn" onclick="speakPhrase('おとうとはげんきです')">播放</button>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="sentence-jp">はははしんせつなひとです。</div>
+                    <div class="sentence-romaji">Haha wa shinsetsu na hito desu.</div>
+                    <div class="sentence-meaning">我母親是個親切的人。</div>
+                    <button class="audio-btn" onclick="speakPhrase('はははしんせつなひとです')">播放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 對話練習 -->
+        <div class="section">
+            <h2 class="section-title">七、對話練習</h2>
+            
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：談論家人</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">ごかぞくは何人ですか。</div>
+                    <div class="dialogue-translation">您家有幾個人？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">よにんです。ちちとははとあにとわたしです。</div>
+                    <div class="dialogue-translation">四個人。爸爸、媽媽、哥哥和我。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">おにいさんはおいくつですか。</div>
+                    <div class="dialogue-translation">令兄幾歲？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">25さいです。</div>
+                    <div class="dialogue-translation">25歲。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue()">播放對話</button>
+            </div>
+        </div>
+
+        <!-- 練習 -->
+        <div class="section">
+            <h2 class="section-title">八、填空練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">用適當的詞彙完成句子</div>
+
+                <div class="practice-item">
+                    <div class="practice-question">1. 我的父親（介紹自己的父親時）</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">わたしのちち</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">2. 您的母親（詢問別人的母親時）</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">おかあさん</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">3. 我哥哥很高</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">あにはせがたかいです</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">4. 妹妹是個親切的人</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いもうとはしんせつなひとです</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你的學習成果。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="ちち">
+                    <div class="quiz-question-text">1. 向別人介紹自己的父親時，應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おとうさん')">おとうさん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ちち')">ちち</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'パパ')">パパ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ちちうえ')">ちちうえ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="おにいさん">
+                    <div class="quiz-question-text">2. 詢問別人的哥哥時，應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あに')">あに</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おにいさん')">おにいさん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おとうと')">おとうと</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きょうだい')">きょうだい</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="やさしい">
+                    <div class="quiz-question-text">3. 「溫柔的、親切的」日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'げんき')">げんき</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'やさしい')">やさしい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しずか')">しずか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'まじめ')">まじめ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="かぞく">
+                    <div class="quiz-question-text">4. 「家人、家族」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'かぞく')">かぞく</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'りょうしん')">りょうしん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きょうだい')">きょうだい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'こども')">こども</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="たかい">
+                    <div class="quiz-question-text">5. 「個子高」的日文是「せが〇〇です」，〇〇是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ひくい')">ひくい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'たかい')">たかい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ながい')">ながい</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おおきい')">おおきい</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="いもうと">
+                    <div class="quiz-question-text">6. 「妹妹」（自己的）日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あね')">あね</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おねえさん')">おねえさん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いもうと')">いもうと</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いもうとさん')">いもうとさん</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text, delay = 0) {
+            setTimeout(() => {
+                if (!selectedVoice) return;
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = selectedVoice;
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }, delay);
+        }
+
+        function speakPhrase(phrase) {
+            speechSynthesis.cancel();
+            speak(phrase);
+        }
+
+        function speakDialogue() {
+            speechSynthesis.cancel();
+            speak('ごかぞくは何人ですか', 0);
+            speak('よにんです。ちちとははとあにとわたしです', 3000);
+            speak('おにいさんはおいくつですか', 7000);
+            speak('25さいです', 10000);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day7 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 7 課程！\n\n你已經學會了家族稱呼和人物描述！\n現在你可以用日文介紹自己的家人了。\n明天我們將學習飲食相關的會話。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

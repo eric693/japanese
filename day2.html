@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - 平假名 は-ん + 濁音・半濁音 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .kana-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .kana-card {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .kana-card:hover {
+            border-color: #C1282D;
+            box-shadow: 3px 3px 0 #C1282D;
+            transform: translate(-1px, -1px);
+        }
+
+        .kana-card.dakuten {
+            border-color: #C1282D;
+            background: #FFF9F5;
+        }
+
+        .kana-char {
+            font-size: 3em;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #2C2C2C;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .kana-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2em;
+            color: #C1282D;
+            margin-bottom: 5px;
+        }
+
+        .kana-example {
+            font-size: 0.85em;
+            color: #6B6B6B;
+            margin-top: 8px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #E5DCC9;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .comparison-table th {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.8em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .comparison-table td:hover {
+            background: #F5F1E8;
+        }
+
+        .comparison-table .romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.5em;
+            color: #C1282D;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .practice-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .practice-question {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .practice-answer {
+            font-size: 2.5em;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #6B6B6B;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+        }
+
+        .word-list {
+            margin: 25px 0;
+        }
+
+        .word-item {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .word-item:hover {
+            border-color: #C1282D;
+        }
+
+        .word-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5em;
+            color: #2C2C2C;
+        }
+
+        .word-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            margin-left: 15px;
+        }
+
+        .word-meaning {
+            color: #6B6B6B;
+            flex: 1;
+            text-align: right;
+            margin-right: 15px;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .symbol-box {
+            display: inline-block;
+            background: #2C2C2C;
+            color: #FEFDFB;
+            padding: 5px 15px;
+            margin: 0 10px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .kana-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 10px;
+            }
+
+            .kana-char {
+                font-size: 2.5em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .comparison-table {
+                font-size: 0.85em;
+            }
+
+            .comparison-table td {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day1.html">← Day 1</a>
+                <a href="index.html">課程列表</a>
+                <a href="day3.html">Day 3 →</a>
+            </div>
+            <div class="day-number">DAY 02</div>
+            <h1>平假名 は行 - ん + 濁音・半濁音</h1>
+            <p class="lesson-desc">完成平假名五十音，學習濁音與半濁音的發音規則</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天我們要完成平假名的學習！我們將學習 <strong>は行、ま行、や行、ら行、わ行</strong> 以及特殊音 <strong>ん</strong>，共 21 個基本假名。</p>
+                <p>此外，還會學習 <strong>濁音（だくおん）</strong> 和 <strong>半濁音（はんだくおん）</strong>，這些是在清音基礎上加上濁點「゛」或半濁點「゜」形成的變音。</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">今日學習重點</div>
+                <p>1. は行在作為助詞時讀作「wa」而非「ha」</p>
+                <p>2. 濁音符號「゛」稱為「濁點」，讓清音變成濁音</p>
+                <p>3. 半濁音符號「゜」只用在 は行，形成 pa 行</p>
+                <p>4. 「ん」是唯一可以出現在字尾的假名，發鼻音</p>
+            </div>
+        </div>
+
+        <!-- は行 -->
+        <div class="section">
+            <h2 class="section-title">二、は行（HA-行）</h2>
+            <div class="intro-text">
+                <p>は行的發音以「h」為首。特別注意：<strong>は（ha）</strong> 作為助詞時要讀作 <strong>wa</strong>。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card" onclick="speakKana('は', 'ha')">
+                    <div class="kana-char">は</div>
+                    <div class="kana-romaji">ha</div>
+                    <div class="kana-example">母 (はは)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ひ', 'hi')">
+                    <div class="kana-char">ひ</div>
+                    <div class="kana-romaji">hi</div>
+                    <div class="kana-example">火 (ひ)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ふ', 'fu')">
+                    <div class="kana-char">ふ</div>
+                    <div class="kana-romaji">fu</div>
+                    <div class="kana-example">二 (ふたつ)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('へ', 'he')">
+                    <div class="kana-char">へ</div>
+                    <div class="kana-romaji">he</div>
+                    <div class="kana-example">部屋 (へや)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ほ', 'ho')">
+                    <div class="kana-char">ほ</div>
+                    <div class="kana-romaji">ho</div>
+                    <div class="kana-example">本 (ほん)</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">發音注意</div>
+                <p><strong>ふ（fu）</strong> 不是「hu」，發音時上下唇輕碰，氣流從中間通過</p>
+                <p><strong>は（wa）</strong> 作為助詞時讀「wa」，例如：わたし<strong>は</strong>（我）</p>
+            </div>
+        </div>
+
+        <!-- ま行 -->
+        <div class="section">
+            <h2 class="section-title">三、ま行（MA-行）</h2>
+            <div class="intro-text">
+                <p>ま行的發音以「m」為首，是鼻音，發音時雙唇閉合。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card" onclick="speakKana('ま', 'ma')">
+                    <div class="kana-char">ま</div>
+                    <div class="kana-romaji">ma</div>
+                    <div class="kana-example">窓 (まど)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('み', 'mi')">
+                    <div class="kana-char">み</div>
+                    <div class="kana-romaji">mi</div>
+                    <div class="kana-example">水 (みず)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('む', 'mu')">
+                    <div class="kana-char">む</div>
+                    <div class="kana-romaji">mu</div>
+                    <div class="kana-example">昔 (むかし)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('め', 'me')">
+                    <div class="kana-char">め</div>
+                    <div class="kana-romaji">me</div>
+                    <div class="kana-example">目 (め)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('も', 'mo')">
+                    <div class="kana-char">も</div>
+                    <div class="kana-romaji">mo</div>
+                    <div class="kana-example">桃 (もも)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- や行 -->
+        <div class="section">
+            <h2 class="section-title">四、や行（YA-行）</h2>
+            <div class="intro-text">
+                <p>や行只有三個假名：や、ゆ、よ。沒有「yi」和「ye」的發音。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card" onclick="speakKana('や', 'ya')">
+                    <div class="kana-char">や</div>
+                    <div class="kana-romaji">ya</div>
+                    <div class="kana-example">山 (やま)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ゆ', 'yu')">
+                    <div class="kana-char">ゆ</div>
+                    <div class="kana-romaji">yu</div>
+                    <div class="kana-example">雪 (ゆき)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('よ', 'yo')">
+                    <div class="kana-char">よ</div>
+                    <div class="kana-romaji">yo</div>
+                    <div class="kana-example">夜 (よる)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ら行 -->
+        <div class="section">
+            <h2 class="section-title">五、ら行（RA-行）</h2>
+            <div class="intro-text">
+                <p>ら行的發音介於「r」和「l」之間，舌尖輕觸上顎，類似彈舌音。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card" onclick="speakKana('ら', 'ra')">
+                    <div class="kana-char">ら</div>
+                    <div class="kana-romaji">ra</div>
+                    <div class="kana-example">来年 (らいねん)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('り', 'ri')">
+                    <div class="kana-char">り</div>
+                    <div class="kana-romaji">ri</div>
+                    <div class="kana-example">料理 (りょうり)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('る', 'ru')">
+                    <div class="kana-char">る</div>
+                    <div class="kana-romaji">ru</div>
+                    <div class="kana-example">留守 (るす)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('れ', 're')">
+                    <div class="kana-char">れ</div>
+                    <div class="kana-romaji">re</div>
+                    <div class="kana-example">冷蔵庫 (れいぞうこ)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ろ', 'ro')">
+                    <div class="kana-char">ろ</div>
+                    <div class="kana-romaji">ro</div>
+                    <div class="kana-example">廊下 (ろうか)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- わ行 + ん -->
+        <div class="section">
+            <h2 class="section-title">六、わ行（WA-行）+ ん</h2>
+            <div class="intro-text">
+                <p>わ行現代日文中只使用「わ」和「を」。<strong>を（wo）</strong> 只作為助詞使用，發音接近「o」。</p>
+                <p><strong>ん</strong> 是唯一可以單獨出現在字尾的假名，發鼻音，類似中文的「嗯」。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card" onclick="speakKana('わ', 'wa')">
+                    <div class="kana-char">わ</div>
+                    <div class="kana-romaji">wa</div>
+                    <div class="kana-example">私 (わたし)</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('を', 'wo')">
+                    <div class="kana-char">を</div>
+                    <div class="kana-romaji">wo/o</div>
+                    <div class="kana-example">助詞「を」</div>
+                </div>
+                <div class="kana-card" onclick="speakKana('ん', 'n')">
+                    <div class="kana-char">ん</div>
+                    <div class="kana-romaji">n</div>
+                    <div class="kana-example">本 (ほん)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 濁音 -->
+        <div class="section">
+            <h2 class="section-title">七、濁音（だくおん）</h2>
+            <div class="intro-text">
+                <p>在清音的右上角加上兩點 <span class="symbol-box">゛</span> 稱為「濁點」，形成濁音。濁音的發音會變得較重濁。</p>
+            </div>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>清音</th>
+                    <th>か</th>
+                    <th>き</th>
+                    <th>く</th>
+                    <th>け</th>
+                    <th>こ</th>
+                </tr>
+                <tr>
+                    <td style="background: #F5F1E8; font-size: 1em;">濁音</td>
+                    <td class="dakuten" onclick="speakKana('が', 'ga')">が<span class="romaji">ga</span></td>
+                    <td class="dakuten" onclick="speakKana('ぎ', 'gi')">ぎ<span class="romaji">gi</span></td>
+                    <td class="dakuten" onclick="speakKana('ぐ', 'gu')">ぐ<span class="romaji">gu</span></td>
+                    <td class="dakuten" onclick="speakKana('げ', 'ge')">げ<span class="romaji">ge</span></td>
+                    <td class="dakuten" onclick="speakKana('ご', 'go')">ご<span class="romaji">go</span></td>
+                </tr>
+            </table>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>清音</th>
+                    <th>さ</th>
+                    <th>し</th>
+                    <th>す</th>
+                    <th>せ</th>
+                    <th>そ</th>
+                </tr>
+                <tr>
+                    <td style="background: #F5F1E8; font-size: 1em;">濁音</td>
+                    <td class="dakuten" onclick="speakKana('ざ', 'za')">ざ<span class="romaji">za</span></td>
+                    <td class="dakuten" onclick="speakKana('じ', 'ji')">じ<span class="romaji">ji</span></td>
+                    <td class="dakuten" onclick="speakKana('ず', 'zu')">ず<span class="romaji">zu</span></td>
+                    <td class="dakuten" onclick="speakKana('ぜ', 'ze')">ぜ<span class="romaji">ze</span></td>
+                    <td class="dakuten" onclick="speakKana('ぞ', 'zo')">ぞ<span class="romaji">zo</span></td>
+                </tr>
+            </table>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>清音</th>
+                    <th>た</th>
+                    <th>ち</th>
+                    <th>つ</th>
+                    <th>て</th>
+                    <th>と</th>
+                </tr>
+                <tr>
+                    <td style="background: #F5F1E8; font-size: 1em;">濁音</td>
+                    <td class="dakuten" onclick="speakKana('だ', 'da')">だ<span class="romaji">da</span></td>
+                    <td class="dakuten" onclick="speakKana('ぢ', 'ji')">ぢ<span class="romaji">ji</span></td>
+                    <td class="dakuten" onclick="speakKana('づ', 'zu')">づ<span class="romaji">zu</span></td>
+                    <td class="dakuten" onclick="speakKana('で', 'de')">で<span class="romaji">de</span></td>
+                    <td class="dakuten" onclick="speakKana('ど', 'do')">ど<span class="romaji">do</span></td>
+                </tr>
+            </table>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>清音</th>
+                    <th>は</th>
+                    <th>ひ</th>
+                    <th>ふ</th>
+                    <th>へ</th>
+                    <th>ほ</th>
+                </tr>
+                <tr>
+                    <td style="background: #F5F1E8; font-size: 1em;">濁音</td>
+                    <td class="dakuten" onclick="speakKana('ば', 'ba')">ば<span class="romaji">ba</span></td>
+                    <td class="dakuten" onclick="speakKana('び', 'bi')">び<span class="romaji">bi</span></td>
+                    <td class="dakuten" onclick="speakKana('ぶ', 'bu')">ぶ<span class="romaji">bu</span></td>
+                    <td class="dakuten" onclick="speakKana('べ', 'be')">べ<span class="romaji">be</span></td>
+                    <td class="dakuten" onclick="speakKana('ぼ', 'bo')">ぼ<span class="romaji">bo</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 半濁音 -->
+        <div class="section">
+            <h2 class="section-title">八、半濁音（はんだくおん）</h2>
+            <div class="intro-text">
+                <p>在 は行的右上角加上一個小圓圈 <span class="symbol-box">゜</span> 稱為「半濁點」，形成 pa 行的發音。</p>
+            </div>
+
+            <div class="kana-grid">
+                <div class="kana-card dakuten" onclick="speakKana('ぱ', 'pa')">
+                    <div class="kana-char">ぱ</div>
+                    <div class="kana-romaji">pa</div>
+                    <div class="kana-example">パン (ぱん)</div>
+                </div>
+                <div class="kana-card dakuten" onclick="speakKana('ぴ', 'pi')">
+                    <div class="kana-char">ぴ</div>
+                    <div class="kana-romaji">pi</div>
+                    <div class="kana-example">ピンク (ぴんく)</div>
+                </div>
+                <div class="kana-card dakuten" onclick="speakKana('ぷ', 'pu')">
+                    <div class="kana-char">ぷ</div>
+                    <div class="kana-romaji">pu</div>
+                    <div class="kana-example">プール (ぷーる)</div>
+                </div>
+                <div class="kana-card dakuten" onclick="speakKana('ぺ', 'pe')">
+                    <div class="kana-char">ぺ</div>
+                    <div class="kana-romaji">pe</div>
+                    <div class="kana-example">ペン (ぺん)</div>
+                </div>
+                <div class="kana-card dakuten" onclick="speakKana('ぽ', 'po')">
+                    <div class="kana-char">ぽ</div>
+                    <div class="kana-romaji">po</div>
+                    <div class="kana-example">ポスト (ぽすと)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 常用單字 -->
+        <div class="section">
+            <h2 class="section-title">九、常用單字練習</h2>
+            <div class="intro-text">
+                <p>使用今天學到的假名組成的實用單字。</p>
+            </div>
+
+            <div class="word-list">
+                <div class="word-item" onclick="speakWord('はな', 'hana')">
+                    <div>
+                        <span class="word-jp">はな</span>
+                        <span class="word-romaji">hana</span>
+                    </div>
+                    <span class="word-meaning">花</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('はな', 'hana')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('みず', 'mizu')">
+                    <div>
+                        <span class="word-jp">みず</span>
+                        <span class="word-romaji">mizu</span>
+                    </div>
+                    <span class="word-meaning">水</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('みず', 'mizu')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('やま', 'yama')">
+                    <div>
+                        <span class="word-jp">やま</span>
+                        <span class="word-romaji">yama</span>
+                    </div>
+                    <span class="word-meaning">山</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('やま', 'yama')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('ほん', 'hon')">
+                    <div>
+                        <span class="word-jp">ほん</span>
+                        <span class="word-romaji">hon</span>
+                    </div>
+                    <span class="word-meaning">書</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('ほん', 'hon')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('りんご', 'ringo')">
+                    <div>
+                        <span class="word-jp">りんご</span>
+                        <span class="word-romaji">ringo</span>
+                    </div>
+                    <span class="word-meaning">蘋果</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('りんご', 'ringo')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('がっこう', 'gakkou')">
+                    <div>
+                        <span class="word-jp">がっこう</span>
+                        <span class="word-romaji">gakkou</span>
+                    </div>
+                    <span class="word-meaning">學校</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('がっこう', 'gakkou')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('でんわ', 'denwa')">
+                    <div>
+                        <span class="word-jp">でんわ</span>
+                        <span class="word-romaji">denwa</span>
+                    </div>
+                    <span class="word-meaning">電話</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('でんわ', 'denwa')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('ばんごはん', 'bangohan')">
+                    <div>
+                        <span class="word-jp">ばんごはん</span>
+                        <span class="word-romaji">bangohan</span>
+                    </div>
+                    <span class="word-meaning">晚餐</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('ばんごはん', 'bangohan')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('ぱん', 'pan')">
+                    <div>
+                        <span class="word-jp">ぱん</span>
+                        <span class="word-romaji">pan</span>
+                    </div>
+                    <span class="word-meaning">麵包</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('ぱん', 'pan')">播放</button>
+                </div>
+                <div class="word-item" onclick="speakWord('にほん', 'nihon')">
+                    <div>
+                        <span class="word-jp">にほん</span>
+                        <span class="word-romaji">nihon</span>
+                    </div>
+                    <span class="word-meaning">日本</span>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakWord('にほん', 'nihon')">播放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 讀音練習 -->
+        <div class="section">
+            <h2 class="section-title">十、讀音練習</h2>
+            <div class="intro-text">
+                <p>看到羅馬拼音，試著寫出對應的假名，然後點擊查看答案。</p>
+            </div>
+
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <div class="practice-question">ha</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">は</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">ma</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ま</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">yo</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">よ</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">ra</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ら</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">n</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ん</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">ga</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">が</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">ji</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">じ</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">ba</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ば</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">pa</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ぱ</div>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-question">fu</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ふ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">十一、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你對平假名的掌握程度。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="ん">
+                    <div class="quiz-question-text">1. 哪個假名可以單獨出現在字尾？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わ')">わ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ん')">ん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'を')">を</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'や')">や</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ば">
+                    <div class="quiz-question-text">2. 「は」加上濁點變成？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ぱ')">ぱ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ば')">ば</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ま')">ま</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わ')">わ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ぱ">
+                    <div class="quiz-question-text">3. 「は」加上半濁點變成？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ば')">ば</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ぱ')">ぱ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ま')">ま</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ぴ')">ぴ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ほん">
+                    <div class="quiz-question-text">4. 「書」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ほん')">ほん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ぼん')">ぼん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ぽん')">ぽん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'もん')">もん</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="を">
+                    <div class="quiz-question-text">5. 哪個假名只用作助詞？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わ')">わ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'を')">を</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'は')">は</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ん')">ん</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="にほん">
+                    <div class="quiz-question-text">6. 「日本」的日文平假名是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'にほん')">にほん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'にぽん')">にぽん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ねほん')">ねほん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'にもん')">にもん</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text) {
+            if (!selectedVoice) return;
+            
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = selectedVoice;
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakKana(kana, romaji) {
+            speak(kana);
+        }
+
+        function speakWord(word, romaji) {
+            speak(word);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day2 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 2 課程！\n\n你已經掌握了完整的平假名 46 個基本音 + 25 個濁音・半濁音！\n明天我們將開始學習片假名。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

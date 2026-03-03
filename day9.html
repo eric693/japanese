@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9 - 購物與價格詢問 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .item-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .item-card:hover {
+            border-color: #C1282D;
+        }
+
+        .item-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .item-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .item-meaning {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .color-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .color-card:hover {
+            border-color: #C1282D;
+        }
+
+        .color-sample {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            border: 1px solid #D4C5A9;
+        }
+
+        .color-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .color-meaning {
+            color: #6B6B6B;
+            font-size: 0.85em;
+        }
+
+        .phrase-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .phrase-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .phrase-item {
+            padding: 15px;
+            margin: 12px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .phrase-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #2C2C2C;
+            margin-bottom: 8px;
+        }
+
+        .phrase-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-meaning {
+            color: #6B6B6B;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .phrase-note {
+            color: #6B6B6B;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .dialogue-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .dialogue-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .dialogue-line {
+            padding: 12px;
+            margin: 10px 0;
+            background: #F5F1E8;
+            border-left: 3px solid #C1282D;
+        }
+
+        .dialogue-speaker {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .dialogue-text {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .dialogue-translation {
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .price-display {
+            background: #F5F1E8;
+            border: 2px solid #D4C5A9;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .price-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2.5em;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .price-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.8em;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .price-meaning {
+            color: #6B6B6B;
+            font-size: 1.1em;
+        }
+
+        .practice-section {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-item {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .practice-question {
+            color: #6B6B6B;
+            margin-bottom: 10px;
+        }
+
+        .practice-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.4em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .item-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day8.html">← Day 8</a>
+                <a href="index.html">課程列表</a>
+                <a href="day10.html">Day 10 →</a>
+            </div>
+            <div class="day-number">DAY 09</div>
+            <h1>購物與價格詢問</h1>
+            <p class="lesson-desc">學習購物用語、價格詢問、顏色尺寸、支付方式</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習在日本購物時會用到的各種表達方式。</p>
+                <p>從詢問價格、選擇顏色尺寸，到最後結帳，這些用語在便利商店、百貨公司、藥妝店都能派上用場！</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 常見商品的日文名稱</p>
+                <p>2. 詢問價格的方式</p>
+                <p>3. 顏色與尺寸的表達</p>
+                <p>4. 購物時的實用句型</p>
+                <p>5. 支付方式的說法</p>
+            </div>
+        </div>
+
+        <!-- 常見商品 -->
+        <div class="section">
+            <h2 class="section-title">二、常見商品</h2>
+            
+            <div class="item-grid">
+                <div class="item-card" onclick="speakItem('ふく')">
+                    <div class="item-jp">ふく</div>
+                    <div class="item-romaji">fuku</div>
+                    <div class="item-meaning">衣服</div>
+                </div>
+                <div class="item-card" onclick="speakItem('くつ')">
+                    <div class="item-jp">くつ</div>
+                    <div class="item-romaji">kutsu</div>
+                    <div class="item-meaning">鞋子</div>
+                </div>
+                <div class="item-card" onclick="speakItem('かばん')">
+                    <div class="item-jp">かばん</div>
+                    <div class="item-romaji">kaban</div>
+                    <div class="item-meaning">包包</div>
+                </div>
+                <div class="item-card" onclick="speakItem('ぼうし')">
+                    <div class="item-jp">ぼうし</div>
+                    <div class="item-romaji">boushi</div>
+                    <div class="item-meaning">帽子</div>
+                </div>
+                <div class="item-card" onclick="speakItem('めがね')">
+                    <div class="item-jp">めがね</div>
+                    <div class="item-romaji">megane</div>
+                    <div class="item-meaning">眼鏡</div>
+                </div>
+                <div class="item-card" onclick="speakItem('とけい')">
+                    <div class="item-jp">とけい</div>
+                    <div class="item-romaji">tokei</div>
+                    <div class="item-meaning">手錶</div>
+                </div>
+                <div class="item-card" onclick="speakItem('ほん')">
+                    <div class="item-jp">ほん</div>
+                    <div class="item-romaji">hon</div>
+                    <div class="item-meaning">書</div>
+                </div>
+                <div class="item-card" onclick="speakItem('ノート')">
+                    <div class="item-jp">ノート</div>
+                    <div class="item-romaji">nooto</div>
+                    <div class="item-meaning">筆記本</div>
+                </div>
+                <div class="item-card" onclick="speakItem('ペン')">
+                    <div class="item-jp">ペン</div>
+                    <div class="item-romaji">pen</div>
+                    <div class="item-meaning">筆</div>
+                </div>
+                <div class="item-card" onclick="speakItem('カメラ')">
+                    <div class="item-jp">カメラ</div>
+                    <div class="item-romaji">kamera</div>
+                    <div class="item-meaning">相機</div>
+                </div>
+                <div class="item-card" onclick="speakItem('おみやげ')">
+                    <div class="item-jp">おみやげ</div>
+                    <div class="item-romaji">omiyage</div>
+                    <div class="item-meaning">伴手禮</div>
+                </div>
+                <div class="item-card" onclick="speakItem('くすり')">
+                    <div class="item-jp">くすり</div>
+                    <div class="item-romaji">kusuri</div>
+                    <div class="item-meaning">藥</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 顏色 -->
+        <div class="section">
+            <h2 class="section-title">三、顏色</h2>
+            
+            <div class="color-grid">
+                <div class="color-card" onclick="speakItem('あか')">
+                    <div class="color-sample" style="background: #C1282D;"></div>
+                    <div class="color-jp">あか</div>
+                    <div class="color-meaning">紅色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('あお')">
+                    <div class="color-sample" style="background: #2C5AA0;"></div>
+                    <div class="color-jp">あお</div>
+                    <div class="color-meaning">藍色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('きいろ')">
+                    <div class="color-sample" style="background: #F4C430;"></div>
+                    <div class="color-jp">きいろ</div>
+                    <div class="color-meaning">黃色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('みどり')">
+                    <div class="color-sample" style="background: #2D5E2E;"></div>
+                    <div class="color-jp">みどり</div>
+                    <div class="color-meaning">綠色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('しろ')">
+                    <div class="color-sample" style="background: #FFFFFF;"></div>
+                    <div class="color-jp">しろ</div>
+                    <div class="color-meaning">白色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('くろ')">
+                    <div class="color-sample" style="background: #2C2C2C;"></div>
+                    <div class="color-jp">くろ</div>
+                    <div class="color-meaning">黑色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('ちゃいろ')">
+                    <div class="color-sample" style="background: #8B4513;"></div>
+                    <div class="color-jp">ちゃいろ</div>
+                    <div class="color-meaning">咖啡色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('ピンク')">
+                    <div class="color-sample" style="background: #FFC0CB;"></div>
+                    <div class="color-jp">ピンク</div>
+                    <div class="color-meaning">粉紅色</div>
+                </div>
+                <div class="color-card" onclick="speakItem('グレー')">
+                    <div class="color-sample" style="background: #808080;"></div>
+                    <div class="color-jp">グレー</div>
+                    <div class="color-meaning">灰色</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">顏色的用法</div>
+                <p>形容詞形式：在顏色後加「い」</p>
+                <p>例：あかい服（紅色的衣服）、しろいくつ（白色的鞋子）</p>
+            </div>
+        </div>
+
+        <!-- 尺寸 -->
+        <div class="section">
+            <h2 class="section-title">四、尺寸</h2>
+            
+            <div class="item-grid">
+                <div class="item-card" onclick="speakItem('エス')">
+                    <div class="item-jp">エス (S)</div>
+                    <div class="item-romaji">esu</div>
+                    <div class="item-meaning">小號</div>
+                </div>
+                <div class="item-card" onclick="speakItem('エム')">
+                    <div class="item-jp">エム (M)</div>
+                    <div class="item-romaji">emu</div>
+                    <div class="item-meaning">中號</div>
+                </div>
+                <div class="item-card" onclick="speakItem('エル')">
+                    <div class="item-jp">エル (L)</div>
+                    <div class="item-romaji">eru</div>
+                    <div class="item-meaning">大號</div>
+                </div>
+                <div class="item-card" onclick="speakItem('おおきい')">
+                    <div class="item-jp">おおきい</div>
+                    <div class="item-romaji">ookii</div>
+                    <div class="item-meaning">大的</div>
+                </div>
+                <div class="item-card" onclick="speakItem('ちいさい')">
+                    <div class="item-jp">ちいさい</div>
+                    <div class="item-romaji">chiisai</div>
+                    <div class="item-meaning">小的</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 價格詢問 -->
+        <div class="section">
+            <h2 class="section-title">五、價格詢問</h2>
+            
+            <div class="phrase-box">
+                <div class="phrase-title">詢問價格</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">いくらですか</div>
+                    <div class="phrase-romaji">Ikura desu ka</div>
+                    <div class="phrase-meaning">多少錢？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('いくらですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">これはいくらですか</div>
+                    <div class="phrase-romaji">Kore wa ikura desu ka</div>
+                    <div class="phrase-meaning">這個多少錢？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('これはいくらですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ぜんぶでいくらですか</div>
+                    <div class="phrase-romaji">Zenbu de ikura desu ka</div>
+                    <div class="phrase-meaning">總共多少錢？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ぜんぶでいくらですか')">播放</button>
+                </div>
+            </div>
+
+            <div class="price-display">
+                <div class="price-jp">せんえんです</div>
+                <div class="price-number">¥1000</div>
+                <div class="price-meaning">一千日圓</div>
+                <button class="audio-btn" onclick="speakPhrase('せんえんです')">播放發音</button>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">日圓的說法</div>
+                <p>日圓的單位是「円（えん）」</p>
+                <p>100円 = ひゃくえん</p>
+                <p>500円 = ごひゃくえん</p>
+                <p>1000円 = せんえん</p>
+                <p>10000円 = いちまんえん</p>
+            </div>
+        </div>
+
+        <!-- 購物用語 -->
+        <div class="section">
+            <h2 class="section-title">六、購物實用句型</h2>
+            
+            <div class="phrase-box">
+                <div class="phrase-title">詢問與選擇</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">これをみせてください</div>
+                    <div class="phrase-romaji">Kore wo misete kudasai</div>
+                    <div class="phrase-meaning">請給我看這個</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('これをみせてください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ためしてもいいですか</div>
+                    <div class="phrase-romaji">Tameshite mo ii desu ka</div>
+                    <div class="phrase-meaning">可以試穿/試用嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ためしてもいいですか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ほかのいろはありますか</div>
+                    <div class="phrase-romaji">Hoka no iro wa arimasu ka</div>
+                    <div class="phrase-meaning">有其他顏色嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ほかのいろはありますか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">もっとおおきいのはありますか</div>
+                    <div class="phrase-romaji">Motto ookii no wa arimasu ka</div>
+                    <div class="phrase-meaning">有更大的嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('もっとおおきいのはありますか')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">もっとやすいのはありますか</div>
+                    <div class="phrase-romaji">Motto yasui no wa arimasu ka</div>
+                    <div class="phrase-meaning">有更便宜的嗎？</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('もっとやすいのはありますか')">播放</button>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">購買決定</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">これをください</div>
+                    <div class="phrase-romaji">Kore wo kudasai</div>
+                    <div class="phrase-meaning">請給我這個</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('これをください')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">これにします</div>
+                    <div class="phrase-romaji">Kore ni shimasu</div>
+                    <div class="phrase-meaning">我要這個</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('これにします')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">やめておきます</div>
+                    <div class="phrase-romaji">Yamete okimasu</div>
+                    <div class="phrase-meaning">我不買了</div>
+                    <div class="phrase-note">禮貌地表示不購買</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('やめておきます')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">かんがえます</div>
+                    <div class="phrase-romaji">Kangaemasu</div>
+                    <div class="phrase-meaning">我再考慮一下</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('かんがえます')">播放</button>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">支付方式</div>
+                
+                <div class="phrase-item">
+                    <div class="phrase-jp">カードでおねがいします</div>
+                    <div class="phrase-romaji">Kaado de onegaishimasu</div>
+                    <div class="phrase-meaning">請用信用卡付款</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('カードでおねがいします')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">げんきんでおねがいします</div>
+                    <div class="phrase-romaji">Genkin de onegaishimasu</div>
+                    <div class="phrase-meaning">請用現金付款</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('げんきんでおねがいします')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">ふくろはいりません</div>
+                    <div class="phrase-romaji">Fukuro wa irimasen</div>
+                    <div class="phrase-meaning">不用袋子</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('ふくろはいりません')">播放</button>
+                </div>
+
+                <div class="phrase-item">
+                    <div class="phrase-jp">レシートをください</div>
+                    <div class="phrase-romaji">Reshiito wo kudasai</div>
+                    <div class="phrase-meaning">請給我收據</div>
+                    <button class="audio-btn" onclick="event.stopPropagation(); speakPhrase('レシートをください')">播放</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 對話練習 -->
+        <div class="section">
+            <h2 class="section-title">七、購物對話練習</h2>
+            
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：在服飾店購物</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">すみません、このシャツはいくらですか。</div>
+                    <div class="dialogue-translation">不好意思，這件襯衫多少錢？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">さんぜんえんです。</div>
+                    <div class="dialogue-translation">三千日圓。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">ほかのいろはありますか。</div>
+                    <div class="dialogue-translation">有其他顏色嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">はい、しろとあおがあります。</div>
+                    <div class="dialogue-translation">有，有白色和藍色。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">じゃ、あおいのをください。</div>
+                    <div class="dialogue-translation">那請給我藍色的。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境：便利商店結帳</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">ぜんぶでごひゃくえんです。</div>
+                    <div class="dialogue-translation">總共五百日圓。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">カードでおねがいします。</div>
+                    <div class="dialogue-translation">請用信用卡付款。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">ふくろはいりますか。</div>
+                    <div class="dialogue-translation">需要袋子嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">いいえ、いりません。</div>
+                    <div class="dialogue-translation">不，不用了。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+        </div>
+
+        <!-- 練習 -->
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+
+                <div class="practice-item">
+                    <div class="practice-question">1. 想問「這個多少錢？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">これはいくらですか</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">2. 想說「請給我這個」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">これをください</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">3. 想問「有其他顏色嗎？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ほかのいろはありますか</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">4. 想用信用卡付款</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">カードでおねがいします</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">5. 不需要袋子</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ふくろはいりません</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你的學習成果。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="いくらですか">
+                    <div class="quiz-question-text">1. 想問「多少錢？」應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'なんですか')">なんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いくらですか')">いくらですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どれですか')">どれですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いつですか')">いつですか</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="あか">
+                    <div class="quiz-question-text">2. 「紅色」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あお')">あお</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'あか')">あか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きいろ')">きいろ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しろ')">しろ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="これをください">
+                    <div class="quiz-question-text">3. 想買某個東西時說「請給我這個」，日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これですか')">これですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これをください')">これをください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これはなんですか')">これはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'これがいいです')">これがいいです</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ほかのいろはありますか">
+                    <div class="quiz-question-text">4. 想問「有其他顏色嗎？」應該說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いろはなんですか')">いろはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ほかのいろはありますか')">ほかのいろはありますか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どのいろですか')">どのいろですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いろがすきですか')">いろがすきですか</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="カードでおねがいします">
+                    <div class="quiz-question-text">5. 想用信用卡付款時說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'げんきんです')">げんきんです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'カードでおねがいします')">カードでおねがいします</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おかねをください')">おかねをください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'はらいます')">はらいます</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="ふくろはいりません">
+                    <div class="quiz-question-text">6. 不需要袋子時說？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ふくろをください')">ふくろをください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ふくろはありません')">ふくろはありません</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ふくろはいりません')">ふくろはいりません</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ふくろがすきです')">ふくろがすきです</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text, delay = 0) {
+            setTimeout(() => {
+                if (!selectedVoice) return;
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.voice = selectedVoice;
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.85;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }, delay);
+        }
+
+        function speakItem(item) {
+            speechSynthesis.cancel();
+            speak(item);
+        }
+
+        function speakPhrase(phrase) {
+            speechSynthesis.cancel();
+            speak(phrase);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            speak('すみません、このシャツはいくらですか', 0);
+            speak('さんぜんえんです', 4000);
+            speak('ほかのいろはありますか', 6500);
+            speak('はい、しろとあおがあります', 9000);
+            speak('じゃ、あおいのをください', 12000);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            speak('ぜんぶでごひゃくえんです', 0);
+            speak('カードでおねがいします', 3500);
+            speak('ふくろはいりますか', 6000);
+            speak('いいえ、いりません', 8500);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day9 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 9 課程！\n\n你已經學會了購物時的實用用語！\n現在可以在日本輕鬆購物了。\n明天我們將學習交通與問路。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>

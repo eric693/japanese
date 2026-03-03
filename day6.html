@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - 數字、時間與日期 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: #F5F1E8;
+            color: #2C2C2C;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #FEFDFB;
+            padding: 30px;
+            border: 1px solid #E5DCC9;
+            margin-bottom: 30px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E5DCC9;
+        }
+
+        .nav-bar a {
+            color: #2C2C2C;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            border: 1px solid #2C2C2C;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .day-number {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .lesson-desc {
+            color: #6B6B6B;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #FEFDFB;
+            border: 1px solid #E5DCC9;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C1282D;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: #C1282D;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .number-card {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .number-card:hover {
+            border-color: #C1282D;
+        }
+
+        .number-arabic {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 2em;
+            color: #C1282D;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .number-japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .number-romaji {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #6B6B6B;
+            font-size: 0.9em;
+        }
+
+        .time-display {
+            background: #F5F1E8;
+            border: 2px solid #D4C5A9;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .time-japanese {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 2.5em;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .time-meaning {
+            color: #6B6B6B;
+            font-size: 1.1em;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            border: 1px solid #E5DCC9;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .info-table th {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            font-weight: 600;
+        }
+
+        .info-table td {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .info-table td:hover {
+            background: #F5F1E8;
+        }
+
+        .japanese-col {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+        }
+
+        .romaji-col {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #C1282D;
+        }
+
+        .practice-box {
+            background: #F5F1E8;
+            border: 1px solid #D4C5A9;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .practice-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .practice-item {
+            background: #FEFDFB;
+            border: 1px solid #D4C5A9;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .practice-question {
+            color: #6B6B6B;
+            margin-bottom: 10px;
+        }
+
+        .practice-answer {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.5em;
+            color: #6B6B6B;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .practice-answer:hover {
+            border-color: #C1282D;
+            color: #C1282D;
+        }
+
+        .practice-answer.revealed {
+            color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .tip-box {
+            background: #F5F1E8;
+            border-left: 4px solid #C1282D;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #C1282D;
+            margin-bottom: 10px;
+        }
+
+        .example-box {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+        }
+
+        .example-line {
+            padding: 10px;
+            margin: 8px 0;
+            background: #F5F1E8;
+        }
+
+        .example-jp {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.3em;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .example-meaning {
+            color: #6B6B6B;
+            font-size: 0.95em;
+        }
+
+        .audio-btn {
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            background: #2C2C2C;
+            color: #FEFDFB;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #FEFDFB;
+            border: 2px solid #E5DCC9;
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background: #F5F1E8;
+        }
+
+        .quiz-option.correct {
+            background: #2C2C2C;
+            color: #FEFDFB;
+            border-color: #2C2C2C;
+        }
+
+        .quiz-option.wrong {
+            background: #C1282D;
+            color: #FEFDFB;
+            border-color: #C1282D;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 18px;
+            background: #C1282D;
+            color: #FEFDFB;
+            border: none;
+            font-size: 1.1em;
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.2s;
+        }
+
+        .complete-btn:hover {
+            background: #2C2C2C;
+        }
+
+        .complete-btn:disabled {
+            background: #D4C5A9;
+            cursor: not-allowed;
+        }
+
+        .voice-selector {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .voice-selector label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .voice-selector select {
+            padding: 8px 12px;
+            border: 1px solid #2C2C2C;
+            background: #FEFDFB;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .number-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .info-table {
+                font-size: 0.9em;
+            }
+
+            .info-table th,
+            .info-table td {
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day5.html">← Day 5</a>
+                <a href="index.html">課程列表</a>
+                <a href="day7.html">Day 7 →</a>
+            </div>
+            <div class="day-number">DAY 06</div>
+            <h1>數字、時間與日期</h1>
+            <p class="lesson-desc">學習數字、時間、日期、星期的表達方式</p>
+        </header>
+
+        <div class="voice-selector">
+            <label>選擇語音：</label>
+            <select id="voiceSelect">
+                <option value="">載入中...</option>
+            </select>
+        </div>
+
+        <!-- 課程說明 -->
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習數字、時間和日期的表達方式。這些是日常生活中非常實用的內容，無論是購物、預約、安排行程都會用到。</p>
+                <p>日文的數字系統有 <strong>和語</strong>（日本固有）和 <strong>漢語</strong>（從中文傳入）兩種讀法，不同場合使用不同的讀法。</p>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 基本數字 0-10 和大數字（百、千、萬）的讀法</p>
+                <p>2. 時間的表達方式（幾點幾分）</p>
+                <p>3. 日期的說法（年月日）</p>
+                <p>4. 星期的表達方式</p>
+            </div>
+        </div>
+
+        <!-- 基本數字 0-10 -->
+        <div class="section">
+            <h2 class="section-title">二、基本數字 0-10</h2>
+            <div class="intro-text">
+                <p>這是最基礎的數字讀法，務必熟記。</p>
+            </div>
+
+            <div class="number-grid">
+                <div class="number-card" onclick="speakNumber('零', 'rei')">
+                    <div class="number-arabic">0</div>
+                    <div class="number-japanese">零 / ゼロ</div>
+                    <div class="number-romaji">rei / zero</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('いち', 'ichi')">
+                    <div class="number-arabic">1</div>
+                    <div class="number-japanese">いち</div>
+                    <div class="number-romaji">ichi</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('に', 'ni')">
+                    <div class="number-arabic">2</div>
+                    <div class="number-japanese">に</div>
+                    <div class="number-romaji">ni</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('さん', 'san')">
+                    <div class="number-arabic">3</div>
+                    <div class="number-japanese">さん</div>
+                    <div class="number-romaji">san</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('よん', 'yon')">
+                    <div class="number-arabic">4</div>
+                    <div class="number-japanese">よん / し</div>
+                    <div class="number-romaji">yon / shi</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('ご', 'go')">
+                    <div class="number-arabic">5</div>
+                    <div class="number-japanese">ご</div>
+                    <div class="number-romaji">go</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('ろく', 'roku')">
+                    <div class="number-arabic">6</div>
+                    <div class="number-japanese">ろく</div>
+                    <div class="number-romaji">roku</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('なな', 'nana')">
+                    <div class="number-arabic">7</div>
+                    <div class="number-japanese">なな / しち</div>
+                    <div class="number-romaji">nana / shichi</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('はち', 'hachi')">
+                    <div class="number-arabic">8</div>
+                    <div class="number-japanese">はち</div>
+                    <div class="number-romaji">hachi</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('きゅう', 'kyuu')">
+                    <div class="number-arabic">9</div>
+                    <div class="number-japanese">きゅう / く</div>
+                    <div class="number-romaji">kyuu / ku</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('じゅう', 'juu')">
+                    <div class="number-arabic">10</div>
+                    <div class="number-japanese">じゅう</div>
+                    <div class="number-romaji">juu</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">數字 4、7、9 的注意事項</div>
+                <p><strong>4</strong> 有「よん (yon)」和「し (shi)」兩種讀法，一般用「よん」，因為「し」與「死」同音</p>
+                <p><strong>7</strong> 有「なな (nana)」和「しち (shichi)」兩種讀法，一般用「なな」避免與「いち」混淆</p>
+                <p><strong>9</strong> 有「きゅう (kyuu)」和「く (ku)」兩種讀法，一般用「きゅう」，因為「く」與「苦」同音</p>
+            </div>
+        </div>
+
+        <!-- 11-99 -->
+        <div class="section">
+            <h2 class="section-title">三、11-99 的數字</h2>
+            <div class="intro-text">
+                <p>11 以上的數字組合規則：<strong>十位數 + じゅう + 個位數</strong></p>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">組合範例</div>
+                <div class="example-line">
+                    <div class="example-jp">11 = じゅういち (10 + 1)</div>
+                    <div class="example-meaning">juu-ichi</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">25 = にじゅうご (2×10 + 5)</div>
+                    <div class="example-meaning">ni-juu-go</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">38 = さんじゅうはち (3×10 + 8)</div>
+                    <div class="example-meaning">san-juu-hachi</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">47 = よんじゅうなな (4×10 + 7)</div>
+                    <div class="example-meaning">yon-juu-nana</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">99 = きゅうじゅうきゅう (9×10 + 9)</div>
+                    <div class="example-meaning">kyuu-juu-kyuu</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大數字 -->
+        <div class="section">
+            <h2 class="section-title">四、大數字（百、千、萬）</h2>
+            <div class="number-grid">
+                <div class="number-card" onclick="speakNumber('ひゃく', 'hyaku')">
+                    <div class="number-arabic">100</div>
+                    <div class="number-japanese">ひゃく</div>
+                    <div class="number-romaji">hyaku</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('せん', 'sen')">
+                    <div class="number-arabic">1000</div>
+                    <div class="number-japanese">せん</div>
+                    <div class="number-romaji">sen</div>
+                </div>
+                <div class="number-card" onclick="speakNumber('まん', 'man')">
+                    <div class="number-arabic">10000</div>
+                    <div class="number-japanese">まん</div>
+                    <div class="number-romaji">man</div>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">大數字範例</div>
+                <div class="example-line">
+                    <div class="example-jp">350 = さんびゃくごじゅう</div>
+                    <div class="example-meaning">san-byaku-go-juu</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">2500 = にせんごひゃく</div>
+                    <div class="example-meaning">ni-sen-go-hyaku</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">10000 = いちまん</div>
+                    <div class="example-meaning">ichi-man</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">發音變化注意</div>
+                <p>300 = <strong>さんびゃく</strong> (不是 さんひゃく)</p>
+                <p>600 = <strong>ろっぴゃく</strong> (不是 ろくひゃく)</p>
+                <p>800 = <strong>はっぴゃく</strong> (不是 はちひゃく)</p>
+            </div>
+        </div>
+
+        <!-- 時間 -->
+        <div class="section">
+            <h2 class="section-title">五、時間表達</h2>
+            <div class="intro-text">
+                <p>時間的表達：<strong>數字 + じ（時）+ 數字 + ふん（分）</strong></p>
+            </div>
+
+            <div class="table-container">
+                <table class="info-table">
+                    <tr>
+                        <th>時刻</th>
+                        <th>日文</th>
+                        <th>羅馬拼音</th>
+                    </tr>
+                    <tr onclick="speakPhrase('いちじ')">
+                        <td>1點</td>
+                        <td class="japanese-col">いちじ</td>
+                        <td class="romaji-col">ichi-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('にじ')">
+                        <td>2點</td>
+                        <td class="japanese-col">にじ</td>
+                        <td class="romaji-col">ni-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('さんじ')">
+                        <td>3點</td>
+                        <td class="japanese-col">さんじ</td>
+                        <td class="romaji-col">san-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('よじ')">
+                        <td>4點</td>
+                        <td class="japanese-col">よじ</td>
+                        <td class="romaji-col">yo-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('ごじ')">
+                        <td>5點</td>
+                        <td class="japanese-col">ごじ</td>
+                        <td class="romaji-col">go-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('ろくじ')">
+                        <td>6點</td>
+                        <td class="japanese-col">ろくじ</td>
+                        <td class="romaji-col">roku-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('しちじ')">
+                        <td>7點</td>
+                        <td class="japanese-col">しちじ</td>
+                        <td class="romaji-col">shichi-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('はちじ')">
+                        <td>8點</td>
+                        <td class="japanese-col">はちじ</td>
+                        <td class="romaji-col">hachi-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('くじ')">
+                        <td>9點</td>
+                        <td class="japanese-col">くじ</td>
+                        <td class="romaji-col">ku-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('じゅうじ')">
+                        <td>10點</td>
+                        <td class="japanese-col">じゅうじ</td>
+                        <td class="romaji-col">juu-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('じゅういちじ')">
+                        <td>11點</td>
+                        <td class="japanese-col">じゅういちじ</td>
+                        <td class="romaji-col">juu-ichi-ji</td>
+                    </tr>
+                    <tr onclick="speakPhrase('じゅうにじ')">
+                        <td>12點</td>
+                        <td class="japanese-col">じゅうにじ</td>
+                        <td class="romaji-col">juu-ni-ji</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="time-display">
+                <div class="time-japanese">さんじはん</div>
+                <div class="time-meaning">3點半（3:30）</div>
+                <button class="audio-btn" onclick="speakPhrase('さんじはん')">播放發音</button>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">時間範例</div>
+                <div class="example-line">
+                    <div class="example-jp">7:15 = しちじじゅうごふん</div>
+                    <div class="example-meaning">shichi-ji juu-go-fun (7點15分)</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">9:30 = くじはん</div>
+                    <div class="example-meaning">ku-ji han (9點半)</div>
+                </div>
+                <div class="example-line">
+                    <div class="example-jp">11:45 = じゅういちじよんじゅうごふん</div>
+                    <div class="example-meaning">juu-ichi-ji yon-juu-go-fun (11點45分)</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">時間重點</div>
+                <p>「はん」= 半（30分）</p>
+                <p>「ごぜん」= 上午 (AM)，例：ごぜん10じ = 上午10點</p>
+                <p>「ごご」= 下午 (PM)，例：ごご3じ = 下午3點</p>
+            </div>
+        </div>
+
+        <!-- 星期 -->
+        <div class="section">
+            <h2 class="section-title">六、星期</h2>
+            <div class="table-container">
+                <table class="info-table">
+                    <tr>
+                        <th>中文</th>
+                        <th>日文</th>
+                        <th>羅馬拼音</th>
+                    </tr>
+                    <tr onclick="speakPhrase('げつようび')">
+                        <td>星期一</td>
+                        <td class="japanese-col">げつようび</td>
+                        <td class="romaji-col">getsuyoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('かようび')">
+                        <td>星期二</td>
+                        <td class="japanese-col">かようび</td>
+                        <td class="romaji-col">kayoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('すいようび')">
+                        <td>星期三</td>
+                        <td class="japanese-col">すいようび</td>
+                        <td class="romaji-col">suiyoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('もくようび')">
+                        <td>星期四</td>
+                        <td class="japanese-col">もくようび</td>
+                        <td class="romaji-col">mokuyoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('きんようび')">
+                        <td>星期五</td>
+                        <td class="japanese-col">きんようび</td>
+                        <td class="romaji-col">kinyoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('どようび')">
+                        <td>星期六</td>
+                        <td class="japanese-col">どようび</td>
+                        <td class="romaji-col">doyoubi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('にちようび')">
+                        <td>星期日</td>
+                        <td class="japanese-col">にちようび</td>
+                        <td class="romaji-col">nichiyoubi</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">星期記憶法</div>
+                <p>星期的日文來自五行：</p>
+                <p>月曜日（月）、火曜日（火）、水曜日（水）、木曜日（木）、金曜日（金）、土曜日（土）、日曜日（日）</p>
+            </div>
+        </div>
+
+        <!-- 日期 -->
+        <div class="section">
+            <h2 class="section-title">七、日期（1-31號）</h2>
+            <div class="intro-text">
+                <p>日期的讀法較為特殊，1-10號有特別的讀法。</p>
+            </div>
+
+            <div class="table-container">
+                <table class="info-table">
+                    <tr>
+                        <th>日期</th>
+                        <th>日文</th>
+                        <th>羅馬拼音</th>
+                    </tr>
+                    <tr onclick="speakPhrase('ついたち')">
+                        <td>1號</td>
+                        <td class="japanese-col">ついたち</td>
+                        <td class="romaji-col">tsuitachi</td>
+                    </tr>
+                    <tr onclick="speakPhrase('ふつか')">
+                        <td>2號</td>
+                        <td class="japanese-col">ふつか</td>
+                        <td class="romaji-col">futsuka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('みっか')">
+                        <td>3號</td>
+                        <td class="japanese-col">みっか</td>
+                        <td class="romaji-col">mikka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('よっか')">
+                        <td>4號</td>
+                        <td class="japanese-col">よっか</td>
+                        <td class="romaji-col">yokka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('いつか')">
+                        <td>5號</td>
+                        <td class="japanese-col">いつか</td>
+                        <td class="romaji-col">itsuka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('むいか')">
+                        <td>6號</td>
+                        <td class="japanese-col">むいか</td>
+                        <td class="romaji-col">muika</td>
+                    </tr>
+                    <tr onclick="speakPhrase('なのか')">
+                        <td>7號</td>
+                        <td class="japanese-col">なのか</td>
+                        <td class="romaji-col">nanoka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('ようか')">
+                        <td>8號</td>
+                        <td class="japanese-col">ようか</td>
+                        <td class="romaji-col">youka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('ここのか')">
+                        <td>9號</td>
+                        <td class="japanese-col">ここのか</td>
+                        <td class="romaji-col">kokonoka</td>
+                    </tr>
+                    <tr onclick="speakPhrase('とおか')">
+                        <td>10號</td>
+                        <td class="japanese-col">とおか</td>
+                        <td class="romaji-col">tooka</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">11號以後</div>
+                <p>11號以後大多使用：數字 + にち</p>
+                <p>例：11號 = じゅういちにち、20號 = にじゅうにち</p>
+                <p>特殊：14號 = じゅうよっか、20號 = はつか、24號 = にじゅうよっか</p>
+            </div>
+        </div>
+
+        <!-- 月份 -->
+        <div class="section">
+            <h2 class="section-title">八、月份</h2>
+            <div class="intro-text">
+                <p>月份很簡單：<strong>數字 + がつ</strong></p>
+            </div>
+
+            <div class="number-grid">
+                <div class="number-card" onclick="speakPhrase('いちがつ')">
+                    <div class="number-arabic">1月</div>
+                    <div class="number-japanese">いちがつ</div>
+                    <div class="number-romaji">ichigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('にがつ')">
+                    <div class="number-arabic">2月</div>
+                    <div class="number-japanese">にがつ</div>
+                    <div class="number-romaji">nigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('さんがつ')">
+                    <div class="number-arabic">3月</div>
+                    <div class="number-japanese">さんがつ</div>
+                    <div class="number-romaji">sangatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('しがつ')">
+                    <div class="number-arabic">4月</div>
+                    <div class="number-japanese">しがつ</div>
+                    <div class="number-romaji">shigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('ごがつ')">
+                    <div class="number-arabic">5月</div>
+                    <div class="number-japanese">ごがつ</div>
+                    <div class="number-romaji">gogatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('ろくがつ')">
+                    <div class="number-arabic">6月</div>
+                    <div class="number-japanese">ろくがつ</div>
+                    <div class="number-romaji">rokugatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('しちがつ')">
+                    <div class="number-arabic">7月</div>
+                    <div class="number-japanese">しちがつ</div>
+                    <div class="number-romaji">shichigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('はちがつ')">
+                    <div class="number-arabic">8月</div>
+                    <div class="number-japanese">はちがつ</div>
+                    <div class="number-romaji">hachigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('くがつ')">
+                    <div class="number-arabic">9月</div>
+                    <div class="number-japanese">くがつ</div>
+                    <div class="number-romaji">kugatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('じゅうがつ')">
+                    <div class="number-arabic">10月</div>
+                    <div class="number-japanese">じゅうがつ</div>
+                    <div class="number-romaji">juugatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('じゅういちがつ')">
+                    <div class="number-arabic">11月</div>
+                    <div class="number-japanese">じゅういちがつ</div>
+                    <div class="number-romaji">juuichigatsu</div>
+                </div>
+                <div class="number-card" onclick="speakPhrase('じゅうにがつ')">
+                    <div class="number-arabic">12月</div>
+                    <div class="number-japanese">じゅうにがつ</div>
+                    <div class="number-romaji">juunigatsu</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 練習 -->
+        <div class="section">
+            <h2 class="section-title">九、綜合練習</h2>
+            <div class="practice-box">
+                <div class="practice-title">試著用日文說出以下時間或日期</div>
+
+                <div class="practice-item">
+                    <div class="practice-question">1. 今天是星期三</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">きょうはすいようびです</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">2. 現在是下午3點半</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いまはごごさんじはんです</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">3. 我的生日是5月10號</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">わたしのたんじょうびはごがつとおかです</div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-question">4. 早上7點見面</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ごぜんしちじにあいます</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗 -->
+        <div class="section">
+            <h2 class="section-title">十、學習測驗</h2>
+            <div class="intro-text">
+                <p>完成以下 6 題測驗，檢驗你對數字、時間、日期的掌握程度。</p>
+            </div>
+
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="ごじはん">
+                    <div class="quiz-question-text">1. 「5點半」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごじはん')">ごじはん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごじゅっぷん')">ごじゅっぷん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごじさんじゅっぷん')">ごじさんじゅっぷん</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'はんごじ')">はんごじ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="もくようび">
+                    <div class="quiz-question-text">2. 「星期四」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よっかようび')">よっかようび</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'もくようび')">もくようび</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きようび')">きようび</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しようび')">しようび</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="みっか">
+                    <div class="quiz-question-text">3. 「3號」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さんにち')">さんにち</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'さんか')">さんか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'みっか')">みっか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'みか')">みか</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="にじゅうご">
+                    <div class="quiz-question-text">4. 「25」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'にじゅうご')">にじゅうご</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'にごじゅう')">にごじゅう</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごじゅうに')">ごじゅうに</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'じゅうごに')">じゅうごに</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="しちがつ">
+                    <div class="quiz-question-text">5. 「7月」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ななつがつ')">ななつがつ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しちがつ')">しちがつ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ななかがつ')">ななかがつ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'なながつ')">なながつ</div>
+                    </div>
+                </div>
+
+                <div class="quiz-question" data-answer="じゅうじ">
+                    <div class="quiz-question-text">6. 「10點」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'とおじ')">とおじ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'じゅうじ')">じゅうじ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'じっぷんじ')">じっぷんじ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'とかじ')">とかじ</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>
+                完成本課程
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let japaneseVoices = [];
+        let selectedVoice = null;
+        let correctAnswers = 0;
+        const totalQuestions = 6;
+
+        // 載入語音
+        function loadVoices() {
+            japaneseVoices = speechSynthesis.getVoices().filter(voice => 
+                voice.lang.startsWith('ja')
+            );
+            
+            const voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
+            
+            if (japaneseVoices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">無可用日文語音</option>';
+                return;
+            }
+            
+            japaneseVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const gender = voice.name.toLowerCase().includes('female') || voice.name.includes('女') ? '女' : '男';
+                option.textContent = `${voice.name} (${gender}聲)`;
+                voiceSelect.appendChild(option);
+            });
+            
+            selectedVoice = japaneseVoices[0];
+            voiceSelect.value = 0;
+        }
+
+        document.getElementById('voiceSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '' && japaneseVoices[index]) {
+                selectedVoice = japaneseVoices[index];
+            }
+        });
+
+        // 發音功能
+        function speak(text) {
+            if (!selectedVoice) return;
+            
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = selectedVoice;
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakNumber(japanese, romaji) {
+            speak(japanese);
+        }
+
+        function speakPhrase(phrase) {
+            speak(phrase);
+        }
+
+        // 測驗功能
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            const allOptions = question.querySelectorAll('.quiz-option');
+            
+            if (question.classList.contains('answered')) return;
+            
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                allOptions.forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        // 完成課程
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day6 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            alert('恭喜完成 Day 6 課程！\n\n你已經學會了數字、時間、日期的表達方式！\n這些是日常生活中非常實用的內容。\n明天我們將學習家族稱呼與人物描述。');
+            
+            window.location.href = 'index.html';
+        }
+
+        // 初始化
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        loadVoices();
+    </script>
+</body>
+</html>
