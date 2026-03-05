@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 19 - 意見與建議 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .grammar-box { background: #F5F1E8; border: 2px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .grammar-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .grammar-pattern { background: #FEFDFB; padding: 20px; margin: 15px 0; border-left: 4px solid #C1282D; }
+        .pattern-formula { font-family: 'IBM Plex Mono', monospace; font-size: 1.2em; color: #C1282D; margin-bottom: 10px; font-weight: 600; }
+        .pattern-meaning { color: #2C2C2C; margin-bottom: 15px; font-size: 1.05em; }
+        .pattern-examples { background: #F5F1E8; padding: 15px; margin-top: 10px; }
+        .example-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin: 8px 0; cursor: pointer; padding: 8px; transition: all 0.2s; }
+        .example-jp:hover { background: #E5DCC9; }
+        .example-translation { color: #6B6B6B; font-size: 0.9em; margin-bottom: 12px; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; transition: all 0.2s; }
+        .phrase-item:hover { background: #E5DCC9; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-note { color: #6B6B6B; font-size: 0.85em; font-style: italic; margin-top: 5px; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .comparison-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .comparison-title { font-weight: 600; color: #2C2C2C; margin-bottom: 20px; font-size: 1.2em; text-align: center; }
+        .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .comparison-item { background: #F5F1E8; padding: 20px; border: 1px solid #D4C5A9; }
+        .comparison-label { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.05em; }
+        .comparison-content { font-family: 'Noto Sans JP', sans-serif; color: #2C2C2C; line-height: 1.8; font-size: 1.1em; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .practice-section { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .practice-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.1em; }
+        .practice-item { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; margin: 15px 0; }
+        .practice-question { color: #6B6B6B; margin-bottom: 10px; }
+        .practice-answer { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #6B6B6B; padding: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .practice-answer:hover { border-color: #C1282D; color: #C1282D; }
+        .practice-answer.revealed { color: #2C2C2C; border-color: #2C2C2C; background: #F5F1E8; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day18.html">← Day 18</a>
+                <a href="index.html">課程列表</a>
+                <a href="day20.html">Day 20 →</a>
+            </div>
+            <div class="day-number">DAY 19</div>
+            <h1>意見與建議</h1>
+            <p class="lesson-desc">學習表達意見、提供建議、同意與反對的各種表達方式</p>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習如何用日文表達自己的意見和提供建議。</p>
+                <p>在日本文化中，表達意見時需要注意委婉和禮貌，避免過於直接。掌握這些表達方式能讓你在討論、會議或日常對話中更加得體！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 表達個人意見的句型</p>
+                <p>2. 提供建議的各種說法</p>
+                <p>3. 同意與反對的禮貌表達</p>
+                <p>4. 委婉表達不同意見的方式</p>
+                <p>5. 詢問他人意見的用語</p>
+                <p>6. 商務與日常場合的區別</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、表達意見的句型</h2>
+            <div class="grammar-box">
+                <div class="grammar-title">意見表達文法</div>
+                
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">わたしは〜とおもいます</div>
+                    <div class="pattern-meaning">我認為...（最常用）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('わたしはこれがいいとおもいます')">わたしはこれがいいとおもいます</div>
+                        <div class="example-translation">我認為這個好</div>
+                        <div class="example-jp" onclick="speak('わたしはさんせいだとおもいます')">わたしはさんせいだとおもいます</div>
+                        <div class="example-translation">我認為贊成</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">わたしのいけんでは〜</div>
+                    <div class="pattern-meaning">依我的意見...（較正式）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('わたしのいけんでは、これがさいぜんです')">わたしのいけんでは、これがさいぜんです</div>
+                        <div class="example-translation">依我的意見，這個最好</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜とかんがえています</div>
+                    <div class="pattern-meaning">我想...、我考慮...（深思熟慮）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('このほうほうがこうりつてきだとかんがえています')">このほうほうがこうりつてきだとかんがえています</div>
+                        <div class="example-translation">我認為這個方法比較有效率</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜じゃないかとおもいます</div>
+                    <div class="pattern-meaning">我想大概是...（不確定的推測）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('あしたはあめじゃないかとおもいます')">あしたはあめじゃないかとおもいます</div>
+                        <div class="example-translation">我想明天大概會下雨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、提供建議的句型</h2>
+            <div class="grammar-box">
+                <div class="grammar-title">建議表達文法</div>
+                
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜たほうがいいです</div>
+                    <div class="pattern-meaning">...比較好（直接建議）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('はやくいったほうがいいです')">はやくいったほうがいいです</div>
+                        <div class="example-translation">早點去比較好</div>
+                        <div class="example-jp" onclick="speak('やすんだほうがいいです')">やすんだほうがいいです</div>
+                        <div class="example-translation">休息比較好</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜たほうがいいとおもいます</div>
+                    <div class="pattern-meaning">我認為...比較好（較委婉）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('もういちどかくにんしたほうがいいとおもいます')">もういちどかくにんしたほうがいいとおもいます</div>
+                        <div class="example-translation">我認為再確認一次比較好</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜てはどうですか</div>
+                    <div class="pattern-meaning">...怎麼樣？（建議、提案）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('いっしょにいってはどうですか')">いっしょにいってはどうですか</div>
+                        <div class="example-translation">一起去怎麼樣？</div>
+                        <div class="example-jp" onclick="speak('このほうほうをためしてはどうですか')">このほうほうをためしてはどうですか</div>
+                        <div class="example-translation">試試這個方法怎麼樣？</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">〜たらどうですか</div>
+                    <div class="pattern-meaning">如果...怎麼樣？（較隨意的建議）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('いしゃにいったらどうですか')">いしゃにいったらどうですか</div>
+                        <div class="example-translation">去看醫生怎麼樣？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、同意與反對</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">表達同意</div>
+                <div class="phrase-item" onclick="speak('そのとおりです')">
+                    <div class="phrase-jp">そのとおりです</div>
+                    <div class="phrase-romaji">Sono toori desu</div>
+                    <div class="phrase-meaning">沒錯、正是如此</div>
+                </div>
+                <div class="phrase-item" onclick="speak('さんせいです')">
+                    <div class="phrase-jp">さんせいです</div>
+                    <div class="phrase-romaji">Sansei desu</div>
+                    <div class="phrase-meaning">贊成</div>
+                </div>
+                <div class="phrase-item" onclick="speak('わたしもそうおもいます')">
+                    <div class="phrase-jp">わたしもそうおもいます</div>
+                    <div class="phrase-romaji">Watashi mo sou omoimasu</div>
+                    <div class="phrase-meaning">我也這麼認為</div>
+                </div>
+                <div class="phrase-item" onclick="speak('いいかんがえですね')">
+                    <div class="phrase-jp">いいかんがえですね</div>
+                    <div class="phrase-romaji">Ii kangae desu ne</div>
+                    <div class="phrase-meaning">好主意</div>
+                </div>
+                <div class="phrase-item" onclick="speak('たしかにそうですね')">
+                    <div class="phrase-jp">たしかにそうですね</div>
+                    <div class="phrase-romaji">Tashika ni sou desu ne</div>
+                    <div class="phrase-meaning">的確如此</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">委婉表達不同意</div>
+                <div class="phrase-item" onclick="speak('そうですね、でも')">
+                    <div class="phrase-jp">そうですね、でも...</div>
+                    <div class="phrase-romaji">Sou desu ne, demo...</div>
+                    <div class="phrase-meaning">是這樣沒錯，但是...</div>
+                    <div class="phrase-note">先同意再提出不同看法</div>
+                </div>
+                <div class="phrase-item" onclick="speak('たしかにそうですが')">
+                    <div class="phrase-jp">たしかにそうですが...</div>
+                    <div class="phrase-romaji">Tashika ni sou desu ga...</div>
+                    <div class="phrase-meaning">的確如此，不過...</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ちょっとちがうとおもいます')">
+                    <div class="phrase-jp">ちょっとちがうとおもいます</div>
+                    <div class="phrase-romaji">Chotto chigau to omoimasu</div>
+                    <div class="phrase-meaning">我覺得有點不一樣</div>
+                </div>
+                <div class="phrase-item" onclick="speak('べつのかんがえかたもあるとおもいます')">
+                    <div class="phrase-jp">べつのかんがえかたもあるとおもいます</div>
+                    <div class="phrase-romaji">Betsu no kangaekata mo aru to omoimasu</div>
+                    <div class="phrase-meaning">我認為也有別的想法</div>
+                </div>
+                <div class="phrase-item" onclick="speak('もういちどかんがえてみませんか')">
+                    <div class="phrase-jp">もういちどかんがえてみませんか</div>
+                    <div class="phrase-romaji">Mou ichido kangaete mimasen ka</div>
+                    <div class="phrase-meaning">要不要再考慮一下？</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">日本式委婉表達</div>
+                <p>在日本文化中，直接說「反對」或「不同意」被認為過於直接</p>
+                <p>常用的委婉策略：</p>
+                <p>1. 先表達部分同意，再提出不同看法</p>
+                <p>2. 使用「ちょっと」（有點）來軟化語氣</p>
+                <p>3. 提出問題而非直接否定</p>
+                <p>4. 說「也許有其他方法」而非「這個方法不好」</p>
+                <p>5. 使用「〜かもしれません」（也許）表達保留意見</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、詢問意見</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">徵詢他人意見</div>
+                <div class="phrase-item" onclick="speak('どうおもいますか')">
+                    <div class="phrase-jp">どうおもいますか</div>
+                    <div class="phrase-romaji">Dou omoimasu ka</div>
+                    <div class="phrase-meaning">你覺得怎麼樣？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('あなたのいけんをきかせてください')">
+                    <div class="phrase-jp">あなたのいけんをきかせてください</div>
+                    <div class="phrase-romaji">Anata no iken wo kikasete kudasai</div>
+                    <div class="phrase-meaning">請告訴我你的意見</div>
+                </div>
+                <div class="phrase-item" onclick="speak('これについてどうかんがえますか')">
+                    <div class="phrase-jp">これについてどうかんがえますか</div>
+                    <div class="phrase-romaji">Kore ni tsuite dou kangaemasu ka</div>
+                    <div class="phrase-meaning">關於這個你怎麼想？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('なにかアイデアはありますか')">
+                    <div class="phrase-jp">なにかアイデアはありますか</div>
+                    <div class="phrase-romaji">Nanika aidea wa arimasu ka</div>
+                    <div class="phrase-meaning">有什麼想法嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ごいけんをおきかせください')">
+                    <div class="phrase-jp">ごいけんをおきかせください</div>
+                    <div class="phrase-romaji">Goiken wo okikase kudasai</div>
+                    <div class="phrase-meaning">請告訴我您的意見（敬語）</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、不同程度的建議比較</h2>
+            <div class="comparison-box">
+                <div class="comparison-title">從強烈到委婉</div>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="comparison-label">最直接</div>
+                        <div class="comparison-content">〜てください<br>請...</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">直接建議</div>
+                        <div class="comparison-content">〜たほうがいいです<br>...比較好</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">委婉建議</div>
+                        <div class="comparison-content">〜たほうがいいとおもいます<br>我認為...比較好</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">提議</div>
+                        <div class="comparison-content">〜てはどうですか<br>...怎麼樣？</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">最委婉</div>
+                        <div class="comparison-content">〜たらどうでしょうか<br>如果...怎麼樣呢？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：朋友間討論計劃</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">こんどのりょこう、どこにいく？</div>
+                    <div class="dialogue-translation">下次旅行要去哪裡？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">わたしはきょうとがいいとおもう。</div>
+                    <div class="dialogue-translation">我覺得京都不錯。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">いいね。でも、おきなわもいいんじゃない？</div>
+                    <div class="dialogue-translation">不錯。但是沖繩也不錯吧？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">たしかに。りょうほうかんがえてみよう。</div>
+                    <div class="dialogue-translation">的確。兩個都考慮看看吧。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：工作會議中的意見交換</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">上司：</div>
+                    <div class="dialogue-text">このプロジェクトについて、みなさんのごいけんをおきかせください。</div>
+                    <div class="dialogue-translation">關於這個專案，請各位告訴我你們的意見。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">社員A：</div>
+                    <div class="dialogue-text">わたしのいけんでは、まずしじょうちょうさをしたほうがいいとおもいます。</div>
+                    <div class="dialogue-translation">依我的意見，我認為應該先做市場調查比較好。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">社員B：</div>
+                    <div class="dialogue-text">さんせいです。それから、よさんについてももういちどかんがえてはどうでしょうか。</div>
+                    <div class="dialogue-translation">我贊成。然後，關於預算要不要再考慮一下呢？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">上司：</div>
+                    <div class="dialogue-text">いいかんがえですね。そのほうこうでじゅんびをすすめましょう。</div>
+                    <div class="dialogue-translation">好主意。就朝這個方向準備吧。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境三：委婉表達不同意見</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">このデザインでいきましょう。</div>
+                    <div class="dialogue-translation">就用這個設計吧。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">そうですね。でも、もうすこしシンプルなほうがいいんじゃないかとおもいます。</div>
+                    <div class="dialogue-translation">是這樣沒錯。但是，我想會不會再簡單一點比較好。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">なるほど。べつのバージョンもつくってみましょうか。</div>
+                    <div class="dialogue-translation">原來如此。要不要也做做看別的版本？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">いいですね。そうしましょう。</div>
+                    <div class="dialogue-translation">好啊。就這麼辦。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue3()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+                <div class="practice-item">
+                    <div class="practice-question">1. 表達「我認為這個好」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">わたしはこれがいいとおもいます</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">2. 建議「早點去比較好」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">はやくいったほうがいいです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">3. 表達同意「我也這麼認為」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">わたしもそうおもいます</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">4. 委婉不同意「是這樣沒錯，但是...」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">そうですね、でも...</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">5. 詢問意見「你覺得怎麼樣？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">どうおもいますか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">6. 提議「試試這個方法怎麼樣？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">このほうほうをためしてはどうですか</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="わたしは〜とおもいます">
+                    <div class="quiz-question-text">1. 「我認為...」最常用的說法是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしは〜です')">わたしは〜です</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしは〜とおもいます')">わたしは〜とおもいます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしは〜がすきです')">わたしは〜がすきです</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="〜たほうがいいです">
+                    <div class="quiz-question-text">2. 「...比較好」的建議句型是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, '〜てください')">〜てください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '〜たほうがいいです')">〜たほうがいいです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, '〜ましょう')">〜ましょう</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="わたしもそうおもいます">
+                    <div class="quiz-question-text">3. 「我也這麼認為」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしもそうです')">わたしもそうです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしもそうおもいます')">わたしもそうおもいます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'わたしもいいです')">わたしもいいです</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="そうですね、でも">
+                    <div class="quiz-question-text">4. 委婉表達不同意，先說「是這樣沒錯，但是...」？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いいえ、でも')">いいえ、でも</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'そうですね、でも')">そうですね、でも</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ちがいます、でも')">ちがいます、でも</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="どうおもいますか">
+                    <div class="quiz-question-text">5. 「你覺得怎麼樣？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どうですか')">どうですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どうおもいますか')">どうおもいますか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'なんですか')">なんですか</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 5;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('こんどのりょこう、どこにいく'), 0);
+            setTimeout(() => speak('わたしはきょうとがいいとおもう'), 2500);
+            setTimeout(() => speak('いいね。でも、おきなわもいいんじゃない'), 5000);
+            setTimeout(() => speak('たしかに。りょうほうかんがえてみよう'), 8000);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('このプロジェクトについて、みなさんのごいけんをおきかせください'), 0);
+            setTimeout(() => speak('わたしのいけんでは、まずしじょうちょうさをしたほうがいいとおもいます'), 4000);
+            setTimeout(() => speak('さんせいです。それから、よさんについてももういちどかんがえてはどうでしょうか'), 9000);
+            setTimeout(() => speak('いいかんがえですね。そのほうこうでじゅんびをすすめましょう'), 14000);
+        }
+
+        function speakDialogue3() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('このデザインでいきましょう'), 0);
+            setTimeout(() => speak('そうですね。でも、もうすこしシンプルなほうがいいんじゃないかとおもいます'), 2500);
+            setTimeout(() => speak('なるほど。べつのバージョンもつくってみましょうか'), 7500);
+            setTimeout(() => speak('いいですね。そうしましょう'), 11000);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day19 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            alert('恭喜完成 Day 19 課程！\n\n你已經學會了表達意見和提供建議！\n能夠在各種場合得體地表達自己的想法了。');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

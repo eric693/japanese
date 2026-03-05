@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 15 - 興趣與休閒活動 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .milestone-box { background: #C1282D; color: #FEFDFB; padding: 30px; margin: 25px 0; text-align: center; }
+        .milestone-title { font-size: 1.5em; font-weight: 700; margin-bottom: 15px; }
+        .milestone-desc { font-size: 1.1em; line-height: 1.8; }
+        .hobby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin: 25px 0; }
+        .hobby-card { background: #F5F1E8; border: 2px solid #D4C5A9; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .hobby-card:hover { border-color: #C1282D; transform: translateY(-2px); }
+        .hobby-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 8px; font-weight: 500; }
+        .hobby-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.8em; margin-bottom: 5px; }
+        .hobby-meaning { color: #6B6B6B; font-size: 0.85em; }
+        .sport-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin: 25px 0; }
+        .sport-card { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 18px 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .sport-card:hover { border-color: #C1282D; background: #F5F1E8; }
+        .sport-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.1em; color: #2C2C2C; margin-bottom: 5px; font-weight: 500; }
+        .sport-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.75em; margin-bottom: 5px; }
+        .sport-meaning { color: #6B6B6B; font-size: 0.8em; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; transition: all 0.2s; }
+        .phrase-item:hover { background: #E5DCC9; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-note { color: #6B6B6B; font-size: 0.85em; font-style: italic; margin-top: 5px; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .frequency-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .frequency-title { font-weight: 600; color: #2C2C2C; margin-bottom: 20px; font-size: 1.2em; text-align: center; }
+        .frequency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .frequency-item { background: #F5F1E8; padding: 15px; text-align: center; border: 1px solid #D4C5A9; cursor: pointer; transition: all 0.2s; }
+        .frequency-item:hover { border-color: #C1282D; }
+        .frequency-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 8px; }
+        .frequency-meaning { color: #6B6B6B; font-size: 0.9em; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .practice-section { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .practice-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.1em; }
+        .practice-item { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; margin: 15px 0; }
+        .practice-question { color: #6B6B6B; margin-bottom: 10px; }
+        .practice-answer { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #6B6B6B; padding: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .practice-answer:hover { border-color: #C1282D; color: #C1282D; }
+        .practice-answer.revealed { color: #2C2C2C; border-color: #2C2C2C; background: #F5F1E8; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        .congrats-box { background: #2C2C2C; color: #FEFDFB; padding: 40px; margin: 30px 0; text-align: center; }
+        .congrats-title { font-size: 2em; font-weight: 700; margin-bottom: 20px; }
+        .congrats-text { font-size: 1.1em; line-height: 2; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .hobby-grid, .sport-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day14.html">← Day 14</a>
+                <a href="index.html">課程列表</a>
+                <a href="day16.html">Day 16 →</a>
+            </div>
+            <div class="day-number">DAY 15</div>
+            <h1>興趣與休閒活動</h1>
+            <p class="lesson-desc">學習興趣愛好、運動活動、頻率表達、邀約用語</p>
+        </header>
+
+        <div class="milestone-box">
+            <div class="milestone-title">中級篇完成</div>
+            <div class="milestone-desc">
+                恭喜你完成 Day 11-15 的中級課程<br>
+                你已經掌握了飯店住宿、觀光旅遊、健康醫療、天氣季節和興趣愛好
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習如何用日文談論興趣和休閒活動。</p>
+                <p>這是日常對話中非常重要的主題，能讓你更深入地與日本朋友交流，分享彼此的興趣愛好！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 各種興趣愛好的日文名稱</p>
+                <p>2. 運動項目的表達方式</p>
+                <p>3. 描述頻率的副詞（經常、有時、很少）</p>
+                <p>4. 詢問和回答興趣的句型</p>
+                <p>5. 邀約朋友參加活動的用語</p>
+                <p>6. 表達喜好程度</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、興趣愛好</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card" onclick="speak('どくしょ')">
+                    <div class="hobby-jp">どくしょ</div>
+                    <div class="hobby-romaji">dokusho</div>
+                    <div class="hobby-meaning">閱讀</div>
+                </div>
+                <div class="hobby-card" onclick="speak('おんがく')">
+                    <div class="hobby-jp">おんがく</div>
+                    <div class="hobby-romaji">ongaku</div>
+                    <div class="hobby-meaning">音樂</div>
+                </div>
+                <div class="hobby-card" onclick="speak('えいが')">
+                    <div class="hobby-jp">えいが</div>
+                    <div class="hobby-romaji">eiga</div>
+                    <div class="hobby-meaning">電影</div>
+                </div>
+                <div class="hobby-card" onclick="speak('りょうり')">
+                    <div class="hobby-jp">りょうり</div>
+                    <div class="hobby-romaji">ryouri</div>
+                    <div class="hobby-meaning">料理</div>
+                </div>
+                <div class="hobby-card" onclick="speak('しゃしん')">
+                    <div class="hobby-jp">しゃしん</div>
+                    <div class="hobby-romaji">shashin</div>
+                    <div class="hobby-meaning">攝影</div>
+                </div>
+                <div class="hobby-card" onclick="speak('え')">
+                    <div class="hobby-jp">え</div>
+                    <div class="hobby-romaji">e</div>
+                    <div class="hobby-meaning">繪畫</div>
+                </div>
+                <div class="hobby-card" onclick="speak('ゲーム')">
+                    <div class="hobby-jp">ゲーム</div>
+                    <div class="hobby-romaji">geemu</div>
+                    <div class="hobby-meaning">遊戲</div>
+                </div>
+                <div class="hobby-card" onclick="speak('アニメ')">
+                    <div class="hobby-jp">アニメ</div>
+                    <div class="hobby-romaji">anime</div>
+                    <div class="hobby-meaning">動畫</div>
+                </div>
+                <div class="hobby-card" onclick="speak('りょこう')">
+                    <div class="hobby-jp">りょこう</div>
+                    <div class="hobby-romaji">ryokou</div>
+                    <div class="hobby-meaning">旅行</div>
+                </div>
+                <div class="hobby-card" onclick="speak('ガーデニング')">
+                    <div class="hobby-jp">ガーデニング</div>
+                    <div class="hobby-romaji">gaadeningu</div>
+                    <div class="hobby-meaning">園藝</div>
+                </div>
+                <div class="hobby-card" onclick="speak('カラオケ')">
+                    <div class="hobby-jp">カラオケ</div>
+                    <div class="hobby-romaji">karaoke</div>
+                    <div class="hobby-meaning">卡拉OK</div>
+                </div>
+                <div class="hobby-card" onclick="speak('しゅうしゅう')">
+                    <div class="hobby-jp">しゅうしゅう</div>
+                    <div class="hobby-romaji">shuushuu</div>
+                    <div class="hobby-meaning">收集</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、運動項目</h2>
+            <div class="sport-grid">
+                <div class="sport-card" onclick="speak('サッカー')">
+                    <div class="sport-jp">サッカー</div>
+                    <div class="sport-romaji">sakkaa</div>
+                    <div class="sport-meaning">足球</div>
+                </div>
+                <div class="sport-card" onclick="speak('やきゅう')">
+                    <div class="sport-jp">やきゅう</div>
+                    <div class="sport-romaji">yakyuu</div>
+                    <div class="sport-meaning">棒球</div>
+                </div>
+                <div class="sport-card" onclick="speak('バスケットボール')">
+                    <div class="sport-jp">バスケ</div>
+                    <div class="sport-romaji">basuke</div>
+                    <div class="sport-meaning">籃球</div>
+                </div>
+                <div class="sport-card" onclick="speak('テニス')">
+                    <div class="sport-jp">テニス</div>
+                    <div class="sport-romaji">tenisu</div>
+                    <div class="sport-meaning">網球</div>
+                </div>
+                <div class="sport-card" onclick="speak('すいえい')">
+                    <div class="sport-jp">すいえい</div>
+                    <div class="sport-romaji">suiei</div>
+                    <div class="sport-meaning">游泳</div>
+                </div>
+                <div class="sport-card" onclick="speak('ジョギング')">
+                    <div class="sport-jp">ジョギング</div>
+                    <div class="sport-romaji">jogingu</div>
+                    <div class="sport-meaning">慢跑</div>
+                </div>
+                <div class="sport-card" onclick="speak('ヨガ')">
+                    <div class="sport-jp">ヨガ</div>
+                    <div class="sport-romaji">yoga</div>
+                    <div class="sport-meaning">瑜伽</div>
+                </div>
+                <div class="sport-card" onclick="speak('ダンス')">
+                    <div class="sport-jp">ダンス</div>
+                    <div class="sport-romaji">dansu</div>
+                    <div class="sport-meaning">跳舞</div>
+                </div>
+                <div class="sport-card" onclick="speak('ゴルフ')">
+                    <div class="sport-jp">ゴルフ</div>
+                    <div class="sport-romaji">gorufu</div>
+                    <div class="sport-meaning">高爾夫</div>
+                </div>
+                <div class="sport-card" onclick="speak('スキー')">
+                    <div class="sport-jp">スキー</div>
+                    <div class="sport-romaji">sukii</div>
+                    <div class="sport-meaning">滑雪</div>
+                </div>
+                <div class="sport-card" onclick="speak('サイクリング')">
+                    <div class="sport-jp">サイクリング</div>
+                    <div class="sport-romaji">saikuringu</div>
+                    <div class="sport-meaning">騎自行車</div>
+                </div>
+                <div class="sport-card" onclick="speak('ハイキング')">
+                    <div class="sport-jp">ハイキング</div>
+                    <div class="sport-romaji">haikingu</div>
+                    <div class="sport-meaning">登山健行</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、詢問與表達興趣</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">詢問興趣</div>
+                <div class="phrase-item" onclick="speak('しゅみはなんですか')">
+                    <div class="phrase-jp">しゅみはなんですか</div>
+                    <div class="phrase-romaji">Shumi wa nan desu ka</div>
+                    <div class="phrase-meaning">你的興趣是什麼？</div>
+                    <div class="phrase-note">最常用的詢問方式</div>
+                </div>
+                <div class="phrase-item" onclick="speak('なにがすきですか')">
+                    <div class="phrase-jp">なにがすきですか</div>
+                    <div class="phrase-romaji">Nani ga suki desu ka</div>
+                    <div class="phrase-meaning">你喜歡什麼？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('よくなにをしますか')">
+                    <div class="phrase-jp">よくなにをしますか</div>
+                    <div class="phrase-romaji">Yoku nani wo shimasu ka</div>
+                    <div class="phrase-meaning">你經常做什麼？</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">回答興趣</div>
+                <div class="phrase-item" onclick="speak('わたしのしゅみはどくしょです')">
+                    <div class="phrase-jp">わたしのしゅみはどくしょです</div>
+                    <div class="phrase-romaji">Watashi no shumi wa dokusho desu</div>
+                    <div class="phrase-meaning">我的興趣是閱讀</div>
+                </div>
+                <div class="phrase-item" onclick="speak('おんがくをきくのがすきです')">
+                    <div class="phrase-jp">おんがくをきくのがすきです</div>
+                    <div class="phrase-romaji">Ongaku wo kiku no ga suki desu</div>
+                    <div class="phrase-meaning">我喜歡聽音樂</div>
+                </div>
+                <div class="phrase-item" onclick="speak('スポーツがすきです')">
+                    <div class="phrase-jp">スポーツがすきです</div>
+                    <div class="phrase-romaji">Supootsu ga suki desu</div>
+                    <div class="phrase-meaning">我喜歡運動</div>
+                </div>
+                <div class="phrase-item" onclick="speak('しゅうまつによくえいがをみます')">
+                    <div class="phrase-jp">しゅうまつによくえいがをみます</div>
+                    <div class="phrase-romaji">Shuumatsu ni yoku eiga wo mimasu</div>
+                    <div class="phrase-meaning">週末經常看電影</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">表達喜好程度</div>
+                <div class="phrase-item" onclick="speak('だいすきです')">
+                    <div class="phrase-jp">だいすきです</div>
+                    <div class="phrase-romaji">Daisuki desu</div>
+                    <div class="phrase-meaning">非常喜歡</div>
+                </div>
+                <div class="phrase-item" onclick="speak('すきです')">
+                    <div class="phrase-jp">すきです</div>
+                    <div class="phrase-romaji">Suki desu</div>
+                    <div class="phrase-meaning">喜歡</div>
+                </div>
+                <div class="phrase-item" onclick="speak('まあまあすきです')">
+                    <div class="phrase-jp">まあまあすきです</div>
+                    <div class="phrase-romaji">Maamaa suki desu</div>
+                    <div class="phrase-meaning">還算喜歡</div>
+                </div>
+                <div class="phrase-item" onclick="speak('あまりすきじゃないです')">
+                    <div class="phrase-jp">あまりすきじゃないです</div>
+                    <div class="phrase-romaji">Amari suki ja nai desu</div>
+                    <div class="phrase-meaning">不太喜歡</div>
+                </div>
+                <div class="phrase-item" onclick="speak('きらいです')">
+                    <div class="phrase-jp">きらいです</div>
+                    <div class="phrase-romaji">Kirai desu</div>
+                    <div class="phrase-meaning">討厭</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、頻率表達</h2>
+            <div class="frequency-box">
+                <div class="frequency-title">描述做事的頻率</div>
+                <div class="frequency-grid">
+                    <div class="frequency-item" onclick="speak('まいにち')">
+                        <div class="frequency-jp">まいにち</div>
+                        <div class="frequency-meaning">每天</div>
+                    </div>
+                    <div class="frequency-item" onclick="speak('よく')">
+                        <div class="frequency-jp">よく</div>
+                        <div class="frequency-meaning">經常</div>
+                    </div>
+                    <div class="frequency-item" onclick="speak('ときどき')">
+                        <div class="frequency-jp">ときどき</div>
+                        <div class="frequency-meaning">有時候</div>
+                    </div>
+                    <div class="frequency-item" onclick="speak('たまに')">
+                        <div class="frequency-jp">たまに</div>
+                        <div class="frequency-meaning">偶爾</div>
+                    </div>
+                    <div class="frequency-item" onclick="speak('あまり')">
+                        <div class="frequency-jp">あまり</div>
+                        <div class="frequency-meaning">不太（+否定）</div>
+                    </div>
+                    <div class="frequency-item" onclick="speak('ぜんぜん')">
+                        <div class="frequency-jp">ぜんぜん</div>
+                        <div class="frequency-meaning">完全不（+否定）</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">頻率詞使用方式</div>
+                <p>まいにち運動します（每天運動）</p>
+                <p>よく映画を見ます（經常看電影）</p>
+                <p>ときどき料理をします（有時候做料理）</p>
+                <p>あまり本を読みません（不太讀書）- 注意用否定形</p>
+                <p>ぜんぜんテレビを見ません（完全不看電視）- 注意用否定形</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、邀約用語</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">邀請朋友</div>
+                <div class="phrase-item" onclick="speak('いっしょにえいがをみませんか')">
+                    <div class="phrase-jp">いっしょにえいがをみませんか</div>
+                    <div class="phrase-romaji">Issho ni eiga wo mimasen ka</div>
+                    <div class="phrase-meaning">要不要一起看電影？</div>
+                    <div class="phrase-note">禮貌的邀約方式</div>
+                </div>
+                <div class="phrase-item" onclick="speak('カラオケにいきましょう')">
+                    <div class="phrase-jp">カラオケにいきましょう</div>
+                    <div class="phrase-romaji">Karaoke ni ikimashou</div>
+                    <div class="phrase-meaning">一起去唱卡拉OK吧</div>
+                </div>
+                <div class="phrase-item" onclick="speak('いっしょにテニスをしませんか')">
+                    <div class="phrase-jp">いっしょにテニスをしませんか</div>
+                    <div class="phrase-romaji">Issho ni tenisu wo shimasen ka</div>
+                    <div class="phrase-meaning">要不要一起打網球？</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">回應邀約</div>
+                <div class="phrase-item" onclick="speak('いいですね')">
+                    <div class="phrase-jp">いいですね</div>
+                    <div class="phrase-romaji">Ii desu ne</div>
+                    <div class="phrase-meaning">好啊</div>
+                    <div class="phrase-note">接受邀約</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ぜひいきたいです')">
+                    <div class="phrase-jp">ぜひいきたいです</div>
+                    <div class="phrase-romaji">Zehi ikitai desu</div>
+                    <div class="phrase-meaning">非常想去</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ごめんなさい、ちょっと')">
+                    <div class="phrase-jp">ごめんなさい、ちょっと...</div>
+                    <div class="phrase-romaji">Gomennasai, chotto...</div>
+                    <div class="phrase-meaning">對不起，有點...</div>
+                    <div class="phrase-note">委婉拒絕</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ざんねんですが、いけません')">
+                    <div class="phrase-jp">ざんねんですが、いけません</div>
+                    <div class="phrase-romaji">Zannen desu ga, ikemasen</div>
+                    <div class="phrase-meaning">很遺憾，不能去</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：談論興趣</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">しゅみはなんですか。</div>
+                    <div class="dialogue-translation">你的興趣是什麼？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">わたしのしゅみはどくしょです。Aさんは？</div>
+                    <div class="dialogue-translation">我的興趣是閱讀。A你呢？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">わたしはスポーツがすきです。よくテニスをします。</div>
+                    <div class="dialogue-translation">我喜歡運動。經常打網球。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：邀約朋友</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">しゅうまついっしょにえいがをみませんか。</div>
+                    <div class="dialogue-translation">週末要不要一起看電影？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">いいですね。なんのえいがですか。</div>
+                    <div class="dialogue-translation">好啊。什麼電影？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">あたらしいアクションえいがです。</div>
+                    <div class="dialogue-translation">新的動作電影。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">ぜひいきたいです！</div>
+                    <div class="dialogue-translation">非常想去！</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境三：討論運動習慣</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">よく運動しますか。</div>
+                    <div class="dialogue-translation">經常運動嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">はい、まいにちジョギングをします。</div>
+                    <div class="dialogue-translation">是的，每天都慢跑。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">すごいですね。わたしはときどきヨガをします。</div>
+                    <div class="dialogue-translation">好厲害。我有時候做瑜伽。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue3()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+                <div class="practice-item">
+                    <div class="practice-question">1. 想問對方「你的興趣是什麼？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">しゅみはなんですか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">2. 說「我的興趣是閱讀」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">わたしのしゅみはどくしょです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">3. 邀請朋友「要不要一起看電影？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いっしょにえいがをみませんか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">4. 接受邀約說「好啊」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いいですね</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">5. 說「我喜歡聽音樂」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">おんがくをきくのがすきです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">6. 說「我經常打網球」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">よくテニスをします</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="しゅみはなんですか">
+                    <div class="quiz-question-text">1. 「你的興趣是什麼？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しゅみですか')">しゅみですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しゅみはなんですか')">しゅみはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'なにがしゅみですか')">なにがしゅみですか</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="どくしょ">
+                    <div class="quiz-question-text">2. 「閱讀」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'どくしょ')">どくしょ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おんがく')">おんがく</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'りょこう')">りょこう</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="よく">
+                    <div class="quiz-question-text">3. 「經常」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'まいにち')">まいにち</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'よく')">よく</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ときどき')">ときどき</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="いっしょにえいがをみませんか">
+                    <div class="quiz-question-text">4. 「要不要一起看電影？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えいがをみます')">えいがをみます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いっしょにえいがをみませんか')">いっしょにえいがをみませんか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'えいががすきですか')">えいががすきですか</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="いいですね">
+                    <div class="quiz-question-text">5. 接受邀約時說「好啊」，日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いいですね')">いいですね</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いいえ')">いいえ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ごめんなさい')">ごめんなさい</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+
+        <div class="congrats-box" style="display: none;" id="congratsBox">
+            <div class="congrats-title">恭喜完成中級篇</div>
+            <div class="congrats-text">
+                你已經完成了 Day 11-15 的所有課程<br>
+                掌握了飯店、觀光、健康、天氣和興趣等重要主題<br>
+                繼續加油，進入高級篇吧
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 5;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('しゅみはなんですか'), 0);
+            setTimeout(() => speak('わたしのしゅみはどくしょです。Aさんは'), 2500);
+            setTimeout(() => speak('わたしはスポーツがすきです。よくテニスをします'), 5500);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('しゅうまついっしょにえいがをみませんか'), 0);
+            setTimeout(() => speak('いいですね。なんのえいがですか'), 3500);
+            setTimeout(() => speak('あたらしいアクションえいがです'), 6000);
+            setTimeout(() => speak('ぜひいきたいです'), 8500);
+        }
+
+        function speakDialogue3() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('よく運動しますか'), 0);
+            setTimeout(() => speak('はい、まいにちジョギングをします'), 2500);
+            setTimeout(() => speak('すごいですね。わたしはときどきヨガをします'), 5500);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day15 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            
+            document.getElementById('congratsBox').style.display = 'block';
+            document.getElementById('congratsBox').scrollIntoView({ behavior: 'smooth' });
+            
+            setTimeout(() => {
+                alert('恭喜完成 Day 15 課程！\n\n你已經完成中級篇（Day 11-15）！\n\n✓ 飯店住宿\n✓ 觀光旅遊\n✓ 健康醫療\n✓ 天氣季節\n✓ 興趣愛好\n\n準備好進入高級篇了嗎？');
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

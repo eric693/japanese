@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 18 - 請求與許可 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .grammar-box { background: #F5F1E8; border: 2px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .grammar-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .grammar-pattern { background: #FEFDFB; padding: 20px; margin: 15px 0; border-left: 4px solid #C1282D; }
+        .pattern-formula { font-family: 'IBM Plex Mono', monospace; font-size: 1.2em; color: #C1282D; margin-bottom: 10px; font-weight: 600; }
+        .pattern-meaning { color: #2C2C2C; margin-bottom: 15px; font-size: 1.05em; }
+        .pattern-examples { background: #F5F1E8; padding: 15px; margin-top: 10px; }
+        .example-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin: 8px 0; cursor: pointer; padding: 8px; transition: all 0.2s; }
+        .example-jp:hover { background: #E5DCC9; }
+        .example-translation { color: #6B6B6B; font-size: 0.9em; margin-bottom: 12px; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; transition: all 0.2s; }
+        .phrase-item:hover { background: #E5DCC9; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-note { color: #6B6B6B; font-size: 0.85em; font-style: italic; margin-top: 5px; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .politeness-table { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .politeness-title { font-weight: 600; color: #2C2C2C; margin-bottom: 20px; font-size: 1.2em; text-align: center; }
+        .politeness-row { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 15px; padding: 15px; margin: 10px 0; background: #F5F1E8; border: 1px solid #D4C5A9; align-items: center; }
+        .politeness-level { font-weight: 600; color: #C1282D; }
+        .politeness-example { font-family: 'Noto Sans JP', sans-serif; color: #2C2C2C; }
+        .politeness-usage { color: #6B6B6B; font-size: 0.9em; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .practice-section { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .practice-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.1em; }
+        .practice-item { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; margin: 15px 0; }
+        .practice-question { color: #6B6B6B; margin-bottom: 10px; }
+        .practice-answer { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #6B6B6B; padding: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .practice-answer:hover { border-color: #C1282D; color: #C1282D; }
+        .practice-answer.revealed { color: #2C2C2C; border-color: #2C2C2C; background: #F5F1E8; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .politeness-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day17.html">← Day 17</a>
+                <a href="index.html">課程列表</a>
+                <a href="day19.html">Day 19 →</a>
+            </div>
+            <div class="day-number">DAY 18</div>
+            <h1>請求與許可</h1>
+            <p class="lesson-desc">學習請求幫助、徵求許可、提供協助的各種表達方式與禮貌程度</p>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習如何用日文提出請求和徵求許可。</p>
+                <p>日文中有多種表達請求的方式，根據場合和對象的不同，使用的禮貌程度也不同。掌握這些用法能讓你的日文表達更加自然得體！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 請求他人做某事的各種句型</p>
+                <p>2. 徵求許可的表達方式</p>
+                <p>3. 提供幫助的說法</p>
+                <p>4. 接受與拒絕的禮貌用語</p>
+                <p>5. 不同禮貌程度的區別</p>
+                <p>6. 各種場合的實際應用</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、請求的基本句型</h2>
+            <div class="grammar-box">
+                <div class="grammar-title">請求句型文法</div>
+                
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + ください</div>
+                    <div class="pattern-meaning">請...（基本禮貌）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('まってください')">まってください</div>
+                        <div class="example-translation">請等一下</div>
+                        <div class="example-jp" onclick="speak('てつだってください')">てつだってください</div>
+                        <div class="example-translation">請幫忙</div>
+                        <div class="example-jp" onclick="speak('おしえてください')">おしえてください</div>
+                        <div class="example-translation">請教我</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + くださいませんか</div>
+                    <div class="pattern-meaning">能不能請您...（更禮貌）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('てつだってくださいませんか')">てつだってくださいませんか</div>
+                        <div class="example-translation">能不能請您幫忙？</div>
+                        <div class="example-jp" onclick="speak('まってくださいませんか')">まってくださいませんか</div>
+                        <div class="example-translation">能不能請您等一下？</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + いただけますか</div>
+                    <div class="pattern-meaning">能否請您...（正式、謙遜）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('てつだっていただけますか')">てつだっていただけますか</div>
+                        <div class="example-translation">能否請您幫忙？</div>
+                        <div class="example-jp" onclick="speak('かくにんしていただけますか')">かくにんしていただけますか</div>
+                        <div class="example-translation">能否請您確認？</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + もらえますか</div>
+                    <div class="pattern-meaning">可以請你...嗎？（較隨意）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('てつだってもらえますか')">てつだってもらえますか</div>
+                        <div class="example-translation">可以請你幫忙嗎？</div>
+                        <div class="example-jp" onclick="speak('かしてもらえますか')">かしてもらえますか</div>
+                        <div class="example-translation">可以借我嗎？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、徵求許可的句型</h2>
+            <div class="grammar-box">
+                <div class="grammar-title">許可句型文法</div>
+                
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + もいいですか</div>
+                    <div class="pattern-meaning">可以...嗎？（基本禮貌）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('しゃしんをとってもいいですか')">しゃしんをとってもいいですか</div>
+                        <div class="example-translation">可以拍照嗎？</div>
+                        <div class="example-jp" onclick="speak('すわってもいいですか')">すわってもいいですか</div>
+                        <div class="example-translation">可以坐嗎？</div>
+                        <div class="example-jp" onclick="speak('つかってもいいですか')">つかってもいいですか</div>
+                        <div class="example-translation">可以使用嗎？</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + もよろしいですか</div>
+                    <div class="pattern-meaning">可以...嗎？（更正式）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('しつもんしてもよろしいですか')">しつもんしてもよろしいですか</div>
+                        <div class="example-translation">可以提問嗎？</div>
+                        <div class="example-jp" onclick="speak('はいってもよろしいですか')">はいってもよろしいですか</div>
+                        <div class="example-translation">可以進去嗎？</div>
+                    </div>
+                </div>
+
+                <div class="grammar-pattern">
+                    <div class="pattern-formula">動詞て形 + もかまいませんか</div>
+                    <div class="pattern-meaning">...沒關係嗎？（確認是否打擾）</div>
+                    <div class="pattern-examples">
+                        <div class="example-jp" onclick="speak('まどをあけてもかまいませんか')">まどをあけてもかまいませんか</div>
+                        <div class="example-translation">打開窗戶沒關係嗎？</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、禮貌程度比較</h2>
+            <div class="politeness-table">
+                <div class="politeness-title">相同意思的不同禮貌程度</div>
+                
+                <div class="politeness-row">
+                    <div class="politeness-level">隨意</div>
+                    <div class="politeness-example">てつだって</div>
+                    <div class="politeness-usage">朋友、家人</div>
+                </div>
+                
+                <div class="politeness-row">
+                    <div class="politeness-level">普通禮貌</div>
+                    <div class="politeness-example">てつだってください</div>
+                    <div class="politeness-usage">一般場合</div>
+                </div>
+                
+                <div class="politeness-row">
+                    <div class="politeness-level">較禮貌</div>
+                    <div class="politeness-example">てつだってもらえますか</div>
+                    <div class="politeness-usage">同事、熟識的人</div>
+                </div>
+                
+                <div class="politeness-row">
+                    <div class="politeness-level">很禮貌</div>
+                    <div class="politeness-example">てつだってくださいませんか</div>
+                    <div class="politeness-usage">上司、長輩</div>
+                </div>
+                
+                <div class="politeness-row">
+                    <div class="politeness-level">最禮貌</div>
+                    <div class="politeness-example">てつだっていただけますか</div>
+                    <div class="politeness-usage">客戶、正式場合</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-title">選擇禮貌程度的原則</div>
+                <p>1. 對上級、長輩、客戶：使用最禮貌的表達</p>
+                <p>2. 對同事、一般熟人：使用較禮貌的表達</p>
+                <p>3. 對朋友、家人：可以使用較隨意的表達</p>
+                <p>4. 不確定時，寧可用更禮貌的說法</p>
+                <p>5. 第一次見面的人，建議使用較禮貌的表達</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、常用請求與許可表達</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">日常請求</div>
+                <div class="phrase-item" onclick="speak('ちょっとてつだってください')">
+                    <div class="phrase-jp">ちょっとてつだってください</div>
+                    <div class="phrase-romaji">Chotto tetsudatte kudasai</div>
+                    <div class="phrase-meaning">請稍微幫個忙</div>
+                </div>
+                <div class="phrase-item" onclick="speak('これをかしてください')">
+                    <div class="phrase-jp">これをかしてください</div>
+                    <div class="phrase-romaji">Kore wo kashite kudasai</div>
+                    <div class="phrase-meaning">請把這個借我</div>
+                </div>
+                <div class="phrase-item" onclick="speak('いきかたをおしえてください')">
+                    <div class="phrase-jp">いきかたをおしえてください</div>
+                    <div class="phrase-romaji">Ikikata wo oshiete kudasai</div>
+                    <div class="phrase-meaning">請告訴我怎麼去</div>
+                </div>
+                <div class="phrase-item" onclick="speak('もういちどせつめいしてください')">
+                    <div class="phrase-jp">もういちどせつめいしてください</div>
+                    <div class="phrase-romaji">Mou ichido setsumei shite kudasai</div>
+                    <div class="phrase-meaning">請再說明一次</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">徵求許可</div>
+                <div class="phrase-item" onclick="speak('ちょっときいてもいいですか')">
+                    <div class="phrase-jp">ちょっときいてもいいですか</div>
+                    <div class="phrase-romaji">Chotto kiite mo ii desu ka</div>
+                    <div class="phrase-meaning">可以問一下嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ここにすわってもいいですか')">
+                    <div class="phrase-jp">ここにすわってもいいですか</div>
+                    <div class="phrase-romaji">Koko ni suwatte mo ii desu ka</div>
+                    <div class="phrase-meaning">可以坐這裡嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('トイレをかりてもいいですか')">
+                    <div class="phrase-jp">トイレをかりてもいいですか</div>
+                    <div class="phrase-romaji">Toire wo karite mo ii desu ka</div>
+                    <div class="phrase-meaning">可以借用洗手間嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('でんわをつかってもいいですか')">
+                    <div class="phrase-jp">でんわをつかってもいいですか</div>
+                    <div class="phrase-romaji">Denwa wo tsukatte mo ii desu ka</div>
+                    <div class="phrase-meaning">可以用電話嗎？</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">提供幫助</div>
+                <div class="phrase-item" onclick="speak('てつだいましょうか')">
+                    <div class="phrase-jp">てつだいましょうか</div>
+                    <div class="phrase-romaji">Tetsudaimashou ka</div>
+                    <div class="phrase-meaning">我來幫忙吧？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('なにかおてつだいしましょうか')">
+                    <div class="phrase-jp">なにかおてつだいしましょうか</div>
+                    <div class="phrase-romaji">Nanika otetsudai shimashou ka</div>
+                    <div class="phrase-meaning">需要幫什麼忙嗎？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('もっていきましょうか')">
+                    <div class="phrase-jp">もっていきましょうか</div>
+                    <div class="phrase-romaji">Motte ikimashou ka</div>
+                    <div class="phrase-meaning">我來拿吧？</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">接受與拒絕</div>
+                <div class="phrase-item" onclick="speak('おねがいします')">
+                    <div class="phrase-jp">おねがいします</div>
+                    <div class="phrase-romaji">Onegaishimasu</div>
+                    <div class="phrase-meaning">拜託了（接受幫助）</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ありがとうございます')">
+                    <div class="phrase-jp">ありがとうございます</div>
+                    <div class="phrase-romaji">Arigatou gozaimasu</div>
+                    <div class="phrase-meaning">謝謝（接受）</div>
+                </div>
+                <div class="phrase-item" onclick="speak('だいじょうぶです')">
+                    <div class="phrase-jp">だいじょうぶです</div>
+                    <div class="phrase-romaji">Daijoubu desu</div>
+                    <div class="phrase-meaning">沒關係、不用了（婉拒）</div>
+                </div>
+                <div class="phrase-item" onclick="speak('じぶんでできます')">
+                    <div class="phrase-jp">じぶんでできます</div>
+                    <div class="phrase-romaji">Jibun de dekimasu</div>
+                    <div class="phrase-meaning">我自己可以（婉拒）</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：請求幫助（朋友之間）</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">ちょっとてつだってもらえる？</div>
+                    <div class="dialogue-translation">可以幫我一下嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">いいよ。なに？</div>
+                    <div class="dialogue-translation">好啊。什麼事？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">これをもつのをてつだってほしいんだけど。</div>
+                    <div class="dialogue-translation">想請你幫我拿這個。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">わかった。まかせて。</div>
+                    <div class="dialogue-translation">知道了。交給我。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：商務場合的請求</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">部下：</div>
+                    <div class="dialogue-text">しつれいします。ちょっとおじかんをいただけますか。</div>
+                    <div class="dialogue-translation">打擾一下。能否給我一點時間？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">上司：</div>
+                    <div class="dialogue-text">はい、どうぞ。</div>
+                    <div class="dialogue-translation">好的，請說。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">部下：</div>
+                    <div class="dialogue-text">このしょるいをかくにんしていただけますか。</div>
+                    <div class="dialogue-translation">能否請您確認這份文件？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">上司：</div>
+                    <div class="dialogue-text">わかりました。みておきます。</div>
+                    <div class="dialogue-translation">知道了。我會看一下。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境三：徵求許可</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">すみません、ここにすわってもよろしいですか。</div>
+                    <div class="dialogue-translation">不好意思，可以坐這裡嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">はい、どうぞ。</div>
+                    <div class="dialogue-translation">好的，請坐。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">客人：</div>
+                    <div class="dialogue-text">しゃしんをとってもいいですか。</div>
+                    <div class="dialogue-translation">可以拍照嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">店員：</div>
+                    <div class="dialogue-text">もちろんです。どうぞ。</div>
+                    <div class="dialogue-translation">當然可以。請便。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue3()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+                <div class="practice-item">
+                    <div class="practice-question">1. 請朋友幫忙（隨意）</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ちょっとてつだってもらえる</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">2. 請上司確認文件（正式）</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">かくにんしていただけますか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">3. 詢問「可以坐這裡嗎？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ここにすわってもいいですか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">4. 詢問「可以拍照嗎？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">しゃしんをとってもいいですか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">5. 提供幫助「我來幫忙吧？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">てつだいましょうか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">6. 婉拒幫助「沒關係，不用了」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">だいじょうぶです</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="てつだってください">
+                    <div class="quiz-question-text">1. 「請幫忙」的基本禮貌說法是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだって')">てつだって</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだってください')">てつだってください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだいます')">てつだいます</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="てつだっていただけますか">
+                    <div class="quiz-question-text">2. 最禮貌的「請幫忙」說法是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだってください')">てつだってください</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだってもらえますか')">てつだってもらえますか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだっていただけますか')">てつだっていただけますか</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="すわってもいいですか">
+                    <div class="quiz-question-text">3. 「可以坐嗎？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すわります')">すわります</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すわってもいいですか')">すわってもいいですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'すわってください')">すわってください</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="てつだいましょうか">
+                    <div class="quiz-question-text">4. 「我來幫忙吧？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだいます')">てつだいます</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだいましょうか')">てつだいましょうか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'てつだってください')">てつだってください</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="だいじょうぶです">
+                    <div class="quiz-question-text">5. 婉拒幫助說「沒關係、不用了」，日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いいえ')">いいえ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'だいじょうぶです')">だいじょうぶです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ありがとう')">ありがとう</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 5;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('ちょっとてつだってもらえる'), 0);
+            setTimeout(() => speak('いいよ。なに'), 2500);
+            setTimeout(() => speak('これをもつのをてつだってほしいんだけど'), 4500);
+            setTimeout(() => speak('わかった。まかせて'), 7500);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('しつれいします。ちょっとおじかんをいただけますか'), 0);
+            setTimeout(() => speak('はい、どうぞ'), 4000);
+            setTimeout(() => speak('このしょるいをかくにんしていただけますか'), 6000);
+            setTimeout(() => speak('わかりました。みておきます'), 9500);
+        }
+
+        function speakDialogue3() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('すみません、ここにすわってもよろしいですか'), 0);
+            setTimeout(() => speak('はい、どうぞ'), 3500);
+            setTimeout(() => speak('しゃしんをとってもいいですか'), 5500);
+            setTimeout(() => speak('もちろんです。どうぞ'), 8000);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day18 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            alert('恭喜完成 Day 18 課程！\n\n你已經學會了請求與許可的各種表達方式！\n現在可以根據不同場合使用適當的禮貌程度了。');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

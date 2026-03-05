@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 16 - 工作與職業 | 日文學習課程</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif TC', serif; background: #F5F1E8; color: #2C2C2C; min-height: 100vh; padding: 20px; line-height: 1.8; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { background: #FEFDFB; padding: 30px; border: 1px solid #E5DCC9; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #E5DCC9; }
+        .nav-bar a { color: #2C2C2C; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; border: 1px solid #2C2C2C; padding: 8px 16px; transition: all 0.2s; }
+        .nav-bar a:hover { background: #2C2C2C; color: #FEFDFB; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; font-weight: 700; color: #2C2C2C; }
+        .day-number { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.9em; margin-bottom: 5px; }
+        .lesson-desc { color: #6B6B6B; font-size: 1em; margin-top: 10px; }
+        .section { background: #FEFDFB; border: 1px solid #E5DCC9; padding: 30px; margin-bottom: 30px; }
+        .section-title { font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #C1282D; font-weight: 600; }
+        .intro-text { margin-bottom: 20px; line-height: 1.9; }
+        .intro-text strong { color: #C1282D; }
+        .milestone-box { background: #2C2C2C; color: #FEFDFB; padding: 30px; margin: 25px 0; text-align: center; }
+        .milestone-title { font-size: 1.5em; font-weight: 700; margin-bottom: 15px; }
+        .milestone-desc { font-size: 1.1em; line-height: 1.8; }
+        .job-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin: 25px 0; }
+        .job-card { background: #F5F1E8; border: 2px solid #D4C5A9; padding: 20px 15px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .job-card:hover { border-color: #C1282D; transform: translateY(-2px); }
+        .job-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 8px; font-weight: 500; }
+        .job-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.8em; margin-bottom: 5px; }
+        .job-meaning { color: #6B6B6B; font-size: 0.85em; }
+        .workplace-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin: 25px 0; }
+        .workplace-card { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 18px 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .workplace-card:hover { border-color: #C1282D; background: #F5F1E8; }
+        .workplace-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.2em; color: #2C2C2C; margin-bottom: 5px; font-weight: 500; }
+        .workplace-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.75em; margin-bottom: 5px; }
+        .workplace-meaning { color: #6B6B6B; font-size: 0.8em; }
+        .phrase-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .phrase-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; }
+        .phrase-item { padding: 15px; margin: 12px 0; background: #F5F1E8; border-left: 3px solid #C1282D; cursor: pointer; transition: all 0.2s; }
+        .phrase-item:hover { background: #E5DCC9; }
+        .phrase-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1.4em; color: #2C2C2C; margin-bottom: 8px; }
+        .phrase-romaji { font-family: 'IBM Plex Mono', monospace; color: #C1282D; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-meaning { color: #6B6B6B; font-size: 0.95em; margin-bottom: 5px; }
+        .phrase-note { color: #6B6B6B; font-size: 0.85em; font-style: italic; margin-top: 5px; }
+        .tip-box { background: #F5F1E8; border-left: 4px solid #C1282D; padding: 20px; margin: 25px 0; }
+        .tip-title { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .category-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .category-title { font-weight: 600; color: #2C2C2C; margin-bottom: 20px; font-size: 1.2em; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .category-item { background: #F5F1E8; padding: 20px; border: 1px solid #D4C5A9; }
+        .category-label { font-weight: 600; color: #C1282D; margin-bottom: 10px; font-size: 1.1em; }
+        .category-content { color: #2C2C2C; line-height: 1.8; }
+        .dialogue-box { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin: 25px 0; }
+        .dialogue-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.2em; text-align: center; }
+        .dialogue-line { padding: 12px; margin: 10px 0; background: #F5F1E8; border-left: 3px solid #C1282D; }
+        .dialogue-speaker { font-weight: 600; color: #C1282D; margin-bottom: 5px; font-size: 0.9em; }
+        .dialogue-text { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #2C2C2C; margin-bottom: 5px; }
+        .dialogue-translation { color: #6B6B6B; font-size: 0.9em; }
+        .audio-btn { border: 1px solid #2C2C2C; background: #FEFDFB; padding: 8px 16px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; transition: all 0.2s; margin-top: 10px; }
+        .audio-btn:hover { background: #2C2C2C; color: #FEFDFB; }
+        .practice-section { background: #F5F1E8; border: 1px solid #D4C5A9; padding: 25px; margin: 25px 0; }
+        .practice-title { font-weight: 600; color: #2C2C2C; margin-bottom: 15px; font-size: 1.1em; }
+        .practice-item { background: #FEFDFB; border: 1px solid #D4C5A9; padding: 15px; margin: 15px 0; }
+        .practice-question { color: #6B6B6B; margin-bottom: 10px; }
+        .practice-answer { font-family: 'Noto Sans JP', sans-serif; font-size: 1.3em; color: #6B6B6B; padding: 10px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+        .practice-answer:hover { border-color: #C1282D; color: #C1282D; }
+        .practice-answer.revealed { color: #2C2C2C; border-color: #2C2C2C; background: #F5F1E8; }
+        .quiz-section { margin-top: 30px; }
+        .quiz-question { background: #FEFDFB; border: 2px solid #E5DCC9; padding: 25px; margin-bottom: 15px; }
+        .quiz-question-text { font-size: 1.2em; margin-bottom: 20px; font-weight: 600; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .quiz-option { padding: 15px; border: 1px solid #2C2C2C; background: #FEFDFB; cursor: pointer; text-align: left; font-size: 1em; transition: all 0.2s; }
+        .quiz-option:hover { background: #F5F1E8; }
+        .quiz-option.correct { background: #2C2C2C; color: #FEFDFB; }
+        .quiz-option.wrong { background: #C1282D; color: #FEFDFB; }
+        .complete-btn { width: 100%; padding: 18px; background: #C1282D; color: #FEFDFB; border: none; font-size: 1.1em; font-family: 'Noto Serif TC', serif; font-weight: 600; cursor: pointer; margin-top: 30px; transition: all 0.2s; }
+        .complete-btn:hover { background: #2C2C2C; }
+        .complete-btn:disabled { background: #D4C5A9; cursor: not-allowed; }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            h1 { font-size: 1.6em; }
+            .nav-bar { flex-direction: column; gap: 10px; }
+            .job-grid, .workplace-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav-bar">
+                <a href="day15.html">← Day 15</a>
+                <a href="index.html">課程列表</a>
+                <a href="day17.html">Day 17 →</a>
+            </div>
+            <div class="day-number">DAY 16</div>
+            <h1>工作與職業</h1>
+            <p class="lesson-desc">學習職業名稱、工作場所、職場用語、談論工作內容</p>
+        </header>
+
+        <div class="milestone-box">
+            <div class="milestone-title">高級篇開始</div>
+            <div class="milestone-desc">
+                歡迎來到高級篇（Day 16-20）<br>
+                將學習更深入的日常會話與實用主題
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">一、課程介紹</h2>
+            <div class="intro-text">
+                <p>今天要學習關於工作和職業的日文表達方式。</p>
+                <p>無論是自我介紹、社交場合或是商務情境，談論職業都是非常常見的話題。掌握這些用語能讓你更順暢地進行職場相關的對話！</p>
+            </div>
+            <div class="tip-box">
+                <div class="tip-title">學習重點</div>
+                <p>1. 各種職業的日文名稱（20種以上）</p>
+                <p>2. 工作場所與公司相關詞彙</p>
+                <p>3. 詢問和回答職業的句型</p>
+                <p>4. 描述工作內容的表達方式</p>
+                <p>5. 職場日常用語</p>
+                <p>6. 工作時間與休假的說法</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">二、常見職業</h2>
+            <div class="job-grid">
+                <div class="job-card" onclick="speak('かいしゃいん')">
+                    <div class="job-jp">かいしゃいん</div>
+                    <div class="job-romaji">kaishain</div>
+                    <div class="job-meaning">公司職員</div>
+                </div>
+                <div class="job-card" onclick="speak('いしゃ')">
+                    <div class="job-jp">いしゃ</div>
+                    <div class="job-romaji">isha</div>
+                    <div class="job-meaning">醫生</div>
+                </div>
+                <div class="job-card" onclick="speak('かんごし')">
+                    <div class="job-jp">かんごし</div>
+                    <div class="job-romaji">kangoshi</div>
+                    <div class="job-meaning">護士</div>
+                </div>
+                <div class="job-card" onclick="speak('きょうし')">
+                    <div class="job-jp">きょうし</div>
+                    <div class="job-romaji">kyoushi</div>
+                    <div class="job-meaning">教師</div>
+                </div>
+                <div class="job-card" onclick="speak('エンジニア')">
+                    <div class="job-jp">エンジニア</div>
+                    <div class="job-romaji">enjinia</div>
+                    <div class="job-meaning">工程師</div>
+                </div>
+                <div class="job-card" onclick="speak('プログラマー')">
+                    <div class="job-jp">プログラマー</div>
+                    <div class="job-romaji">puroguramaa</div>
+                    <div class="job-meaning">程式設計師</div>
+                </div>
+                <div class="job-card" onclick="speak('デザイナー')">
+                    <div class="job-jp">デザイナー</div>
+                    <div class="job-romaji">dezainaa</div>
+                    <div class="job-meaning">設計師</div>
+                </div>
+                <div class="job-card" onclick="speak('けいえいしゃ')">
+                    <div class="job-jp">けいえいしゃ</div>
+                    <div class="job-romaji">keieisha</div>
+                    <div class="job-meaning">經營者</div>
+                </div>
+                <div class="job-card" onclick="speak('べんごし')">
+                    <div class="job-jp">べんごし</div>
+                    <div class="job-romaji">bengoshi</div>
+                    <div class="job-meaning">律師</div>
+                </div>
+                <div class="job-card" onclick="speak('かいけいし')">
+                    <div class="job-jp">かいけいし</div>
+                    <div class="job-romaji">kaikeishi</div>
+                    <div class="job-meaning">會計師</div>
+                </div>
+                <div class="job-card" onclick="speak('ぎんこういん')">
+                    <div class="job-jp">ぎんこういん</div>
+                    <div class="job-romaji">ginkouin</div>
+                    <div class="job-meaning">銀行員</div>
+                </div>
+                <div class="job-card" onclick="speak('てんいん')">
+                    <div class="job-jp">てんいん</div>
+                    <div class="job-romaji">tenin</div>
+                    <div class="job-meaning">店員</div>
+                </div>
+                <div class="job-card" onclick="speak('けいさつかん')">
+                    <div class="job-jp">けいさつかん</div>
+                    <div class="job-romaji">keisatsukan</div>
+                    <div class="job-meaning">警察</div>
+                </div>
+                <div class="job-card" onclick="speak('しょうぼうし')">
+                    <div class="job-jp">しょうぼうし</div>
+                    <div class="job-romaji">shouboushi</div>
+                    <div class="job-meaning">消防員</div>
+                </div>
+                <div class="job-card" onclick="speak('りょうりにん')">
+                    <div class="job-jp">りょうりにん</div>
+                    <div class="job-romaji">ryourinin</div>
+                    <div class="job-meaning">廚師</div>
+                </div>
+                <div class="job-card" onclick="speak('うんてんしゅ')">
+                    <div class="job-jp">うんてんしゅ</div>
+                    <div class="job-romaji">untenshu</div>
+                    <div class="job-meaning">司機</div>
+                </div>
+                <div class="job-card" onclick="speak('はいゆう')">
+                    <div class="job-jp">はいゆう</div>
+                    <div class="job-romaji">haiyuu</div>
+                    <div class="job-meaning">演員</div>
+                </div>
+                <div class="job-card" onclick="speak('かしゅ')">
+                    <div class="job-jp">かしゅ</div>
+                    <div class="job-romaji">kashu</div>
+                    <div class="job-meaning">歌手</div>
+                </div>
+                <div class="job-card" onclick="speak('スポーツせんしゅ')">
+                    <div class="job-jp">スポーツせんしゅ</div>
+                    <div class="job-romaji">supootsu senshu</div>
+                    <div class="job-meaning">運動員</div>
+                </div>
+                <div class="job-card" onclick="speak('がくせい')">
+                    <div class="job-jp">がくせい</div>
+                    <div class="job-romaji">gakusei</div>
+                    <div class="job-meaning">學生</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">三、工作場所</h2>
+            <div class="workplace-grid">
+                <div class="workplace-card" onclick="speak('かいしゃ')">
+                    <div class="workplace-jp">かいしゃ</div>
+                    <div class="workplace-romaji">kaisha</div>
+                    <div class="workplace-meaning">公司</div>
+                </div>
+                <div class="workplace-card" onclick="speak('オフィス')">
+                    <div class="workplace-jp">オフィス</div>
+                    <div class="workplace-romaji">ofisu</div>
+                    <div class="workplace-meaning">辦公室</div>
+                </div>
+                <div class="workplace-card" onclick="speak('びょういん')">
+                    <div class="workplace-jp">びょういん</div>
+                    <div class="workplace-romaji">byouin</div>
+                    <div class="workplace-meaning">醫院</div>
+                </div>
+                <div class="workplace-card" onclick="speak('がっこう')">
+                    <div class="workplace-jp">がっこう</div>
+                    <div class="workplace-romaji">gakkou</div>
+                    <div class="workplace-meaning">學校</div>
+                </div>
+                <div class="workplace-card" onclick="speak('ぎんこう')">
+                    <div class="workplace-jp">ぎんこう</div>
+                    <div class="workplace-romaji">ginkou</div>
+                    <div class="workplace-meaning">銀行</div>
+                </div>
+                <div class="workplace-card" onclick="speak('みせ')">
+                    <div class="workplace-jp">みせ</div>
+                    <div class="workplace-romaji">mise</div>
+                    <div class="workplace-meaning">商店</div>
+                </div>
+                <div class="workplace-card" onclick="speak('レストラン')">
+                    <div class="workplace-jp">レストラン</div>
+                    <div class="workplace-romaji">resutoran</div>
+                    <div class="workplace-meaning">餐廳</div>
+                </div>
+                <div class="workplace-card" onclick="speak('こうじょう')">
+                    <div class="workplace-jp">こうじょう</div>
+                    <div class="workplace-romaji">koujou</div>
+                    <div class="workplace-meaning">工廠</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">四、詢問與回答職業</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">詢問職業</div>
+                <div class="phrase-item" onclick="speak('おしごとはなんですか')">
+                    <div class="phrase-jp">おしごとはなんですか</div>
+                    <div class="phrase-romaji">Oshigoto wa nan desu ka</div>
+                    <div class="phrase-meaning">你的工作是什麼？</div>
+                    <div class="phrase-note">禮貌的詢問方式</div>
+                </div>
+                <div class="phrase-item" onclick="speak('なにをしていますか')">
+                    <div class="phrase-jp">なにをしていますか</div>
+                    <div class="phrase-romaji">Nani wo shite imasu ka</div>
+                    <div class="phrase-meaning">你在做什麼（工作）？</div>
+                </div>
+                <div class="phrase-item" onclick="speak('どこではたらいていますか')">
+                    <div class="phrase-jp">どこではたらいていますか</div>
+                    <div class="phrase-romaji">Doko de hataraite imasu ka</div>
+                    <div class="phrase-meaning">你在哪裡工作？</div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">回答職業</div>
+                <div class="phrase-item" onclick="speak('かいしゃいんです')">
+                    <div class="phrase-jp">かいしゃいんです</div>
+                    <div class="phrase-romaji">Kaishain desu</div>
+                    <div class="phrase-meaning">我是公司職員</div>
+                </div>
+                <div class="phrase-item" onclick="speak('IT会社ではたらいています')">
+                    <div class="phrase-jp">ITかいしゃではたらいています</div>
+                    <div class="phrase-romaji">IT kaisha de hataraite imasu</div>
+                    <div class="phrase-meaning">我在IT公司工作</div>
+                </div>
+                <div class="phrase-item" onclick="speak('エンジニアのしごとをしています')">
+                    <div class="phrase-jp">エンジニアのしごとをしています</div>
+                    <div class="phrase-romaji">Enjinia no shigoto wo shite imasu</div>
+                    <div class="phrase-meaning">我從事工程師的工作</div>
+                </div>
+                <div class="phrase-item" onclick="speak('じえいぎょうです')">
+                    <div class="phrase-jp">じえいぎょうです</div>
+                    <div class="phrase-romaji">Jieigyou desu</div>
+                    <div class="phrase-meaning">我是自僱者</div>
+                </div>
+                <div class="phrase-item" onclick="speak('フリーランスです')">
+                    <div class="phrase-jp">フリーランスです</div>
+                    <div class="phrase-romaji">Furiransu desu</div>
+                    <div class="phrase-meaning">我是自由工作者</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">五、描述工作內容</h2>
+            <div class="phrase-box">
+                <div class="phrase-title">工作相關用語</div>
+                <div class="phrase-item" onclick="speak('まいにちパソコンをつかいます')">
+                    <div class="phrase-jp">まいにちパソコンをつかいます</div>
+                    <div class="phrase-romaji">Mainichi pasokon wo tsukaimasu</div>
+                    <div class="phrase-meaning">每天使用電腦</div>
+                </div>
+                <div class="phrase-item" onclick="speak('かいぎがおおいです')">
+                    <div class="phrase-jp">かいぎがおおいです</div>
+                    <div class="phrase-romaji">Kaigi ga ooi desu</div>
+                    <div class="phrase-meaning">會議很多</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ざんぎょうがおおいです')">
+                    <div class="phrase-jp">ざんぎょうがおおいです</div>
+                    <div class="phrase-romaji">Zangyou ga ooi desu</div>
+                    <div class="phrase-meaning">加班很多</div>
+                </div>
+                <div class="phrase-item" onclick="speak('しゅっちょうがおおいです')">
+                    <div class="phrase-jp">しゅっちょうがおおいです</div>
+                    <div class="phrase-romaji">Shucchou ga ooi desu</div>
+                    <div class="phrase-meaning">出差很多</div>
+                </div>
+                <div class="phrase-item" onclick="speak('チームでしごとをします')">
+                    <div class="phrase-jp">チームでしごとをします</div>
+                    <div class="phrase-romaji">Chiimu de shigoto wo shimasu</div>
+                    <div class="phrase-meaning">團隊工作</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ひとりでしごとをします')">
+                    <div class="phrase-jp">ひとりでしごとをします</div>
+                    <div class="phrase-romaji">Hitori de shigoto wo shimasu</div>
+                    <div class="phrase-meaning">獨自工作</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">六、工作時間與休假</h2>
+            <div class="category-box">
+                <div class="category-title">時間相關用語</div>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <div class="category-label">工作時間</div>
+                        <div class="category-content">
+                            きんむじかん（勤務時間）<br>
+                            しゅうまつ（週末）<br>
+                            へいじつ（平日）
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-label">休假</div>
+                        <div class="category-content">
+                            きゅうか（休暇）<br>
+                            ゆうきゅう（有給假）<br>
+                            びょうきゅう（病假）
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phrase-box">
+                <div class="phrase-title">工作時間相關句型</div>
+                <div class="phrase-item" onclick="speak('くじからごじまではたらきます')">
+                    <div class="phrase-jp">くじからごじまではたらきます</div>
+                    <div class="phrase-romaji">Kuji kara goji made hatarakimasu</div>
+                    <div class="phrase-meaning">從9點工作到5點</div>
+                </div>
+                <div class="phrase-item" onclick="speak('しゅうまつはやすみです')">
+                    <div class="phrase-jp">しゅうまつはやすみです</div>
+                    <div class="phrase-romaji">Shuumatsu wa yasumi desu</div>
+                    <div class="phrase-meaning">週末休息</div>
+                </div>
+                <div class="phrase-item" onclick="speak('いそがしいです')">
+                    <div class="phrase-jp">いそがしいです</div>
+                    <div class="phrase-romaji">Isogashii desu</div>
+                    <div class="phrase-meaning">很忙</div>
+                </div>
+                <div class="phrase-item" onclick="speak('ひまです')">
+                    <div class="phrase-jp">ひまです</div>
+                    <div class="phrase-romaji">Hima desu</div>
+                    <div class="phrase-meaning">很閒</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">七、實用對話</h2>
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境一：初次見面談論工作</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">おしごとはなんですか。</div>
+                    <div class="dialogue-translation">你的工作是什麼？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">ITかいしゃではたらいています。エンジニアです。</div>
+                    <div class="dialogue-translation">我在IT公司工作。是工程師。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">そうですか。いそがしいですか。</div>
+                    <div class="dialogue-translation">是嗎。忙嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">はい、とてもいそがしいです。でも、やりがいがあります。</div>
+                    <div class="dialogue-translation">是的，非常忙。但是很有成就感。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue1()">播放對話</button>
+            </div>
+
+            <div class="dialogue-box">
+                <div class="dialogue-title">情境二：討論工作時間</div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">まいにちなんじからなんじまではたらきますか。</div>
+                    <div class="dialogue-translation">每天從幾點工作到幾點？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">くじからろくじまでです。</div>
+                    <div class="dialogue-translation">從9點到6點。</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">A：</div>
+                    <div class="dialogue-text">しゅうまつもはたらきますか。</div>
+                    <div class="dialogue-translation">週末也工作嗎？</div>
+                </div>
+                <div class="dialogue-line">
+                    <div class="dialogue-speaker">B：</div>
+                    <div class="dialogue-text">いいえ、しゅうまつはやすみです。</div>
+                    <div class="dialogue-translation">不，週末休息。</div>
+                </div>
+                <button class="audio-btn" onclick="speakDialogue2()">播放對話</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">八、情境練習</h2>
+            <div class="practice-section">
+                <div class="practice-title">根據情境說出適當的日文</div>
+                <div class="practice-item">
+                    <div class="practice-question">1. 想問對方「你的工作是什麼？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">おしごとはなんですか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">2. 說「我是公司職員」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">かいしゃいんです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">3. 說「我在IT公司工作」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">ITかいしゃではたらいています</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">4. 想問「你在哪裡工作？」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">どこではたらいていますか</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">5. 說「週末休息」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">しゅうまつはやすみです</div>
+                </div>
+                <div class="practice-item">
+                    <div class="practice-question">6. 說「很忙」</div>
+                    <div class="practice-answer" onclick="this.classList.add('revealed')">いそがしいです</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">九、學習測驗</h2>
+            <div class="quiz-section">
+                <div class="quiz-question" data-answer="おしごとはなんですか">
+                    <div class="quiz-question-text">1. 「你的工作是什麼？」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'しごとですか')">しごとですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'おしごとはなんですか')">おしごとはなんですか</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'なにがしごとですか')">なにがしごとですか</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="いしゃ">
+                    <div class="quiz-question-text">2. 「醫生」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いしゃ')">いしゃ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'かんごし')">かんごし</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'きょうし')">きょうし</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="かいしゃ">
+                    <div class="quiz-question-text">3. 「公司」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'オフィス')">オフィス</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'かいしゃ')">かいしゃ</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'がっこう')">がっこう</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="ITかいしゃではたらいています">
+                    <div class="quiz-question-text">4. 「我在IT公司工作」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ITかいしゃです')">ITかいしゃです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ITかいしゃではたらいています')">ITかいしゃではたらいています</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ITかいしゃがすきです')">ITかいしゃがすきです</div>
+                    </div>
+                </div>
+                <div class="quiz-question" data-answer="いそがしいです">
+                    <div class="quiz-question-text">5. 「很忙」的日文是？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, 'ひまです')">ひまです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'いそがしいです')">いそがしいです</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, 'たいへんです')">たいへんです</div>
+                    </div>
+                </div>
+            </div>
+            <button class="complete-btn" id="completeBtn" onclick="completeLesson()" disabled>完成本課程</button>
+        </div>
+    </div>
+
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 5;
+
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakDialogue1() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('おしごとはなんですか'), 0);
+            setTimeout(() => speak('ITかいしゃではたらいています。エンジニアです'), 2500);
+            setTimeout(() => speak('そうですか。いそがしいですか'), 6000);
+            setTimeout(() => speak('はい、とてもいそがしいです。でも、やりがいがあります'), 8500);
+        }
+
+        function speakDialogue2() {
+            speechSynthesis.cancel();
+            setTimeout(() => speak('まいにちなんじからなんじまではたらきますか'), 0);
+            setTimeout(() => speak('くじからろくじまでです'), 3500);
+            setTimeout(() => speak('しゅうまつもはたらきますか'), 6000);
+            setTimeout(() => speak('いいえ、しゅうまつはやすみです'), 8500);
+        }
+
+        function checkAnswer(element, userAnswer) {
+            const question = element.closest('.quiz-question');
+            const correctAnswer = question.dataset.answer;
+            
+            if (question.classList.contains('answered')) return;
+            question.classList.add('answered');
+            
+            if (userAnswer === correctAnswer) {
+                element.classList.add('correct');
+                correctAnswers++;
+                speak(correctAnswer);
+            } else {
+                element.classList.add('wrong');
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correctAnswer) opt.classList.add('correct');
+                });
+            }
+            
+            if (correctAnswers === totalQuestions) {
+                document.getElementById('completeBtn').disabled = false;
+            }
+        }
+
+        function completeLesson() {
+            if (correctAnswers !== totalQuestions) {
+                alert('請完成所有測驗題目！');
+                return;
+            }
+            const progress = JSON.parse(localStorage.getItem('japaneseProgress') || '{}');
+            progress.day16 = true;
+            localStorage.setItem('japaneseProgress', JSON.stringify(progress));
+            alert('恭喜完成 Day 16 課程！\n\n你已經學會了工作與職業相關的用語！\n可以自然地談論工作話題了。');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
